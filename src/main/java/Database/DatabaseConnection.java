@@ -15,7 +15,7 @@ public class DatabaseConnection {
     public Connection connection = null;
     private DatabaseConnection() throws SQLException {
         try {
-            //Class.forName(driver); <- carica dinamicamente driver?
+            //Class.forName(driver); <- carica dinamicamente driver/outdated
             connection = DriverManager.getConnection(url, name, password);
             System.out.println("Connessione avviata");
         } catch (SQLException e) {
