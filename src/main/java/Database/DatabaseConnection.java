@@ -8,11 +8,11 @@ public class DatabaseConnection {
 
     private static DatabaseConnection instance;//consente solo UNA instance
     private String name = "postgres";
-    private String url = "jdbc:postgresql://localhost:5432/";
+    private String url = "jdbc:postgresql://localhost:5432/INSERIRENOMEDATABASE";
     private String password = "";
     private String driver = "org.postgresql.Driver";
 
-    public Connection connection = null;
+    private Connection connection = null;
     private DatabaseConnection() throws SQLException {
         try {
             //Class.forName(driver); <- carica dinamicamente driver/outdated
@@ -34,4 +34,9 @@ public class DatabaseConnection {
         return instance;
     }
 
+    public Connection getConnection() {
+        return connection;
+    }
+
 }
+
