@@ -7,10 +7,10 @@ import java.sql.SQLException;
 public class DatabaseConnection {
 
     private static DatabaseConnection instance;//consente solo UNA instance
-    private String name = "postgres";
-    private String url = "jdbc:postgresql://localhost:5432/INSERIRENOMEDATABASE";
-    private String password = "";
-    private String driver = "org.postgresql.Driver";
+    private final String name = "postgres";
+    private final String url = "jdbc:postgresql://localhost:5432/bd-project-2023";
+    private final String password = "post1234";
+    private final String driver = "org.postgresql.Driver";
 
     private Connection connection = null;
     private DatabaseConnection() throws SQLException {

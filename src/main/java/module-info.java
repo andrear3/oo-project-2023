@@ -1,9 +1,6 @@
-module com.example.ooproject2023 {
+module GUI {
     requires javafx.controls;
     requires javafx.fxml;
-    requires java.sql; // API JDBC
+    requires java.sql;
 
-
-    opens GUI to javafx.fxml;
-    exports GUI;
 }

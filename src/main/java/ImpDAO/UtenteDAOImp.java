@@ -15,7 +15,6 @@ public class UtenteDAOImp implements UtenteDAO {
     @Override
     public void printGender(String nickname) throws SQLException {
        Connection connection = DatabaseConnection.getInstance().getConnection();
-       Utente utente = null;
 
        String sql = "SELECT gender FROM photogallery.utente WHERE nickname = ?"; //? è placeholder
        PreparedStatement prepstat = connection.prepareStatement(sql);
@@ -26,8 +25,8 @@ public class UtenteDAOImp implements UtenteDAO {
             String genderRetrieved = resultSet.getString("gender");
             System.out.println(genderRetrieved);
        }
-       else {
+       else { 
             System.out.println("Nickname not found");
        }
-    };
+    }
 }
