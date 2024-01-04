@@ -20,6 +20,10 @@ public class Utente {
         this.gender = gender;
     }
 
+    public Utente(){
+
+    };
+
     //Setters
     public void setNicknameUtente(String nickname) {
         this.nickname = nickname;

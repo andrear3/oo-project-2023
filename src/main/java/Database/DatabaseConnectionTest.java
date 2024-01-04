@@ -1,6 +1,7 @@
 package Database;
 
 import ImpDAO.UtenteDAOImp;
+import Model.Utente;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,10 +20,16 @@ public class DatabaseConnectionTest {
 
                 Scanner scanner = new Scanner(System.in);
                 System.out.println("Inserisci il nickname per conoscere il suo gender: ");
-                String genderTest = scanner.nextLine();
+                String nicknameTest = scanner.nextLine();
                 scanner.close();
 
-                utenteDAO.printGender(genderTest);
+                Utente temp = new Utente();
+                temp = utenteDAO.getUtenteDB(nicknameTest);
+                utenteDAO.printGender(nicknameTest);
+
+                System.out.println(temp.getBirthdateUtente());
+                System.out.println(temp.getNameUtente());
+
 
             } else {
                 System.out.println("TEST: Connessione fallita");
