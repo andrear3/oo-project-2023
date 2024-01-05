@@ -5,9 +5,8 @@ import ImpDAO.*;
 
 public class Controller {
 
-    Utente activeUser = new Utente();
-
-    UtenteDAOImp utenteDAO = new UtenteDAOImp();
+    private Utente activeUser = new Utente();
+    private UtenteDAOImp utenteDAO = new UtenteDAOImp();
 
 
 }

@@ -9,7 +9,7 @@ import java.sql.*;
 
 public class UtenteDAOImp implements UtenteDAO {
 
-    //C.R.U.D. Retrieve Gender
+    //C.R.U.D.
     @Override
     public void printGender(String nickname) throws SQLException {
        Connection connection = DatabaseConnection.getInstance().getConnection();
