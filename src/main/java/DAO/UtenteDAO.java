@@ -8,6 +8,8 @@ public interface UtenteDAO {
     //printGender è temporanea
     void printGender(String nickname) throws SQLException;
 
+    boolean checkUtenteExists(String nickname) throws SQLException;
+
     //String setUtenteDB(String nickname, String name, String surname, Date Birthdate, String gender);
 
     Utente getUtenteDB(String nickname) throws SQLException; //Lazy load?
