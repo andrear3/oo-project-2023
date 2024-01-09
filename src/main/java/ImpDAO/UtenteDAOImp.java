@@ -34,14 +34,14 @@ public class UtenteDAOImp implements UtenteDAO {
 
     @Override
     public boolean checkUtenteExists(String nickname) throws SQLException {
-        Connection connection = DatabaseConnection.getInstance().getConnection();
-        String sql = "SELECT * FROM photogallery.utente WHERE nickname = ?";
-        PreparedStatement prepStat = connection.prepareStatement(sql);
-        prepStat.setString(1, nickname);
+        Connection connection = DatabaseConnection.getInstance().getConnection(); //connessione database
+        String sql = "SELECT * FROM photogallery.utente WHERE nickname = ?"; // query sql
+        PreparedStatement prepStat = connection.prepareStatement(sql); //prepara la query
+        prepStat.setString(1, nickname); //passaggio del parametro
 
         boolean userExistance = false;
-        ResultSet resultSet = prepStat.executeQuery();
-        if (resultSet.next()){
+        ResultSet resultSet = prepStat.executeQuery(); // risultato
+        if (resultSet.next()){ // controlla che la query non sia nulla
             userExistance = true;
         }
         return userExistance;
@@ -68,7 +68,7 @@ public class UtenteDAOImp implements UtenteDAO {
         }
 
         //
-        resultSet.close();
+        resultSet.close(); //chiudono (sono obbligatori)
         prepStat.close();
         connection.close();
 

@@ -9,7 +9,7 @@ public class DatabaseConnection {
     private static DatabaseConnection instance;//consente solo UNA instance
     private final String name = "postgres";
     private final String url = "jdbc:postgresql://localhost:5432/bd-project-2023";
-    private final String password = "post1234";
+    private final String password = "Antimo.123";
     private final String driver = "org.postgresql.Driver";
 
     private Connection connection = null;

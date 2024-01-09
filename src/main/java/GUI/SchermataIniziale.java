@@ -14,14 +14,14 @@ public class SchermataIniziale {
     private static JFrame frame;
     private JPanel PanelIniziale;
     private JButton inviaButton;
-    private JTextField textField1;
+    private JTextField insNick;
 
     public SchermataIniziale() {
 
         Controller controller = new Controller();
         inviaButton.addActionListener(e -> {
             //System.out.println(textField1.getText());
-            String checkNickname =  textField1.getText();
+            String checkNickname =  insNick.getText();
             boolean loginStatus;
             try {
                 loginStatus = controller.checkUtenteExistsCTRL(checkNickname);
@@ -37,7 +37,7 @@ public class SchermataIniziale {
                 }
                 ProfiloUtente profiloUtente = new ProfiloUtente(activeUtente);
                 frame.setVisible(false);
-
+                frame.dispose();
             } else {
                 System.out.println("Credenziali incorrette");
             }
