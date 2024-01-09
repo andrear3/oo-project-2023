@@ -22,7 +22,7 @@ public class ProfiloUtente {
 
     }
     public ProfiloUtente(Utente utente){
-        JFrame frame = new JFrame("ProfiloUtente");
+        this.frame = new JFrame("ProfiloUtente");
         frame.setContentPane(PanelProfiloUtente);
         frame.setSize(500,300);
         frame.setVisible(true);
