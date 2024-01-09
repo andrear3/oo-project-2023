@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 
 public class Controller {
+
     //Variabili
     private Utente activeUser = new Utente();
     private UtenteDAOImp utenteDAO = new UtenteDAOImp();
