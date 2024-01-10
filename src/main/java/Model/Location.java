@@ -21,7 +21,7 @@ public class Location {
     public Location(){
 
     };
-    //SETTERTS
+    //SETTERS
     public void setLocation_name(String location_name) {
         this.location_name = location_name;
     }
