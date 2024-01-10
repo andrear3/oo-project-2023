@@ -14,21 +14,24 @@ public class SchermataIniziale {
     private static JFrame frame;
     private JPanel PanelIniziale;
     private JButton inviaButton;
-    private JTextField insNick;
+    private JTextField textField1;
+    private JPasswordField passwordField1;
 
     public SchermataIniziale() {
 
         Controller controller = new Controller();
         inviaButton.addActionListener(e -> {
             //System.out.println(textField1.getText());
-            String checkNickname =  insNick.getText();
+            String checkNickname =  textField1.getText();
+            String checkPass = String.valueOf(passwordField1.getPassword());
             boolean loginStatus;
             try {
-                loginStatus = controller.checkUtenteExistsCTRL(checkNickname);
+                loginStatus = controller.checkUtenteExistsCTRL(checkNickname, checkPass);
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
-            if(loginStatus == true){
+
+            if(loginStatus){
                 System.out.println("Login effettuato");
                 try {
                     activeUtente = controller.getUtenteDBCTRL(checkNickname);
@@ -37,7 +40,7 @@ public class SchermataIniziale {
                 }
                 ProfiloUtente profiloUtente = new ProfiloUtente(activeUtente);
                 frame.setVisible(false);
-                frame.dispose();
+
             } else {
                 System.out.println("Credenziali incorrette");
             }

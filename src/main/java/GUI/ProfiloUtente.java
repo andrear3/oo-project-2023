@@ -16,15 +16,17 @@ public class ProfiloUtente {
     private JLabel birthdayLabel;
     private JLabel genderLabel;
     private JLabel nicknameLabel;
+    private JButton laMiaGalleriaButton;
 
 
-    public ProfiloUtente(){
+    public ProfiloUtente() {
 
     }
-    public ProfiloUtente(Utente utente){
+
+    public ProfiloUtente(Utente utente) {
         this.frame = new JFrame("ProfiloUtente");
         frame.setContentPane(PanelProfiloUtente);
-        frame.setSize(500,300);
+        frame.setSize(500, 300);
         frame.setVisible(true);
 
         nameLabel.setText(utente.getNameUtente());
@@ -32,5 +34,12 @@ public class ProfiloUtente {
         genderLabel.setText(utente.getGenderUtente());
         birthdayLabel.setText(utente.getBirthdateUtente().toString());
         nicknameLabel.setText(utente.getNicknameUtente());
+
+
+        laMiaGalleriaButton.addActionListener(e ->{
+                frame.setVisible(false);
+        });
+
+
     }
 }
