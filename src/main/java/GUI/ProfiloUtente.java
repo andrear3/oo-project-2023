@@ -3,6 +3,8 @@ import Controller.Controller;
 import Model.*;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ProfiloUtente {
 
@@ -21,9 +23,6 @@ public class ProfiloUtente {
     private JButton communityHubButton;
 
 
-    public ProfiloUtente() {
-
-    }
 
     public ProfiloUtente(Utente utente) {
         this.frame = new JFrame("ProfiloUtente");
@@ -39,6 +38,12 @@ public class ProfiloUtente {
 
         laMiaGalleriaButton.addActionListener(e ->{
             MiaGalleria miagalleria = new MiaGalleria(activeUtente);
+            frame.setVisible(false);
+            frame.dispose();
+        });
+
+        communityHubButton.addActionListener(e ->{
+            CommunityHub communityHub = new CommunityHub(activeUtente);
             frame.setVisible(false);
             frame.dispose();
         });
