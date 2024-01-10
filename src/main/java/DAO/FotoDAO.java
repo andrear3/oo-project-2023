@@ -5,7 +5,7 @@ import Model.Photo;
 import java.sql.SQLException;
 
 public interface FotoDAO {
-    public Photo fotoStessoLuogo(String location_name ) throws SQLException;
+     Photo fotoStessoLuogo(String location_name ) throws SQLException;
     //void DettagliFoto(String photo_code) throws SQLException;
 
     //void FotoUtente(String photo_code, String username) throws SQLException;
