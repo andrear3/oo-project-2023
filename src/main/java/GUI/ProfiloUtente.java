@@ -17,6 +17,8 @@ public class ProfiloUtente {
     private JLabel genderLabel;
     private JLabel nicknameLabel;
     private JButton laMiaGalleriaButton;
+    private JButton impostazioniUtenteButton;
+    private JButton communityHubButton;
 
 
     public ProfiloUtente() {
@@ -28,16 +30,17 @@ public class ProfiloUtente {
         frame.setContentPane(PanelProfiloUtente);
         frame.setSize(500, 300);
         frame.setVisible(true);
-
+        activeUtente = utente;
         nameLabel.setText(utente.getNameUtente());
         surnameLabel.setText(utente.getSurnameUtente());
         genderLabel.setText(utente.getGenderUtente());
         birthdayLabel.setText(utente.getBirthdateUtente().toString());
         nicknameLabel.setText(utente.getNicknameUtente());
 
-
         laMiaGalleriaButton.addActionListener(e ->{
-                frame.setVisible(false);
+            MiaGalleria miagalleria = new MiaGalleria(activeUtente);
+            frame.setVisible(false);
+            frame.dispose();
         });
 
 

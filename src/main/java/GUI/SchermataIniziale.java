@@ -40,6 +40,7 @@ public class SchermataIniziale {
                 }
                 ProfiloUtente profiloUtente = new ProfiloUtente(activeUtente);
                 frame.setVisible(false);
+                frame.dispose();
 
             } else {
                 System.out.println("Credenziali incorrette");
