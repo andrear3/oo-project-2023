@@ -6,6 +6,7 @@ import Model.Photo;
 import Model.Utente;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 public class Controller {
@@ -28,7 +29,7 @@ public class Controller {
         return utenteDAO.getUtenteDB(nickname);
     }
     //foto
-     public Photo fotoStessoLuogoCTRL(String location_name) throws SQLException{ // da connettere ad una schermata
+     public ArrayList<Integer> fotoStessoLuogoCTRL(String location_name) throws SQLException{ // da connettere ad una schermata
         return photoDAO.fotoStessoLuogo((location_name));
      }
 

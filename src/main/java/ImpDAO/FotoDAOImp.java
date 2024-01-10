@@ -8,12 +8,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class FotoDAOImp implements FotoDAO {
     @Override
-    public Photo fotoStessoLuogo(String location_name ) throws SQLException {
+    public ArrayList<Integer> fotoStessoLuogo(String location_name ) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
-        Photo tempPhotoCode=new Photo();
+        ArrayList<Integer> tempPhotoCode=new ArrayList<Integer>();
         String sql = "SELECT photo_code" +
                 "  FROM photogallery.PHOTO " +
                 "  WHERE location_name = ?"; //? è placeholder
@@ -21,12 +22,11 @@ public class FotoDAOImp implements FotoDAO {
         prepStat.setString(1, location_name); //sostituisce placeholder
 
         ResultSet resultSet = prepStat.executeQuery();
-        if (resultSet.next()){
-            tempPhotoCode.setPhoto_code(resultSet.getString("photo_code"));
+        while (resultSet.next()!= false){
+           tempPhotoCode.add(resultSet.getInt("photo_code"));
+            System.out.println(resultSet.getInt("photo_code"));
         }
-        else {
-            System.out.println("Location non trovata");
-        }
+
 
         resultSet.close();
         prepStat.close();

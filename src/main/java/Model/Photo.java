@@ -5,7 +5,7 @@ import java.util.Date;
 public class Photo {
 
     //Attributi
-    private String photo_code;
+    private Integer photo_code;
 
     private String scope;
 
@@ -19,7 +19,7 @@ public class Photo {
 
     //Costruttore
 
-    public Photo(String photo_code, String scope, String nickname, String location_name, String device, Date photo_date){
+    public Photo(Integer photo_code, String scope, String nickname, String location_name, String device, Date photo_date){
         this.device = device;
         this.photo_date = photo_date;
         this.location_name = location_name;
@@ -46,7 +46,7 @@ public class Photo {
         this.location_name = location_name;
     }
 
-    public void setPhoto_code(String photo_code) {
+    public void setPhoto_code(Integer photo_code) {
         this.photo_code = photo_code;
     }
 
@@ -76,7 +76,7 @@ public class Photo {
         return nickname;
     }
 
-    public String getPhoto_code() {
+    public Integer getPhoto_code() {
         return photo_code;
     }
 

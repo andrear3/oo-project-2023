@@ -1,10 +1,14 @@
 package Database;
 
 import ImpDAO.UtenteDAOImp;
-import Model.Utente;
+
+import Model.*;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
+import ImpDAO.FotoDAOImp;
+
 
 public class DatabaseConnectionTest {
 
@@ -28,6 +32,13 @@ public class DatabaseConnectionTest {
                 System.out.println(temp.getBirthdateUtente());
                 System.out.println(temp.getNameUtente());
 
+                FotoDAOImp fotoDAO =new FotoDAOImp();
+                ArrayList<Integer> foto = new ArrayList<Integer>();
+                foto=fotoDAO.fotoStessoLuogo("Napoli");
+
+
+
+
 
             } else {
                 System.out.println("TEST: Connessione fallita");
@@ -36,5 +47,9 @@ public class DatabaseConnectionTest {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
+
+
+
 }
