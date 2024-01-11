@@ -11,14 +11,16 @@ public class Utente {
     private String surname;
     private Date birthdate;
     private String gender;
+    private String password;
 
     //Costruttore
-    public Utente(String nickname, String name, String surname, Date birthdate, String gender){
+    public Utente(String nickname, String name, String surname, Date birthdate, String gender,String password){
         this.nickname = nickname;
         this.name = name;
         this.surname = surname;
         this.birthdate = birthdate;
         this.gender = gender;
+        this.password=password;
     }
 
     public Utente(){
@@ -45,6 +47,7 @@ public class Utente {
     public void setGenderUtente(String gender){
         this.gender = gender;
     }
+    public void setPassword(String password){this.password=password; }
 
     //Getters
     public String getNicknameUtente(){

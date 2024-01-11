@@ -36,6 +36,10 @@ public class Controller {
    // public ArrayList<String> top3LuoghiCTRL()throws SQLException{
      //   return LocationDAOImp.top3Luoghi();
     //}
+   public Utente modPassCTRL(String nickname, String password) throws SQLException{
+        return utenteDAO.modPass(nickname,password);
+   }
+
     public Controller(){
     };
 }

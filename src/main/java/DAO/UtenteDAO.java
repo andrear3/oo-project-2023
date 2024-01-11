@@ -13,6 +13,7 @@ public interface UtenteDAO {
     //String setUtenteDB(String nickname, String name, String surname, Date Birthdate, String gender);
 
     Utente getUtenteDB(String nickname) throws SQLException; //Lazy load?
+    Utente modPass(String nickname, String password) throws SQLException;
 
     //[]int getGalleriaPersonaleDB(String nickname);
 

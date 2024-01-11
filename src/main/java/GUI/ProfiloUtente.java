@@ -47,6 +47,11 @@ public class ProfiloUtente {
             frame.setVisible(false);
             frame.dispose();
         });
+        impostazioniUtenteButton.addActionListener(e ->{
+            ImpostazioniUtente  impostazioniUtente = new ImpostazioniUtente(activeUtente);
+            frame.setVisible(false);
+            frame.dispose();
+        });
 
 
     }

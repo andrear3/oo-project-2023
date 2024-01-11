@@ -34,5 +34,6 @@ public class FotoDAOImp implements FotoDAO {
         return tempPhotoCode;
     }
 
+
 }
 
