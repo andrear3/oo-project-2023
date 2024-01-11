@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public interface FotoDAO {
      ArrayList<Integer> fotoStessoLuogo(String location_name ) throws SQLException;
+
     //void DettagliFoto(String photo_code) throws SQLException;
 
     //void FotoUtente(String photo_code, String username) throws SQLException;

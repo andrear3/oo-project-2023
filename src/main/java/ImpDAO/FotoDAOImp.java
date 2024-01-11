@@ -33,4 +33,6 @@ public class FotoDAOImp implements FotoDAO {
         connection.close();
         return tempPhotoCode;
     }
+
 }
+

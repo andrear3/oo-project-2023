@@ -1,6 +1,7 @@
 package Controller;
 
 import ImpDAO.FotoDAOImp;
+import ImpDAO.LocationDAOImp;
 import ImpDAO.UtenteDAOImp;
 import Model.Photo;
 import Model.Utente;
@@ -32,7 +33,9 @@ public class Controller {
      public ArrayList<Integer> fotoStessoLuogoCTRL(String location_name) throws SQLException{ // da connettere ad una schermata
         return photoDAO.fotoStessoLuogo((location_name));
      }
-
+   // public ArrayList<String> top3LuoghiCTRL()throws SQLException{
+     //   return LocationDAOImp.top3Luoghi();
+    //}
     public Controller(){
     };
 }

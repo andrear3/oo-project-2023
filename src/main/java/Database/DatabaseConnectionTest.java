@@ -1,5 +1,6 @@
 package Database;
 
+import ImpDAO.LocationDAOImp;
 import ImpDAO.UtenteDAOImp;
 
 import Model.*;
@@ -18,23 +19,27 @@ public class DatabaseConnectionTest {
 
             if (databaseConnection != null && databaseConnection.getConnection() != null) {
                 System.out.println("TEST: Connessione riuscita");
-                UtenteDAOImp utenteDAO = new UtenteDAOImp();
+               // UtenteDAOImp utenteDAO = new UtenteDAOImp();
 
-                Scanner scanner = new Scanner(System.in);
-                System.out.println("Inserisci il nickname per conoscere il suo gender: ");
-                String nicknameTest = scanner.nextLine();
-                scanner.close();
+               // Scanner scanner = new Scanner(System.in);
+               // System.out.println("Inserisci il nickname per conoscere il suo gender: ");
+               // String nicknameTest = scanner.nextLine();
+               // scanner.close();
 
-                Utente temp = new Utente();
-                temp = utenteDAO.getUtenteDB(nicknameTest);
-                utenteDAO.printGender(nicknameTest);
+                //Utente temp = new Utente();
+               // temp = utenteDAO.getUtenteDB(nicknameTest);
+               // utenteDAO.printGender(nicknameTest);
 
-                System.out.println(temp.getBirthdateUtente());
-                System.out.println(temp.getNameUtente());
+               // System.out.println(temp.getBirthdateUtente());
+               // System.out.println(temp.getNameUtente());
 
                 FotoDAOImp fotoDAO =new FotoDAOImp();
                 ArrayList<Integer> foto = new ArrayList<Integer>();
                 foto=fotoDAO.fotoStessoLuogo("Napoli");
+
+                LocationDAOImp luogoDao=new LocationDAOImp();
+                ArrayList<String> luogo= new ArrayList<String>();
+                luogo=luogoDao.top3Luoghi();
 
 
 
