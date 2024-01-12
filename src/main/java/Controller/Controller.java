@@ -1,10 +1,7 @@
 package Controller;
 
-import ImpDAO.FotoDAOImp;
-import ImpDAO.LocationDAOImp;
-import ImpDAO.UtenteDAOImp;
-import Model.Photo;
-import Model.Utente;
+import ImpDAO.*;
+import Model.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,13 +10,18 @@ import java.util.ArrayList;
 public class Controller {
 
     //Variabili
+
     //UTENTE
     private Utente activeUser = new Utente();
     private UtenteDAOImp utenteDAO = new UtenteDAOImp();
 
-    //
-    private Photo PH =new Photo();
-    private FotoDAOImp photoDAO=new FotoDAOImp();
+    //FOTO
+    private Photo PH = new Photo();
+    private FotoDAOImp photoDAO= new FotoDAOImp();
+
+    //PUBLIC COLLECTION
+    private PubCollection pubCollection = new PubCollection();
+    private PubCollectionDAOImp pubCollectionDAOImp = new PubCollectionDAOImp();
 
     //Metodi
     public boolean checkUtenteExistsCTRL(String nickname,String password) throws SQLException {
@@ -28,6 +30,10 @@ public class Controller {
 
     public Utente getUtenteDBCTRL(String nickname) throws SQLException {
         return utenteDAO.getUtenteDB(nickname);
+    }
+
+    public ArrayList<String> getAllPubCollectionCTRL() throws SQLException {
+        return pubCollectionDAOImp.getAllPubCollection();
     }
     //foto
      public ArrayList<Integer> fotoStessoLuogoCTRL(String location_name) throws SQLException{ // da connettere ad una schermata

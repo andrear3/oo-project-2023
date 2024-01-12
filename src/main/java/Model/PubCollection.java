@@ -5,6 +5,10 @@ public class PubCollection {
     private String collection_name;
 
     //Costruttore
+
+    public PubCollection(){
+
+    }
     public PubCollection(String collection_name) {
         this.collection_name = collection_name;
     }
