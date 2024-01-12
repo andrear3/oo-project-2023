@@ -1,8 +1,6 @@
 package Database;
 
-import ImpDAO.LocationDAOImp;
-import ImpDAO.UtenteDAOImp;
-
+import ImpDAO.*;
 import Model.*;
 
 import java.sql.SQLException;
@@ -40,6 +38,10 @@ public class DatabaseConnectionTest {
                 LocationDAOImp luogoDao=new LocationDAOImp();
                 ArrayList<String> luogo= new ArrayList<String>();
                 luogo=luogoDao.top3Luoghi();
+
+                PubCollectionDAOImp pubDAO = new PubCollectionDAOImp();
+                ArrayList<String> pubArray = new ArrayList<>();
+                pubArray = pubDAO.getAllPubCollection();
 
 
 
