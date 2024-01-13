@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import ImpDAO.FotoDAOImp;
+import ImpDAO.User_TagDAOImp;
 
 
 public class DatabaseConnectionTest {
@@ -42,6 +43,11 @@ public class DatabaseConnectionTest {
                 PubCollectionDAOImp pubDAO = new PubCollectionDAOImp();
                 ArrayList<String> pubArray = new ArrayList<>();
                 pubArray = pubDAO.getAllPubCollection();
+
+                User_TagDAOImp usertagDAO = new User_TagDAOImp();
+                String test = new String();
+                test = usertagDAO.PersoneTaggate(36);
+                System.out.println(test);
 
 
 

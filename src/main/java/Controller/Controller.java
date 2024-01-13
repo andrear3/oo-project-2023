@@ -23,6 +23,8 @@ public class Controller {
     private PubCollection pubCollection = new PubCollection();
     private PubCollectionDAOImp pubCollectionDAOImp = new PubCollectionDAOImp();
 
+    private User_TagDAOImp UserTagDAO = new User_TagDAOImp();
+
     //Metodi
     public boolean checkUtenteExistsCTRL(String nickname,String password) throws SQLException {
             return utenteDAO.checkUtenteExists(nickname,password);
@@ -45,6 +47,14 @@ public class Controller {
    public Utente modPassCTRL(String nickname, String password) throws SQLException{
         return utenteDAO.modPass(nickname,password);
    }
+
+    public ArrayList<Photo> fotoStessoUtenteCTRL(String nickname) throws SQLException {
+        return photoDAO.fotoStessoUtente(nickname);
+    }
+
+    public String PersoneTaggateCTRL(Integer photo_code) throws SQLException {
+        return UserTagDAO.PersoneTaggate(photo_code);
+    }
 
     public Controller(){
     };
