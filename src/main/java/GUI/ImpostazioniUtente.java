@@ -43,6 +43,22 @@ public class ImpostazioniUtente {
 
             }
         });
+       modificaNome.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nickname= activeUtente.getNicknameUtente();
+                String newNickname= modNomeArea.getText();
+                try{
+                    activeUtente=controller.modNicknameCTRL(nickname,newNickname);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+            }
+        });
+
+
+
     }
 
 

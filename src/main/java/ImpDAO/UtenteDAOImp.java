@@ -93,5 +93,44 @@ public class UtenteDAOImp implements UtenteDAO {
 
         return tempUtente;
         }
+        public Utente modNick(String nickname,String newNickname) throws SQLException{
+            Connection connection = DatabaseConnection.getInstance().getConnection();
+            Utente tempUtente = new Utente();
+            Utente tempUtente2 = new Utente();
+
+            String sqlDrop="ALTER TABLE photogallery.partecipating_users DROP CONSTRAINT partecipating_users_nickname_fkey";
+            String sql = "UPDATE photogallery.utente SET nickname = ? WHERE nickname= ?";
+            String sql2= "UPDATE photogallery.partecipating_users SET nickname = ? WHERE nickname= ?";
+            String sqlConstraint="ALTER TABLE photogallery.partecipating_users ADD CONSTRAINT partecipating_users_nickname_fkey FOREIGN KEY (nickname) REFERENCES photogallery.utente(nickname) ";
+            PreparedStatement prepStat = connection.prepareStatement(sql);
+            PreparedStatement prepStat2 = connection.prepareStatement(sql2);
+            PreparedStatement prepStatDrop=connection.prepareStatement(sqlDrop);
+            PreparedStatement prepStatConstraint=connection.prepareStatement(sqlConstraint);
+            prepStat.setString(1, newNickname);
+            prepStat.setString(2, nickname);
+            prepStat2.setString(1,newNickname);
+            prepStat2.setString(2,nickname);
+
+            prepStatDrop.executeQuery();
+
+            ResultSet resultSet = prepStat.executeQuery();
+            if (resultSet.next()) {
+                tempUtente.setNicknameUtente(resultSet.getString("nickname"));
+            }
+            ResultSet resultSet2 = prepStat2.executeQuery();
+            if (resultSet2.next()) {
+                tempUtente2.setNicknameUtente(resultSet2.getString("nickname"));
+            }
+            prepStatConstraint.executeQuery();
+
+
+            //
+            resultSet.close();
+            prepStat.close();
+            connection.close();
+
+            return tempUtente;
+        }
+
 
     }

@@ -15,6 +15,8 @@ public interface UtenteDAO {
     Utente getUtenteDB(String nickname) throws SQLException; //Lazy load?
     Utente modPass(String nickname, String password) throws SQLException;
 
+    Utente modNick(String nickname, String newNickname) throws SQLException;
+
     //[]int getGalleriaPersonaleDB(String nickname);
 
     //[]String getListaCollezioniPubbliche(String nickname);
