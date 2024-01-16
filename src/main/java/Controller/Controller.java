@@ -3,6 +3,7 @@ package Controller;
 import ImpDAO.*;
 import Model.*;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -55,9 +56,13 @@ public class Controller {
     public String PersoneTaggateCTRL(Integer photo_code) throws SQLException {
         return UserTagDAO.PersoneTaggate(photo_code);
     }
-    public Utente modNicknameCTRL(String nickaname,String newNickname) throws SQLException{
-        return  utenteDAO.modNick(nickaname,newNickname);
+    public Utente modDNCTRL(String nickname, Date dataN) throws SQLException{
+        return  utenteDAO.modDN(nickname,dataN);
     }
+    public Utente eliminaUCTRL(String nickname) throws  SQLException{
+        return  utenteDAO.eliminaU(nickname);
+    };
+
 
 
     public Controller(){

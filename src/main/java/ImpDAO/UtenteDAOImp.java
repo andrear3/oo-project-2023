@@ -4,7 +4,6 @@ import DAO.UtenteDAO;
 import Database.DatabaseConnection;
 import Model.Utente;
 
-import javax.xml.transform.Result;
 import java.sql.*;
 
 public class UtenteDAOImp implements UtenteDAO {
@@ -73,7 +72,7 @@ public class UtenteDAOImp implements UtenteDAO {
 
         return tempUtente;
     }
-
+    @Override
     public Utente modPass(String nickname, String password) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
         Utente tempUtente = new Utente();
@@ -86,51 +85,55 @@ public class UtenteDAOImp implements UtenteDAO {
             tempUtente.setPassword(resultSet.getString("password"));
         }
 
-        //
+
         resultSet.close();
         prepStat.close();
         connection.close();
 
         return tempUtente;
         }
-        public Utente modNick(String nickname,String newNickname) throws SQLException{
-            Connection connection = DatabaseConnection.getInstance().getConnection();
-            Utente tempUtente = new Utente();
-            Utente tempUtente2 = new Utente();
 
-            String sqlDrop="ALTER TABLE photogallery.partecipating_users DROP CONSTRAINT partecipating_users_nickname_fkey";
-            String sql = "UPDATE photogallery.utente SET nickname = ? WHERE nickname= ?";
-            String sql2= "UPDATE photogallery.partecipating_users SET nickname = ? WHERE nickname= ?";
-            String sqlConstraint="ALTER TABLE photogallery.partecipating_users ADD CONSTRAINT partecipating_users_nickname_fkey FOREIGN KEY (nickname) REFERENCES photogallery.utente(nickname) ";
-            PreparedStatement prepStat = connection.prepareStatement(sql);
-            PreparedStatement prepStat2 = connection.prepareStatement(sql2);
-            PreparedStatement prepStatDrop=connection.prepareStatement(sqlDrop);
-            PreparedStatement prepStatConstraint=connection.prepareStatement(sqlConstraint);
-            prepStat.setString(1, newNickname);
-            prepStat.setString(2, nickname);
-            prepStat2.setString(1,newNickname);
-            prepStat2.setString(2,nickname);
+    @Override
+    public Utente modDN(String nickname, java.util.Date dataN) throws SQLException {
+        return null;
+    }
 
-            prepStatDrop.executeQuery();
+    @Override
+       public Utente modDN(String nickname, Date dataN) throws SQLException{
+           Connection connection = DatabaseConnection.getInstance().getConnection();
+           Utente tempUtente = new Utente();
+           String sql="UPDATE photogallery.utente SET birthdate = ? WHERE nickname=? ";
+           PreparedStatement prepStat = connection.prepareStatement(sql);
+           prepStat.setDate(1,dataN);
+           prepStat.setString(2,nickname);
+           ResultSet resultSet = prepStat.executeQuery();
+           if (resultSet.next()) {
+               tempUtente.setBirthdateUtente(resultSet.getDate("birthdate"));
+           }
+           resultSet.close();
+           prepStat.close();
+           connection.close();
 
-            ResultSet resultSet = prepStat.executeQuery();
-            if (resultSet.next()) {
-                tempUtente.setNicknameUtente(resultSet.getString("nickname"));
-            }
-            ResultSet resultSet2 = prepStat2.executeQuery();
-            if (resultSet2.next()) {
-                tempUtente2.setNicknameUtente(resultSet2.getString("nickname"));
-            }
-            prepStatConstraint.executeQuery();
-
-
-            //
-            resultSet.close();
-            prepStat.close();
-            connection.close();
-
-            return tempUtente;
+           return tempUtente;
         }
+        @Override
+    public Utente eliminaU(String nickname)throws SQLException{
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        Utente tempUtente = new Utente();
+        String sql="DELETE FROM photogallery.utente WHERE nickname= ? ";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+        prepStat.setString(1, nickname);
+        ResultSet resultSet = prepStat.executeQuery();
+        if (resultSet.next()) {
+            System.out.println("utente eliminato ");
+        }
+
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+
+        return tempUtente;
+    }
 
 
     }

@@ -6,16 +6,17 @@ import Model.Utente;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.sql.SQLException;
 
 public class ImpostazioniUtente {
     private JLabel modificaProfilo;
     private JLabel nomeUtente;
-    private JButton modificaNome;
+    private JButton modificaDN;
     private JButton modificaPassword;
     private JButton eliminaProfilo;
     private JPanel impostazioniUtentePanel;
-    private JTextArea modNomeArea;
+    private JTextArea modDN;
     private JTextArea modPassArea;
     public JFrame frame;
     Utente activeUtente = new Utente();
@@ -43,20 +44,31 @@ public class ImpostazioniUtente {
 
             }
         });
-       modificaNome.addActionListener(new ActionListener() {
+       modificaDN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nickname= activeUtente.getNicknameUtente();
-                String newNickname= modNomeArea.getText();
+                Date dataN= Date.valueOf(modDN.getText());
                 try{
-                    activeUtente=controller.modNicknameCTRL(nickname,newNickname);
+                    activeUtente=controller.modDNCTRL(nickname,dataN);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
 
             }
         });
+eliminaProfilo.addActionListener( new ActionListener(){
+        @Override
+                public void actionPerformed(ActionEvent e){
+            String nickname=activeUtente.getNicknameUtente();
+            try{
+                activeUtente=controller.eliminaUCTRL(nickname);
 
+            }catch(SQLException ex){
+                throw  new RuntimeException(ex);
+            }
+        }
+});
 
 
     }

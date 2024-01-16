@@ -2,7 +2,7 @@ package DAO;
 
 import Model.Utente;
 import java.sql.SQLException;
-import java.sql.Date;
+import java.util.Date;
 
 public interface UtenteDAO {
     //printGender è temporanea
@@ -15,7 +15,10 @@ public interface UtenteDAO {
     Utente getUtenteDB(String nickname) throws SQLException; //Lazy load?
     Utente modPass(String nickname, String password) throws SQLException;
 
-    Utente modNick(String nickname, String newNickname) throws SQLException;
+    Utente modDN(String nickname, Date dataN) throws SQLException;
+
+    Utente modDN(String nickname, java.sql.Date dataN) throws SQLException;
+    Utente eliminaU(String nickname)throws SQLException;
 
     //[]int getGalleriaPersonaleDB(String nickname);
 
