@@ -19,6 +19,7 @@ public interface UtenteDAO {
 
     Utente modDN(String nickname, java.sql.Date dataN) throws SQLException;
     Utente eliminaU(String nickname)throws SQLException;
+    Utente registraU(String nickname, String name, String surname, java.sql.Date birthdate, String gender, String password)throws SQLException;
 
     //[]int getGalleriaPersonaleDB(String nickname);
 

@@ -134,6 +134,29 @@ public class UtenteDAOImp implements UtenteDAO {
 
         return tempUtente;
     }
+    public Utente registraU(String nickname, String name, String surname, Date birthdate, String gender, String password)throws SQLException{
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        Utente tempUtente = new Utente();
+        String sql="INSERT INTO photogallery.utente  VALUES(?,?,?,?,?,?)";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+        prepStat.setString(1,nickname);
+        prepStat.setDate(2,birthdate);
+        prepStat.setString(3,gender);
+        prepStat.setString(4,name);
+        prepStat.setString(5,surname);
+        prepStat.setString(6,password);
+        ResultSet resultSet = prepStat.executeQuery();
+        if (resultSet.next()) {
+            System.out.println("utente creato ");
+        }
+
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+
+        return tempUtente;
+
+    }
 
 
     }

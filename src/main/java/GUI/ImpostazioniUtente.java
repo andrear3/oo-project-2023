@@ -18,6 +18,8 @@ public class ImpostazioniUtente {
     private JPanel impostazioniUtentePanel;
     private JTextArea modDN;
     private JTextArea modPassArea;
+    private JPasswordField passwordField1;
+    private JCheckBox showPassCK;
     public JFrame frame;
     Utente activeUtente = new Utente();
     Controller controller = new Controller();
@@ -35,7 +37,7 @@ public class ImpostazioniUtente {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nickname= activeUtente.getNicknameUtente();
-                String password= modPassArea.getText();
+                String password= passwordField1.getText();
                 try{
                     activeUtente=controller.modPassCTRL(nickname,password);
                 } catch (SQLException ex) {
@@ -69,8 +71,17 @@ eliminaProfilo.addActionListener( new ActionListener(){
             }
         }
 });
+        showPassCK.addActionListener(new ActionListener() {
 
-
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(showPassCK.isSelected()){
+                    passwordField1.setEchoChar((char)0);
+                }else{
+                    passwordField1.setEchoChar('*');
+                }
+            }
+        });
     }
 
 

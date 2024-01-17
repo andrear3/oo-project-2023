@@ -45,7 +45,7 @@ public class Controller {
    // public ArrayList<String> top3LuoghiCTRL()throws SQLException{
      //   return LocationDAOImp.top3Luoghi();
     //}
-   public Utente modPassCTRL(String nickname, String password) throws SQLException{
+   public Utente modPassCTRL(String nickname,String password) throws SQLException{
         return utenteDAO.modPass(nickname,password);
    }
 
@@ -62,6 +62,9 @@ public class Controller {
     public Utente eliminaUCTRL(String nickname) throws  SQLException{
         return  utenteDAO.eliminaU(nickname);
     };
+ public Utente registraUCTRL(String nickname, String name, String surname, Date birthdate, String gender, String password)throws SQLException{
+     return  utenteDAO.registraU( nickname,name,surname,birthdate,gender,password);
+ };
 
 
 

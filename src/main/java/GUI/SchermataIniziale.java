@@ -16,6 +16,8 @@ public class SchermataIniziale {
     private JButton inviaButton;
     private JTextField textField1;
     private JPasswordField passwordField1;
+    private JButton registraButton;
+    private JCheckBox showPassCK;
 
     public SchermataIniziale() {
 
@@ -44,6 +46,32 @@ public class SchermataIniziale {
 
             } else {
                 System.out.println("Credenziali incorrette");
+            }
+        });
+        registraButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SchermataRegistrazione schermataRegistrazione=new SchermataRegistrazione();
+
+                frame.setVisible(false);
+                frame.dispose();
+            }
+        });
+        showPassCK.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        showPassCK.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(showPassCK.isSelected()){
+                    passwordField1.setEchoChar((char)0);
+                }else{
+                    passwordField1.setEchoChar('*');
+                }
             }
         });
     }
