@@ -9,6 +9,8 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import static ImpDAO.LocationDAOImp.*;
+
 
 public class Controller {
 
@@ -27,7 +29,7 @@ public class Controller {
     private PubCollectionDAOImp pubCollectionDAOImp = new PubCollectionDAOImp();
 
     private User_TagDAOImp UserTagDAO = new User_TagDAOImp();
-
+private LocationDAOImp top3 =new LocationDAOImp();
     private Photo_TagDAOImp PhotoTagDAO = new Photo_TagDAOImp();
 
     //Metodi
@@ -53,9 +55,9 @@ public class Controller {
      public ArrayList<Integer> fotoStessoLuogoCTRL(String location_name) throws SQLException{ // da connettere ad una schermata
         return photoDAO.fotoStessoLuogo((location_name));
      }
-   // public ArrayList<String> top3LuoghiCTRL()throws SQLException{
-     //   return LocationDAOImp.top3Luoghi();
-    //}
+    public ArrayList<String> top3LuoghiCTRL()throws SQLException{//da connettere a schermata per visualizzare immagine
+       return top3.top3Luoghi();
+    }
    public Utente modPassCTRL(String nickname,String password) throws SQLException{
         return utenteDAO.modPass(nickname,password);
    }

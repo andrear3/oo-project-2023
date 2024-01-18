@@ -139,6 +139,15 @@ public class MiaGalleria {
                 }
             }
         });
+        aggiungiFotoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            InserimentoFoto inserimentoFoto=new InserimentoFoto(activeUtente);
+                frame.setVisible(false);
+                frame.dispose();
+
+            }
+        });
     }
 
 

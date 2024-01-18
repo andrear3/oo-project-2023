@@ -3,6 +3,7 @@ package ImpDAO;
 import DAO.FotoDAO;
 import Database.DatabaseConnection;
 import Model.Photo;
+import Model.Utente;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -55,6 +56,10 @@ public class FotoDAOImp implements FotoDAO {
         connection.close();
 
         return tempArrayPhoto;
+    }
+    public void inserimentoFoto(Integer photo_code, Utente utente) throws SQLException{
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+
     }
 
 }
