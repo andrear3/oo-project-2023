@@ -3,6 +3,8 @@ package Controller;
 import ImpDAO.*;
 import Model.*;
 
+import javax.swing.*;
+import java.awt.*;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -33,6 +35,11 @@ public class Controller {
 
     public Utente getUtenteDBCTRL(String nickname) throws SQLException {
         return utenteDAO.getUtenteDB(nickname);
+    }
+
+    public ImageIcon setImgPathSize(String path, Integer width, Integer height){
+        ImageIcon temp = new ImageIcon(new ImageIcon(path).getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
+        return temp;
     }
 
     public ArrayList<String> getAllPubCollectionCTRL() throws SQLException {

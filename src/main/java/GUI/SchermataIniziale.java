@@ -25,7 +25,7 @@ public class SchermataIniziale {
 
         Controller controller = new Controller();
 
-        ImageIcon test = new ImageIcon(new ImageIcon("src/main/resources/gallery/paesaggio.jpg").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+        ImageIcon test = controller.setImgPathSize("src/main/resources/gallery/85060804_1064518893899023_4684490747796258816_n.jpg",300,300);
         testLabel.setIcon(test);
 
 
@@ -86,7 +86,7 @@ public class SchermataIniziale {
     public static void main(String[] args) {
     frame = new JFrame("SchermataIniziale");
     frame.setContentPane(new SchermataIniziale().PanelIniziale);
-    frame.setSize(500,300);
+    frame.setSize(500,500);
     frame.setVisible(true);
     }
 }
