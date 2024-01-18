@@ -20,4 +20,6 @@ public interface FotoDAO {
 
     //void FotoStessoLuogo(String luogo);
 
+     ArrayList<Photo> getAllInfoFromPhotoCodes (ArrayList<Integer> photoCodes) throws SQLException;
+
 }

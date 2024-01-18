@@ -1,5 +1,6 @@
 package ImpDAO;
 import Database.DatabaseConnection;
+import Model.Photo;
 import Model.PubCollection;
 
 import java.sql.*;
@@ -42,6 +43,25 @@ public class PubCollectionDAOImp {
         resultSet.close();
         prepStat.close();
         connection.close();
+    }
+
+    public ArrayList<Integer> getAllPhotoFromCollection(String collection_name) throws SQLException {
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        ArrayList<Integer> tempArrayPhoto = new ArrayList<Integer>();
+        String sql = "SELECT photo_code FROM photogallery.shared_photo WHERE collection_name = ?";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+        prepStat.setString(1, collection_name);
+
+        ResultSet resultSet = prepStat.executeQuery();
+        while (resultSet.next()) {
+            tempArrayPhoto.add(resultSet.getInt(1));
+        }
+
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+
+        return tempArrayPhoto;
     }
 }
 

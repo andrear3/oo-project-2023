@@ -55,6 +55,28 @@ public class FotoDAOImp implements FotoDAO {
 
         return tempArrayPhoto;
     }
+
+    public ArrayList<Photo> getAllInfoFromPhotoCodes (ArrayList<Integer> photoCodes) throws SQLException {
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        ArrayList<Photo> tempArrayPhoto = new ArrayList<>();
+        for(Integer i=0; i<photoCodes.size();i++) {
+            Integer temp = photoCodes.get(i);
+            String sql = "SELECT * FROM photogallery.photo WHERE photo_code = ?";
+            PreparedStatement prepStat = connection.prepareStatement(sql);
+            prepStat.setInt(1, temp);
+
+            ResultSet resultSet = prepStat.executeQuery();
+            while (resultSet.next()) {
+                tempArrayPhoto.add(new Photo(resultSet.getInt("photo_code"), resultSet.getString("scope"), resultSet.getString("nickname"), resultSet.getString("location_name"), resultSet.getString("device"),resultSet.getDate("photo_date"),resultSet.getString("path")));
+            }
+
+            resultSet.close();
+            prepStat.close();
+        }
+        connection.close();
+
+        return tempArrayPhoto;
+    }
     public void inserimentoFoto(Integer photo_code, Utente utente) throws SQLException{
         Connection connection = DatabaseConnection.getInstance().getConnection();
 

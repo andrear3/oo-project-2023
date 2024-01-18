@@ -22,6 +22,7 @@ for(int i =0;i<3;i++){
     if(resultSet.next()!= false)
         tempLuogo.add(resultSet.getString("location_name"));
     System.out.println(resultSet.getString("location_name"));
+
 }
         resultSet.close();
         prepStat.close();

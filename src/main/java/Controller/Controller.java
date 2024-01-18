@@ -50,8 +50,13 @@ private LocationDAOImp top3 =new LocationDAOImp();
         return temp;
     }
 
+    public ArrayList<Integer> getAllPhotoFromCollectionCTRL (String collection_name) throws SQLException {
+        return pubCollectionDAOImp.getAllPhotoFromCollection(collection_name);
+    }
 
-
+    public ArrayList<Photo> getAllInfoFromPhotoCodesCTRL (ArrayList<Integer> photoCodes) throws SQLException {
+        return photoDAO.getAllInfoFromPhotoCodes(photoCodes);
+    }
     public ArrayList<String> getAllPubCollectionCTRL() throws SQLException {
         return pubCollectionDAOImp.getAllPubCollection();
     }

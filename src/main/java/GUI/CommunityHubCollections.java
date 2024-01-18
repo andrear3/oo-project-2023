@@ -15,7 +15,7 @@ public class CommunityHubCollections {
     private JPanel PanelCollections;
     private JLabel infoLabel;
 
-    public CommunityHubCollections(Utente utente){
+    public CommunityHubCollections(Utente utente) throws SQLException {
 
         Controller controller = new Controller();
         //!!!!!!!!!!!!!!
@@ -41,6 +41,10 @@ public class CommunityHubCollections {
 
         for (String labelName : collectionArray) {
             JLabel label = new JLabel(labelName);
+            ArrayList<Integer> photoCodes = controller.getAllPhotoFromCollectionCTRL(String.valueOf(label));
+            ArrayList<Photo> photoModelArray = controller.getAllInfoFromPhotoCodesCTRL(photoCodes);
+
+            //JLabel label2 = new JLabel();
             PanelCollections.add(label);
             this.PanelCollections.add(new JButton("Button"));
             this.PanelCollections.revalidate();

@@ -2,12 +2,14 @@ package ImpDAO;
 
 import DAO.Photo_TagDAO;
 import Database.DatabaseConnection;
+import Model.Photo;
 import Model.Photo_Tag;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Photo_TagDAOImp implements Photo_TagDAO{
 
@@ -26,4 +28,6 @@ public class Photo_TagDAOImp implements Photo_TagDAO{
         connection.close();
         return Res;
     }
+
+
 }
