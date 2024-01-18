@@ -23,8 +23,8 @@ public class SchermataIniziale {
     public SchermataIniziale() {
 
         Controller controller = new Controller();
-        ImageIcon ico = new ImageIcon(getClass().getClassLoader().getResource("paesaggio.jpg"));
-        testLabel.setIcon(ico);
+
+        testLabel.setIcon(new javax.swing.ImageIcon("src/main/resources/gallery/paesaggio.jpg"));
 
         inviaButton.addActionListener(e -> {
             //System.out.println(textField1.getText());
