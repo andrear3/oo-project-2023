@@ -4,6 +4,7 @@ import Model.*;
 
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -24,7 +25,9 @@ public class SchermataIniziale {
 
         Controller controller = new Controller();
 
-        testLabel.setIcon(new javax.swing.ImageIcon("src/main/resources/gallery/paesaggio.jpg"));
+        ImageIcon test = new ImageIcon(new ImageIcon("src/main/resources/gallery/paesaggio.jpg").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+        testLabel.setIcon(test);
+
 
         inviaButton.addActionListener(e -> {
             //System.out.println(textField1.getText());
