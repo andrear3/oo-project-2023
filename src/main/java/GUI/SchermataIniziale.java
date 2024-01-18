@@ -25,7 +25,7 @@ public class SchermataIniziale {
 
         Controller controller = new Controller();
 
-        ImageIcon test = controller.setImgPathSize("src/main/resources/gallery/85060804_1064518893899023_4684490747796258816_n.jpg",300,300);
+        ImageIcon test = controller.setImgPathSize("85060804_1064518893899023_4684490747796258816_n.jpg",300,300);
         testLabel.setIcon(test);
 
 
