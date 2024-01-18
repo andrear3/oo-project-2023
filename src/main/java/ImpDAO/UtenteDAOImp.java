@@ -8,7 +8,8 @@ import java.sql.*;
 
 public class UtenteDAOImp implements UtenteDAO {
 
-    //C.R.U.D.
+    //in tutte le si effettua il collegamento al Database e tramite la stringa che contiene il comando sql si effettuano operazioni nel database
+    //funzione con uso di stringa sql che restituisce il sesso dell'utente
     @Override
     public void printGender(String nickname) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
@@ -29,7 +30,7 @@ public class UtenteDAOImp implements UtenteDAO {
         prepStat.close();
         connection.close();
     }
-
+    //funzione con uso di stringa sql che ritorna se un utente esiste o meno (usato in fase di login)
     @Override
     public boolean checkUtenteExists(String nickname, String password) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
@@ -45,7 +46,7 @@ public class UtenteDAOImp implements UtenteDAO {
         }
         return userExistance;
     }
-
+    //funzione con uso di stringa sql che restituisce i le informazioni di un utente
     @Override
     public Utente getUtenteDB(String nickname) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
@@ -72,6 +73,7 @@ public class UtenteDAOImp implements UtenteDAO {
 
         return tempUtente;
     }
+    //funzione con uso di stringa sql che va a modificare la password id un utente
     @Override
     public Utente modPass(String nickname, String password) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
@@ -97,7 +99,7 @@ public class UtenteDAOImp implements UtenteDAO {
     public Utente modDN(String nickname, java.util.Date dataN) throws SQLException {
         return null;
     }
-
+    //funzione con uso di stringa sql che va a modificare la data di nascita
     @Override
        public Utente modDN(String nickname, Date dataN) throws SQLException{
            Connection connection = DatabaseConnection.getInstance().getConnection();
@@ -116,6 +118,7 @@ public class UtenteDAOImp implements UtenteDAO {
 
            return tempUtente;
         }
+    //funzione con uso di stringa sql che elimina un utente
         @Override
     public Utente eliminaU(String nickname)throws SQLException{
         Connection connection = DatabaseConnection.getInstance().getConnection();
@@ -134,6 +137,7 @@ public class UtenteDAOImp implements UtenteDAO {
 
         return tempUtente;
     }
+    //funzione con uso di stringa sql usata per la registrazione di un utente
     public Utente registraU(String nickname, String name, String surname, Date birthdate, String gender, String password)throws SQLException{
         Connection connection = DatabaseConnection.getInstance().getConnection();
         Utente tempUtente = new Utente();

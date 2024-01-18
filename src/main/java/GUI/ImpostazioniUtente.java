@@ -20,6 +20,7 @@ public class ImpostazioniUtente {
     private JTextArea modPassArea;
     private JPasswordField passwordField1;
     private JCheckBox showPassCK;
+    private JButton indietroButton;
     public JFrame frame;
     Utente activeUtente = new Utente();
     Controller controller = new Controller();
@@ -30,9 +31,10 @@ public class ImpostazioniUtente {
         this.frame = new JFrame("Impostazioni Utente");
         nomeUtente.setText(utente.getNicknameUtente());
         frame.setContentPane(impostazioniUtentePanel);
-        frame.setSize(500, 300);
+        frame.setSize(600, 400);
         frame.setVisible(true);
         activeUtente = utente;
+        //listener per la modifica della password
         modificaPassword.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -46,7 +48,9 @@ public class ImpostazioniUtente {
 
             }
         });
-       modificaDN.addActionListener(new ActionListener() {
+        //listener per la modifica della data di nascita
+
+        modificaDN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nickname= activeUtente.getNicknameUtente();
@@ -59,7 +63,9 @@ public class ImpostazioniUtente {
 
             }
         });
-eliminaProfilo.addActionListener( new ActionListener(){
+        //listener per eliminazione profilo
+
+        eliminaProfilo.addActionListener( new ActionListener(){
         @Override
                 public void actionPerformed(ActionEvent e){
             String nickname=activeUtente.getNicknameUtente();
@@ -71,6 +77,8 @@ eliminaProfilo.addActionListener( new ActionListener(){
             }
         }
 });
+        //listener per la visualizzazione della password in fase di inserimento
+
         showPassCK.addActionListener(new ActionListener() {
 
             @Override
@@ -80,6 +88,14 @@ eliminaProfilo.addActionListener( new ActionListener(){
                 }else{
                     passwordField1.setEchoChar('*');
                 }
+            }
+        });
+        indietroButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ProfiloUtente profiloUtente =new ProfiloUtente(activeUtente);
+                frame.setVisible(false);
+                frame.dispose();
             }
         });
     }

@@ -1,28 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GUI.ImpostazioniUtente">
-  <grid id="27dc6" binding="impostazioniUtentePanel" layout-manager="GridLayoutManager" row-count="17" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="impostazioniUtentePanel" layout-manager="GridLayoutManager" row-count="13" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="572" height="400"/>
+      <xy x="20" y="20" width="546" height="531"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
-      <vspacer id="dad15">
+      <component id="f8a35" class="javax.swing.JLabel" binding="nomeUtente">
         <constraints>
-          <grid row="1" column="3" row-span="16" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="32" height="17"/>
+          </grid>
         </constraints>
-      </vspacer>
-      <component id="f0fee" class="javax.swing.JButton" binding="eliminaProfilo">
+        <properties>
+          <text value="label"/>
+        </properties>
+      </component>
+      <component id="513ca" class="javax.swing.JTextArea" binding="modDN">
         <constraints>
-          <grid row="1" column="2" row-span="16" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false">
+          <grid row="4" column="0" row-span="8" col-span="1" vsize-policy="6" hsize-policy="6" anchor="1" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="152" height="30"/>
+            <preferred-size width="152" height="30"/>
+            <maximum-size width="152" height="30"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="36efb" class="javax.swing.JPasswordField" binding="passwordField1" default-binding="true">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="1" fill="0" indent="0" use-parent-layout="false">
             <minimum-size width="152" height="30"/>
             <preferred-size width="152" height="30"/>
             <maximum-size width="152" height="30"/>
           </grid>
         </constraints>
         <properties>
-          <text value="Elimina Profilo"/>
+          <editable value="true"/>
+          <enabled value="true"/>
+        </properties>
+      </component>
+      <component id="35d35" class="javax.swing.JButton" binding="indietroButton">
+        <constraints>
+          <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Indietro"/>
+        </properties>
+      </component>
+      <component id="5d57d" class="javax.swing.JLabel" binding="modificaProfilo">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="199" height="17"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Modifica profilo "/>
+        </properties>
+      </component>
+      <component id="d81b" class="javax.swing.JCheckBox" binding="showPassCK">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Mostra Password"/>
         </properties>
       </component>
       <component id="10fad" class="javax.swing.JButton" binding="modificaPassword">
@@ -37,26 +79,6 @@
           <text value="Modifica password"/>
         </properties>
       </component>
-      <component id="f8a35" class="javax.swing.JLabel" binding="nomeUtente">
-        <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="32" height="17"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="label"/>
-        </properties>
-      </component>
-      <component id="5d57d" class="javax.swing.JLabel" binding="modificaProfilo">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="199" height="17"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="Modifica profilo "/>
-        </properties>
-      </component>
       <component id="31fb4" class="javax.swing.JButton" binding="modificaDN">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false">
@@ -69,35 +91,16 @@
           <text value="Modifica data di nascita"/>
         </properties>
       </component>
-      <component id="513ca" class="javax.swing.JTextArea" binding="modDN">
+      <component id="f0fee" class="javax.swing.JButton" binding="eliminaProfilo">
         <constraints>
-          <grid row="3" column="0" row-span="7" col-span="1" vsize-policy="6" hsize-policy="6" anchor="1" fill="0" indent="0" use-parent-layout="false">
-            <minimum-size width="152" height="30"/>
-            <preferred-size width="152" height="30"/>
-            <maximum-size width="152" height="30"/>
-          </grid>
-        </constraints>
-        <properties/>
-      </component>
-      <component id="36efb" class="javax.swing.JPasswordField" binding="passwordField1" default-binding="true">
-        <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="1" fill="0" indent="0" use-parent-layout="false">
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false">
             <minimum-size width="152" height="30"/>
             <preferred-size width="152" height="30"/>
             <maximum-size width="152" height="30"/>
           </grid>
         </constraints>
         <properties>
-          <editable value="true"/>
-          <enabled value="true"/>
-        </properties>
-      </component>
-      <component id="d81b" class="javax.swing.JCheckBox" binding="showPassCK">
-        <constraints>
-          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Mostra Password"/>
+          <text value="Elimina Profilo"/>
         </properties>
       </component>
     </children>

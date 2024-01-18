@@ -25,7 +25,7 @@ public class SchermataIniziale {
 
         Controller controller = new Controller();
 
-        ImageIcon test = controller.setImgPathSize("85060804_1064518893899023_4684490747796258816_n.jpg",300,300);
+        ImageIcon test = controller.setImgPathSize("85060804_1064518893899023_4684490747796258816_n.jpg",150,150);
         testLabel.setIcon(test);
 
 
@@ -55,6 +55,8 @@ public class SchermataIniziale {
                 System.out.println("Credenziali incorrette");
             }
         });
+        //listener per accede alla schermata di registrazione
+
         registraButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -64,12 +66,8 @@ public class SchermataIniziale {
                 frame.dispose();
             }
         });
-        showPassCK.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        //listener per la visualizzazione della password in fase di inserimento
 
-            }
-        });
         showPassCK.addActionListener(new ActionListener() {
 
             @Override
