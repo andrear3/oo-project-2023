@@ -13,11 +13,13 @@ import java.util.ArrayList;
 public class MiaGalleria {
 
     Controller controller = new Controller();
-    Utente activeUtente = new Utente();
+    Utente activeUtente;
     ArrayList<Photo> activePhoto;
-    Photo currentphoto = new Photo();
+    Photo currentphoto;
 
     String UserTag;
+
+    String PhotoTag;
     Integer counter = 0;
 
     private JPanel panel1;
@@ -44,11 +46,12 @@ public class MiaGalleria {
     public MiaGalleria(Utente utente){
         this.frame = new JFrame("MiaGalleria");
         frame.setContentPane(panel1);
-        frame.setSize(800,300);
+        frame.setSize(600,300);
         frame.setVisible(true);
         try {
             activePhoto = controller.fotoStessoUtenteCTRL(utente.getNicknameUtente());
-            UserTag = controller.PersoneTaggateCTRL(activePhoto.get(0).getPhoto_code());
+            UserTag = controller.PersoneTaggateCTRL(activePhoto.get(counter).getPhoto_code());
+            PhotoTag = controller.SoggettoInFotoCTRL(activePhoto.get(counter).getPhoto_code());
         }
         catch (SQLException ex) {
             throw new RuntimeException(ex);
@@ -67,12 +70,16 @@ public class MiaGalleria {
         DisLabel.setText(activePhoto.get(counter).getDevice());
         DaLabel.setText(activePhoto.get(counter).getPhoto_date().toString());
         UtTag.setText(UserTag);
+        SogTag.setText(PhotoTag);
+        final ImageIcon[] ph = {controller.setImgPathSize(activePhoto.get(counter).getPath(), 150, 150)};
+        photo_field.setIcon(ph[0]);
 
-        /*
         tornaIndietroButton.addActionListener(e ->{
+            ProfiloUtente profiloutente = new ProfiloUtente(activeUtente);
+            frame.setVisible(false);
             frame.dispose();
         });
-         */
+
 
         fotoSuccessivaButton.addActionListener(new ActionListener() {
             @Override
@@ -89,6 +96,17 @@ public class MiaGalleria {
                     LuoLabel.setText(currentphoto.getLocation_name());
                     DisLabel.setText(currentphoto.getDevice());
                     DaLabel.setText(currentphoto.getPhoto_date().toString());
+                    ph[0] = controller.setImgPathSize(currentphoto.getPath(),150,150);
+                    photo_field.setIcon(ph[0]);
+                    try {
+                        UserTag = controller.PersoneTaggateCTRL(currentphoto.getPhoto_code());
+                        PhotoTag = controller.SoggettoInFotoCTRL(currentphoto.getPhoto_code());
+                    }
+                    catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    UtTag.setText(UserTag);
+                    SogTag.setText(PhotoTag);
                 }
             }
         });
@@ -98,14 +116,26 @@ public class MiaGalleria {
                 if(counter>0)
                 {
                     Integer temp2 = counter-1;
+                    currentphoto = activePhoto.get(temp2);
                     System.out.println(counter);
-                    counter = counter-1;
+                    counter = --counter;
                     System.out.println(counter);
-                    CodLabel.setText(activePhoto.get(temp2).getPhoto_code().toString());
-                    VisLabel.setText(activePhoto.get(temp2).getScope());
-                    LuoLabel.setText(activePhoto.get(temp2).getLocation_name());
-                    DisLabel.setText(activePhoto.get(temp2).getDevice());
-                    DaLabel.setText(activePhoto.get(temp2).getPhoto_date().toString());
+                    CodLabel.setText(currentphoto.getPhoto_code().toString());
+                    VisLabel.setText(currentphoto.getScope());
+                    LuoLabel.setText(currentphoto.getLocation_name());
+                    DisLabel.setText(currentphoto.getDevice());
+                    DaLabel.setText(currentphoto.getPhoto_date().toString());
+                    ph[0] = controller.setImgPathSize(currentphoto.getPath(),150,150);
+                    photo_field.setIcon(ph[0]);
+                    try {
+                        UserTag = controller.PersoneTaggateCTRL(currentphoto.getPhoto_code());
+                        PhotoTag = controller.SoggettoInFotoCTRL(currentphoto.getPhoto_code());
+                    }
+                    catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    UtTag.setText(UserTag);
+                    SogTag.setText(PhotoTag);
                 }
             }
         });

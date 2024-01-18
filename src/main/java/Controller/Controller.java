@@ -28,6 +28,8 @@ public class Controller {
 
     private User_TagDAOImp UserTagDAO = new User_TagDAOImp();
 
+    private Photo_TagDAOImp PhotoTagDAO = new Photo_TagDAOImp();
+
     //Metodi
     public boolean checkUtenteExistsCTRL(String nickname,String password) throws SQLException {
             return utenteDAO.checkUtenteExists(nickname,password);
@@ -64,6 +66,10 @@ public class Controller {
 
     public String PersoneTaggateCTRL(Integer photo_code) throws SQLException {
         return UserTagDAO.PersoneTaggate(photo_code);
+    }
+
+    public String SoggettoInFotoCTRL(Integer photo_code) throws SQLException {
+        return PhotoTagDAO.SoggettoInFoto(photo_code);
     }
     public Utente modDNCTRL(String nickname, Date dataN) throws SQLException{
         return  utenteDAO.modDN(nickname,dataN);
