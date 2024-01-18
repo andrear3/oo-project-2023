@@ -37,8 +37,10 @@ public class Controller {
         return utenteDAO.getUtenteDB(nickname);
     }
 
-    public ImageIcon setImgPathSize(String path, Integer width, Integer height){
-        ImageIcon temp = new ImageIcon(new ImageIcon(path).getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
+    public ImageIcon setImgPathSize(String fileName, Integer width, Integer height){
+        String parziale = "src/main/resources/gallery/";
+        String completa = parziale + fileName;
+        ImageIcon temp = new ImageIcon(new ImageIcon(completa).getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
         return temp;
     }
 
