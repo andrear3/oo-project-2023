@@ -20,7 +20,28 @@ public class PubCollectionDAOImp {
             resArray.add(resultSet.getString("collection_name"));
             System.out.println(resultSet.getString("collection_name"));
         }
+
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+
         return resArray;
+    }
+    public void newPubCollection(String collection_name) throws SQLException {
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        ArrayList<String> resArray = new ArrayList<>();
+        String sql = "INSERT INTO photogallery.public_collection VALUES(?)";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+        prepStat.setString(1,collection_name);
+
+        ResultSet resultSet = prepStat.executeQuery();
+        if (resultSet.next()){
+            System.out.println("Collezione creata!");
+        }
+
+        resultSet.close();
+        prepStat.close();
+        connection.close();
     }
 }
 

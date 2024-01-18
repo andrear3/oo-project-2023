@@ -16,9 +16,7 @@ public class FotoDAOImp implements FotoDAO {
     public ArrayList<Integer> fotoStessoLuogo(String location_name ) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
         ArrayList<Integer> tempPhotoCode=new ArrayList<Integer>();
-        String sql = "SELECT photo_code" +
-                "  FROM photogallery.PHOTO " +
-                "  WHERE location_name = ?"; //? è placeholder
+        String sql = "SELECT photo_code FROM photogallery.PHOTO WHERE location_name = ?"; //? è placeholder
         PreparedStatement prepStat = connection.prepareStatement(sql);
         prepStat.setString(1, location_name); //sostituisce placeholder
 

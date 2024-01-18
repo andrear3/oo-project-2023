@@ -40,13 +40,17 @@ private LocationDAOImp top3 =new LocationDAOImp();
     public Utente getUtenteDBCTRL(String nickname) throws SQLException {
         return utenteDAO.getUtenteDB(nickname);
     }
-
+    public void newPubCollectionCTRL(String collection_name) throws SQLException {
+        pubCollectionDAOImp.newPubCollection(collection_name);
+    }
     public ImageIcon setImgPathSize(String fileName, Integer width, Integer height){
         String parziale = "src/main/resources/gallery/";
         String completa = parziale + fileName;
         ImageIcon temp = new ImageIcon(new ImageIcon(completa).getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
         return temp;
     }
+
+
 
     public ArrayList<String> getAllPubCollectionCTRL() throws SQLException {
         return pubCollectionDAOImp.getAllPubCollection();

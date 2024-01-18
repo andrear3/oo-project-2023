@@ -37,7 +37,14 @@ public class CommunityHub {
                 frame.dispose();
             }
         });
-
+        creaUnaNuovaCollezioneButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CommunityHubNewCollection communityHubNewCollection = new CommunityHubNewCollection(activeUtente);
+                //frame.setVisible(false);
+                //frame.dispose();
+            }
+        });
 
     }
 
