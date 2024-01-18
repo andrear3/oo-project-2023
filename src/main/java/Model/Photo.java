@@ -17,15 +17,19 @@ public class Photo {
 
     private Date photo_date;
 
+
+    private String path;
+
     //Costruttore
 
-    public Photo(Integer photo_code, String scope, String nickname, String location_name, String device, Date photo_date){
+    public Photo(Integer photo_code, String scope, String nickname, String location_name, String device, Date photo_date, String path){
         this.device = device;
         this.photo_date = photo_date;
         this.location_name = location_name;
         this.nickname = nickname;
         this.scope = scope;
         this.photo_code = photo_code;
+        this.path = path;
     }
 
     public Photo(){
@@ -36,6 +40,10 @@ public class Photo {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public void setPath(String path){
+        this.path = path;
     }
 
     public void setDevice(String device) {
@@ -66,6 +74,10 @@ public class Photo {
 
     public Date getPhoto_date() {
         return photo_date;
+    }
+
+    public String getPath() {
+        return path;
     }
 
     public String getLocation_name() {

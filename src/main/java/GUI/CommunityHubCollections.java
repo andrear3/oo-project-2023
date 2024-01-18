@@ -32,7 +32,7 @@ public class CommunityHubCollections {
 
 
 
-        ArrayList<String> collectionArray = new ArrayList<>();
+        ArrayList<String> collectionArray;
         try {
             collectionArray = controller.getAllPubCollectionCTRL();
         } catch (SQLException e) {

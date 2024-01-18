@@ -18,10 +18,14 @@ public class SchermataIniziale {
     private JPasswordField passwordField1;
     private JButton registraButton;
     private JCheckBox showPassCK;
+    private JLabel testLabel;
 
     public SchermataIniziale() {
 
         Controller controller = new Controller();
+        ImageIcon ico = new ImageIcon(getClass().getClassLoader().getResource("paesaggio.jpg"));
+        testLabel.setIcon(ico);
+
         inviaButton.addActionListener(e -> {
             //System.out.println(textField1.getText());
             String checkNickname =  textField1.getText();
