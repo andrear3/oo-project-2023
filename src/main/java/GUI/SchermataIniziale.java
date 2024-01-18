@@ -4,7 +4,6 @@ import Model.*;
 
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -24,10 +23,8 @@ public class SchermataIniziale {
     public SchermataIniziale() {
 
         Controller controller = new Controller();
-
-        ImageIcon test = controller.setImgPathSize("src/main/resources/gallery/85060804_1064518893899023_4684490747796258816_n.jpg",300,300);
-        testLabel.setIcon(test);
-
+        ImageIcon ico = new ImageIcon(getClass().getClassLoader().getResource("paesaggio.jpg"));
+        testLabel.setIcon(ico);
 
         inviaButton.addActionListener(e -> {
             //System.out.println(textField1.getText());
@@ -86,7 +83,7 @@ public class SchermataIniziale {
     public static void main(String[] args) {
     frame = new JFrame("SchermataIniziale");
     frame.setContentPane(new SchermataIniziale().PanelIniziale);
-    frame.setSize(500,500);
+    frame.setSize(500,300);
     frame.setVisible(true);
     }
 }

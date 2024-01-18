@@ -2,7 +2,6 @@ package GUI;
 
 import Controller.Controller;
 import Model.Photo;
-import Model.User_Tag;
 import Model.Utente;
 
 import javax.swing.*;
@@ -38,6 +37,8 @@ public class MiaGalleria {
     private JLabel DaLabel;
     private JLabel UtTag;
     private JLabel SogTag;
+    private JLabel photo_field;
+    private JButton aggiungiFotoButton;
 
     private static JFrame frame;
     public MiaGalleria(Utente utente){
