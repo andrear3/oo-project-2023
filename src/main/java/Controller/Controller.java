@@ -47,7 +47,7 @@ private LocationDAOImp top3 =new LocationDAOImp();
         ImageIcon temp = new ImageIcon(new ImageIcon(completa).getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
         return temp;
     }
-    //creata esclusivamente per la anteprima foto che si sta caricando
+
 
     public ArrayList<Integer> getAllPhotoFromCollectionCTRL (String collection_name) throws SQLException {
         return pubCollectionDAOImp.getAllPhotoFromCollection(collection_name);

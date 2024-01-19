@@ -69,11 +69,10 @@ public class InserimentoFoto {
 
                 fileChooser=new JFileChooser();
                 fileChooser.setAcceptAllFileFilterUsed(true);//permette di filtrare i file del formato specificato
-                fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Immagini","jpg","png"));//specifichiamo il formato del file
+                fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("foto","jpg","png"));//specifichiamo il formato del file
                 int risultato=fileChooser.showOpenDialog(null);//seleziona il file da aprire
                 //int risultato=fileChooser.showSaveDialog(null);//seleziona il file da salvare
-                //se vine selezionato correttamente il file filechooser ritorna 0 quindi vado a creare un if che
-                //controlli il valore di risultato
+                //se vine selezionato correttamente il file filechooser ritorna 0 quindi vado a creare un if che controlli il valore di risultato
                 //fileChooser.setCurrentDirectory(new File());// in new File() se inseriamo "." new File(".") andrà a cercare il file nella directory del nostro progetto
 
                 if(risultato==JFileChooser.APPROVE_OPTION) {
