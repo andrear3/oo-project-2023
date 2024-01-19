@@ -10,7 +10,9 @@
     <children>
       <component id="7d223" class="javax.swing.JLabel">
         <constraints>
-          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="93" height="16"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Codice:"/>
@@ -18,7 +20,9 @@
       </component>
       <component id="95c2c" class="javax.swing.JLabel">
         <constraints>
-          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="93" height="16"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Luogo:"/>
@@ -26,7 +30,9 @@
       </component>
       <component id="7a561" class="javax.swing.JLabel">
         <constraints>
-          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="93" height="16"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Dispositivo:"/>
@@ -34,7 +40,9 @@
       </component>
       <component id="90d89" class="javax.swing.JLabel">
         <constraints>
-          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="93" height="16"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Data:"/>
@@ -60,7 +68,9 @@
       </component>
       <component id="cd353" class="javax.swing.JLabel">
         <constraints>
-          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="93" height="16"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Visibilità:"/>
@@ -96,19 +106,11 @@
           <text value="Dis"/>
         </properties>
       </component>
-      <component id="ec76f" class="javax.swing.JLabel" binding="DaLabel">
-        <constraints>
-          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="152" height="16"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="Da"/>
-        </properties>
-      </component>
       <component id="72b83" class="javax.swing.JLabel">
         <constraints>
-          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="93" height="16"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Utenti Taggati:"/>
@@ -116,7 +118,9 @@
       </component>
       <component id="a6691" class="javax.swing.JLabel">
         <constraints>
-          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="93" height="16"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Soggetto:"/>
@@ -162,7 +166,9 @@
       </component>
       <component id="9c820" class="javax.swing.JLabel">
         <constraints>
-          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="93" height="16"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Numero di foto:"/>
@@ -222,6 +228,16 @@
         </constraints>
         <properties>
           <text value=""/>
+        </properties>
+      </component>
+      <component id="ec76f" class="javax.swing.JLabel" binding="DaLabel">
+        <constraints>
+          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="152" height="16"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Da"/>
         </properties>
       </component>
     </children>

@@ -3,13 +3,11 @@ package ImpDAO;
 import DAO.Photo_TagDAO;
 import Database.DatabaseConnection;
 import Model.Photo;
-import Model.Photo_Tag;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class Photo_TagDAOImp implements Photo_TagDAO{
 
@@ -20,6 +18,7 @@ public class Photo_TagDAOImp implements Photo_TagDAO{
         PreparedStatement prepStat = connection.prepareStatement(sql);
         prepStat.setInt(1, photo_code);
         ResultSet resultSet = prepStat.executeQuery();
+
         if(resultSet.next()) {
             Res = resultSet.getString(1);
         }
@@ -27,6 +26,26 @@ public class Photo_TagDAOImp implements Photo_TagDAO{
         prepStat.close();
         connection.close();
         return Res;
+    }
+
+    //Questa funzione funziona, ma ha degli errori che non riesco a fixare del tutto.
+    public Photo AggiungiSoggetto(Integer photo_code, String tag_name) throws SQLException {
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        String sql = "INSERT INTO photogallery.photo_tag VALUES(?, ?)";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+        prepStat.setString(1, tag_name);
+        prepStat.setInt(2, photo_code);
+        ResultSet resultSet = prepStat.executeQuery();
+        /*
+        if(resultSet.next()) {
+            Res = resultSet.getString(1);
+        }
+         */
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+
+        return null;
     }
 
 

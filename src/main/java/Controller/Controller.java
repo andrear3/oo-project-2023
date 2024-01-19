@@ -9,8 +9,6 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import static ImpDAO.LocationDAOImp.*;
-
 
 public class Controller {
 
@@ -88,6 +86,10 @@ private LocationDAOImp top3 =new LocationDAOImp();
 
     public String SoggettoInFotoCTRL(Integer photo_code) throws SQLException {
         return PhotoTagDAO.SoggettoInFoto(photo_code);
+    }
+
+    public Photo AggiungiSoggettoCTRL(Integer photo_code, String tag_name) throws SQLException {
+        return PhotoTagDAO.AggiungiSoggetto(photo_code, tag_name);
     }
     public Utente modDNCTRL(String nickname, Date dataN) throws SQLException{
         return  utenteDAO.modDN(nickname,dataN);

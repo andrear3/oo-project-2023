@@ -148,6 +148,15 @@ public class MiaGalleria {
 
             }
         });
+
+        modificaFotoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MiaGalleriaModifica miagalleriamodifica =new MiaGalleriaModifica(currentphoto, activeUtente);
+                frame.setVisible(false);
+                frame.dispose();
+            }
+        });
     }
 
 

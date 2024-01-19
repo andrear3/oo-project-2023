@@ -25,8 +25,8 @@ public class SchermataIniziale {
 
         Controller controller = new Controller();
 
-        //ImageIcon test = controller.setImgPathSize("85060804_1064518893899023_4684490747796258816_n.jpg",300,300);
-        //testLabel.setIcon(test);
+        ImageIcon test = controller.setImgPathSize("logo.png",100,100);
+        testLabel.setIcon(test);
 
 
         inviaButton.addActionListener(e -> {
@@ -86,7 +86,7 @@ public class SchermataIniziale {
     public static void main(String[] args) {
     frame = new JFrame("SchermataIniziale");
     frame.setContentPane(new SchermataIniziale().PanelIniziale);
-    frame.setSize(500,500);
+    frame.setSize(500,300);
     frame.setVisible(true);
     }
 }
