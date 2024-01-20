@@ -1,6 +1,7 @@
 package ImpDAO;
 
 import Database.DatabaseConnection;
+import Model.Location;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,4 +31,19 @@ for(int i =0;i<3;i++){
         return tempLuogo;
 
     }
+public Location aggLocationPhoto(String location_name,Double x_coordinates,Double y_coordinates,Integer poto_count ) throws SQLException{
+    Connection connection = DatabaseConnection.getInstance().getConnection();
+    Location location=new Location();
+    String sql="INSERT INTO photogallery.location VALUES(?,?,?,DEFAULT)";
+    PreparedStatement prepStat = connection.prepareStatement(sql);
+    prepStat.setString(1,location_name);
+    prepStat.setDouble(2,y_coordinates);
+    prepStat.setDouble(3,x_coordinates);
+    ResultSet resultSet = prepStat.executeQuery();
+    if(resultSet.next()){
+        System.out.println("Location caricata correttamente");
+    }
+
+    return location;
+}
 }

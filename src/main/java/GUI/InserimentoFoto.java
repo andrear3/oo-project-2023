@@ -1,12 +1,10 @@
 package GUI;
 
 import Controller.Controller;
-import Model.Photo;
 import Model.Utente;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.filechooser.FileSystemView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -14,9 +12,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.sql.SQLException;
+import java.time.LocalDate;
 
 import static java.nio.file.Files.copy;
-import static java.nio.file.Files.createFile;
 
 public class InserimentoFoto {
     Utente activeUtente = new Utente();
@@ -27,11 +26,9 @@ public class InserimentoFoto {
     private JPanel panel1;
     private JButton selezionaFotoButton;
     private JLabel tipoJLabel;
-    private JComboBox tipoJcompo;
+    private JComboBox tipoJcombo;
     private JLabel soggettoJLable;
-    private JComboBox comboBox1;
-    private JLabel dataJLable;
-    private JTextField textField1;
+    private JComboBox soggettoJCombo;
     private JLabel longitudineJLable;
     private JLabel latitudineJLable;
     private JLabel Luogo;
@@ -43,7 +40,8 @@ public class InserimentoFoto {
     private JLabel tagUtenteJLabel;
     private JTextField textField2;
     private JLabel fotoVisualLabel;
-
+    private JLabel deviceJLable;
+    private JTextField deviceJField;
 
 
     public InserimentoFoto (Utente utente){
@@ -69,7 +67,7 @@ public class InserimentoFoto {
 
                 fileChooser=new JFileChooser();
                 fileChooser.setAcceptAllFileFilterUsed(true);//permette di filtrare i file del formato specificato
-                fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("foto","jpg","png"));//specifichiamo il formato del file
+                fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("foto","jpeg","jpg","png"));//specifichiamo il formato del file
                 int risultato=fileChooser.showOpenDialog(null);//seleziona il file da aprire
                 //int risultato=fileChooser.showSaveDialog(null);//seleziona il file da salvare
                 //se vine selezionato correttamente il file filechooser ritorna 0 quindi vado a creare un if che controlli il valore di risultato
@@ -113,6 +111,38 @@ public class InserimentoFoto {
                 }catch (IOException ex){
 
                     System.out.println("la copia non è andata a buon fine ");
+                }
+                //inserimento della foto nel database
+                Integer phc=0;//assegno 0 all'intero perché la funzione passerà un valore di default al databse
+                    String scope= (String)tipoJcombo.getSelectedItem();//faccio un casting per prendere la riga di testo per l'item del combo
+                    String nickname= activeUtente.getNicknameUtente();//prendo il nickname dell'utente attivo
+                    String location= luogoJField.getText();//prendo la stringa del luogo
+                    String device=deviceJField.getText();//prendo la stringa del device
+                    //LocalDate photo_date=LocalDate.now();
+                    LocalDate data= LocalDate.now();
+                    String pat=String.valueOf(file.getName());
+                try {
+                    controller.insertPhotoCTRL(phc,scope,nickname,location,device,data,pat);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+//inserimento coordiante
+                Integer photo_count = 0;
+                Double x=Double.valueOf(latitudineJField.getText());
+                Double y= Double.valueOf(longitudineJField.getText());
+
+
+                try {
+                    controller.aggLocationPhotoCTRL(location,x,y,photo_count);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                //inserimento soggetto
+                String soggetto =(String)soggettoJCombo.getSelectedItem();
+                try {
+                    controller.aggiungiSoggetto2CTRL(phc,soggetto);
+                }catch (SQLException ex){
+                    throw new RuntimeException(ex);
                 }
             }
         });

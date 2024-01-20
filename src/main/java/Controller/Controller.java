@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 
@@ -29,6 +30,7 @@ public class Controller {
     private User_TagDAOImp UserTagDAO = new User_TagDAOImp();
 private LocationDAOImp top3 =new LocationDAOImp();
     private Photo_TagDAOImp PhotoTagDAO = new Photo_TagDAOImp();
+    private LocationDAOImp locationDAO= new LocationDAOImp();
 
     //Metodi
     public boolean checkUtenteExistsCTRL(String nickname,String password) throws SQLException {
@@ -82,8 +84,8 @@ private LocationDAOImp top3 =new LocationDAOImp();
         return PhotoTagDAO.SoggettoInFoto(photo_code);
     }
 
-    public Photo AggiungiSoggettoCTRL(Integer photo_code, String tag_name) throws SQLException {
-        return PhotoTagDAO.AggiungiSoggetto(photo_code, tag_name);
+    public Photo aggiungiSoggettoCTRL(Integer photo_code, String tag_name) throws SQLException {
+        return PhotoTagDAO.aggiungiSoggetto(photo_code, tag_name);
     }
     public Utente modDNCTRL(String nickname, Date dataN) throws SQLException{
         return  utenteDAO.modDN(nickname,dataN);
@@ -94,9 +96,15 @@ private LocationDAOImp top3 =new LocationDAOImp();
  public Utente registraUCTRL(String nickname, String name, String surname, Date birthdate, String gender, String password)throws SQLException{
      return  utenteDAO.registraU( nickname,name,surname,birthdate,gender,password);
  };
-
-
-
+public Photo insertPhotoCTRL(Integer photo_code, String scope, String nickname, String location_name, String device, LocalDate photo_date, String path) throws SQLException{
+     return photoDAO.insertPhoto(photo_code, scope, nickname, location_name, device, photo_date, path);
+};
+public Location aggLocationPhotoCTRL(String location_name,Double x_coordinates,Double y_coordinates,Integer poto_count)throws SQLException{
+    return locationDAO.aggLocationPhoto(location_name,x_coordinates,y_coordinates,poto_count);
+}
+    public Photo aggiungiSoggetto2CTRL(Integer photo_code, String tag_name) throws SQLException {
+        return PhotoTagDAO.aggiungiSoggetto2(photo_code, tag_name);
+    }
     public Controller(){
     };
 }

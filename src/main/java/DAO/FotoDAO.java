@@ -2,7 +2,9 @@ package DAO;
 
 import Model.Photo;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public interface FotoDAO {
@@ -21,5 +23,6 @@ public interface FotoDAO {
     //void FotoStessoLuogo(String luogo);
 
      ArrayList<Photo> getAllInfoFromPhotoCodes (ArrayList<Integer> photoCodes) throws SQLException;
+      Photo insertPhoto(Integer photo_code, String scope, String nickname, String location_name, String device, LocalDate photo_date, String path) throws SQLException;
 
 }

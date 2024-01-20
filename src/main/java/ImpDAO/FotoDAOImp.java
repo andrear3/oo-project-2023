@@ -5,10 +5,8 @@ import Database.DatabaseConnection;
 import Model.Photo;
 import Model.Utente;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class FotoDAOImp implements FotoDAO {
@@ -80,6 +78,24 @@ public class FotoDAOImp implements FotoDAO {
     public void inserimentoFoto(Integer photo_code, Utente utente) throws SQLException{
         Connection connection = DatabaseConnection.getInstance().getConnection();
 
+    }
+    public Photo insertPhoto(Integer photo_code, String scope, String nickname, String location_name, String device, LocalDate photo_date, String path) throws SQLException{
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        Photo foto=new Photo();
+        String sql="INSERT INTO photogallery.photo VALUES(DEFAULT,?,?,?,?,?,?)";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+
+        prepStat.setString(1,scope);
+        prepStat.setString(2,nickname);
+        prepStat.setString(3,location_name);
+        prepStat.setString(4,device);
+        prepStat.setDate(5, Date.valueOf(photo_date));
+        prepStat.setString(6,path);
+        ResultSet resultSet = prepStat.executeQuery();
+        if(resultSet.next()){
+            System.out.println("foto caricata");
+        }
+      return foto;
     }
 
 }
