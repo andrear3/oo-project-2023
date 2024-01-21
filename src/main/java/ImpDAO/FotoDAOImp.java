@@ -79,10 +79,10 @@ public class FotoDAOImp implements FotoDAO {
         Connection connection = DatabaseConnection.getInstance().getConnection();
 
     }
-    public Photo insertPhoto(Integer photo_code, String scope, String nickname, String location_name, String device, LocalDate photo_date, String path) throws SQLException{
+    public Photo insertPhoto(Integer photo_code, String scope, String nickname, String location_name, String device, LocalDate photo_date, String path,Double x,Double y) throws SQLException{
         Connection connection = DatabaseConnection.getInstance().getConnection();
         Photo foto=new Photo();
-        String sql="INSERT INTO photogallery.photo VALUES(DEFAULT,?,?,?,?,?,?)";
+        String sql="INSERT INTO photogallery.photo VALUES(DEFAULT,?,?,?,?,?,?,?,?)";
         PreparedStatement prepStat = connection.prepareStatement(sql);
 
         prepStat.setString(1,scope);
@@ -91,6 +91,8 @@ public class FotoDAOImp implements FotoDAO {
         prepStat.setString(4,device);
         prepStat.setDate(5, Date.valueOf(photo_date));
         prepStat.setString(6,path);
+        prepStat.setDouble(7,x);
+        prepStat.setDouble(8,y);
         ResultSet resultSet = prepStat.executeQuery();
         if(resultSet.next()){
             System.out.println("foto caricata");

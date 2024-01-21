@@ -42,6 +42,7 @@ public class InserimentoFoto {
     private JLabel fotoVisualLabel;
     private JLabel deviceJLable;
     private JTextField deviceJField;
+    private JButton tornaAlProfiloJbutton;
 
 
     public InserimentoFoto (Utente utente){
@@ -107,7 +108,7 @@ public class InserimentoFoto {
                 try{
                     //copio il file passando il path del file da copiare , il path di destinazione e copia standard
                     Files.copy(file.toPath(),destinazione,StandardCopyOption.REPLACE_EXISTING);
-                    System.out.println("file copiato nella cartelal di destianzione");
+                    System.out.println("file copiato nella cartella di destinazione galleria ");
                 }catch (IOException ex){
 
                     System.out.println("la copia non è andata a buon fine ");
@@ -121,32 +122,53 @@ public class InserimentoFoto {
                     //LocalDate photo_date=LocalDate.now();
                     LocalDate data= LocalDate.now();
                     String pat=String.valueOf(file.getName());
+                Double x=Double.valueOf(latitudineJField.getText());
+                Double y= Double.valueOf(longitudineJField.getText());
                 try {
-                    controller.insertPhotoCTRL(phc,scope,nickname,location,device,data,pat);
+                    controller.insertPhotoCTRL(phc,scope,nickname,location,device,data,pat,x,y);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
 //inserimento coordiante
                 Integer photo_count = 0;
-                Double x=Double.valueOf(latitudineJField.getText());
-                Double y= Double.valueOf(longitudineJField.getText());
-
 
                 try {
                     controller.aggLocationPhotoCTRL(location,x,y,photo_count);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
+
+            }
+        });
+
+//questo tasto viene premuto dopo l'inserimento della foto e si occupa di inserire il soggetto e il tag utente nel database
+        //l'inserimento dei dati è stato diviso per problemi legati al photo_code della foto ceh viene creato al momento di inserimento della foto quindi era impossibile associare una fto ad un soggetto
+        //nel caso in cui venisse premuto senza aver caricato una foto restituirebbe un errore e quindi non caricherebbe dati nel data base
+        tornaAlProfiloJbutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 //inserimento soggetto
-                String soggetto =(String)soggettoJCombo.getSelectedItem();
+                Integer a=0;
+                Integer photo_code;
+                String soggetto = (String) soggettoJCombo.getSelectedItem();
+                System.out.println("il soggeto preso è " + soggetto);
                 try {
-                    controller.aggiungiSoggetto2CTRL(phc,soggetto);
-                }catch (SQLException ex){
+                    photo_code=controller.getPhoto_codeCTRL(a);
+                    System.out.println("photocode valore = " + photo_code);
+                } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
+
+                try {
+                    controller.aggiungiSoggettoCTRL(photo_code, soggetto);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
             }
         });
     }
+    }
 
 
-}
+

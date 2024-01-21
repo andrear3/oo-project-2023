@@ -96,14 +96,17 @@ private LocationDAOImp top3 =new LocationDAOImp();
  public Utente registraUCTRL(String nickname, String name, String surname, Date birthdate, String gender, String password)throws SQLException{
      return  utenteDAO.registraU( nickname,name,surname,birthdate,gender,password);
  };
-public Photo insertPhotoCTRL(Integer photo_code, String scope, String nickname, String location_name, String device, LocalDate photo_date, String path) throws SQLException{
-     return photoDAO.insertPhoto(photo_code, scope, nickname, location_name, device, photo_date, path);
+public Photo insertPhotoCTRL(Integer photo_code, String scope, String nickname, String location_name, String device, LocalDate photo_date, String path,Double x, Double y) throws SQLException{
+     return photoDAO.insertPhoto(photo_code, scope, nickname, location_name, device, photo_date, path,x,y);
 };
 public Location aggLocationPhotoCTRL(String location_name,Double x_coordinates,Double y_coordinates,Integer poto_count)throws SQLException{
     return locationDAO.aggLocationPhoto(location_name,x_coordinates,y_coordinates,poto_count);
 }
     public Photo aggiungiSoggetto2CTRL(Integer photo_code, String tag_name) throws SQLException {
         return PhotoTagDAO.aggiungiSoggetto2(photo_code, tag_name);
+    }
+    public Integer getPhoto_codeCTRL(Integer a)throws SQLException{
+    return PhotoTagDAO.getPhoto_code(a);
     }
     public Controller(){
     };

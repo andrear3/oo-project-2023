@@ -23,6 +23,6 @@ public interface FotoDAO {
     //void FotoStessoLuogo(String luogo);
 
      ArrayList<Photo> getAllInfoFromPhotoCodes (ArrayList<Integer> photoCodes) throws SQLException;
-      Photo insertPhoto(Integer photo_code, String scope, String nickname, String location_name, String device, LocalDate photo_date, String path) throws SQLException;
+      Photo insertPhoto(Integer photo_code, String scope, String nickname, String location_name, String device, LocalDate photo_date, String path,Double x,Double y) throws SQLException;
 
 }

@@ -7,4 +7,5 @@ public interface Photo_TagDAO {
 
      public Photo aggiungiSoggetto(Integer photo_code, String tag_name) throws SQLException;
      public Photo aggiungiSoggetto2(Integer photo_code, String tag_name) throws SQLException;
+     public Integer getPhoto_code(Integer a)throws SQLException;
 }

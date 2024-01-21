@@ -60,6 +60,19 @@ public class Photo_TagDAOImp implements Photo_TagDAO{
 
         return null;
     }
+public Integer getPhoto_code(Integer a)throws SQLException{
+    Connection connection = DatabaseConnection.getInstance().getConnection();
+    Integer p_c = null;
+    String sql="SELECT MAX(photo_code) FROM photogallery.photo  ";
+    PreparedStatement prepStat =connection.prepareStatement(sql);
+    ResultSet resultSet=prepStat.executeQuery();
 
+    if ( resultSet.next()){
+       p_c=resultSet.getInt(1);
+    }
+    return p_c;
+
+
+}
 
 }
