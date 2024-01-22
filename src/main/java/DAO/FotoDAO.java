@@ -24,5 +24,5 @@ public interface FotoDAO {
 
      ArrayList<Photo> getAllInfoFromPhotoCodes (ArrayList<Integer> photoCodes) throws SQLException;
       Photo insertPhoto(Integer photo_code, String scope, String nickname, String location_name, String device, LocalDate photo_date, String path,Double x,Double y) throws SQLException;
-
+    String getPath(Integer photo_code)throws SQLException;
 }

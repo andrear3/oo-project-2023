@@ -5,6 +5,7 @@ import Model.Utente;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -42,7 +43,6 @@ public class InserimentoFoto {
     private JLabel fotoVisualLabel;
     private JLabel deviceJLable;
     private JTextField deviceJField;
-    private JButton tornaAlProfiloJbutton;
 
 
     public InserimentoFoto (Utente utente){
@@ -59,7 +59,7 @@ public class InserimentoFoto {
                 frame.dispose();
             }
         });
-        //NON FUNZIONA . DA APPROFONDIRE
+
 
 
         selezionaFotoButton.addActionListener(new ActionListener() {
@@ -82,9 +82,12 @@ public class InserimentoFoto {
                     try{
                         //copio il file passando il path del file da copiare , il path di destinazione e copia standard
                         Files.copy(file.toPath(),destinazione,StandardCopyOption.REPLACE_EXISTING);
-                        System.out.println("file copiato nella cartelal di destianzione");//mi assicuto che si andata a buon fine
-                        ImageIcon anteprima=new ImageIcon(String.valueOf(file.toPath()));//dichiaro un icona gli passo il path del file che in questo caso è anteprima
-                        fotoVisualLabel.setIcon(anteprima);//visualizzo l`anteprima dell`immagine che voglio caricare
+                        System.out.println("file copiato nella cartella di destianzione");//mi assicuto che si andata a buon fine
+                        ImageIcon anteprima=new ImageIcon(String.valueOf(destinazione));//dichiaro un icona gli passo il path del file che in questo caso è anteprima
+                        Image image=anteprima.getImage();
+                        Image newimg=image.getScaledInstance(400,300,java.awt.Image.SCALE_SMOOTH);
+                        ImageIcon fianle =new ImageIcon(newimg);
+                        fotoVisualLabel.setIcon(fianle);//visualizzo l`anteprima dell`immagine che voglio caricare
                     }catch (IOException ex){
 
                         System.out.println("la copia non è andata a buon fine ");
@@ -138,33 +141,17 @@ public class InserimentoFoto {
                     throw new RuntimeException(ex);
                 }
 
+
             }
         });
 
-//questo tasto viene premuto dopo l'inserimento della foto e si occupa di inserire il soggetto e il tag utente nel database
-        //l'inserimento dei dati è stato diviso per problemi legati al photo_code della foto ceh viene creato al momento di inserimento della foto quindi era impossibile associare una fto ad un soggetto
-        //nel caso in cui venisse premuto senza aver caricato una foto restituirebbe un errore e quindi non caricherebbe dati nel data base
-        tornaAlProfiloJbutton.addActionListener(new ActionListener() {
+
+        inserisciFotoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //inserimento soggetto
-                Integer a=0;
-                Integer photo_code;
-                String soggetto = (String) soggettoJCombo.getSelectedItem();
-                System.out.println("il soggeto preso è " + soggetto);
-                try {
-                    photo_code=controller.getPhoto_codeCTRL(a);
-                    System.out.println("photocode valore = " + photo_code);
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
-
-                try {
-                    controller.aggiungiSoggettoCTRL(photo_code, soggetto);
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
-
+                DettagliFoto ateprimaFoto= new DettagliFoto(activeUtente);
+                frame.setVisible(false);
+                frame.dispose();
             }
         });
     }

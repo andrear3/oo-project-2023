@@ -75,10 +75,7 @@ public class FotoDAOImp implements FotoDAO {
 
         return tempArrayPhoto;
     }
-    public void inserimentoFoto(Integer photo_code, Utente utente) throws SQLException{
-        Connection connection = DatabaseConnection.getInstance().getConnection();
 
-    }
     public Photo insertPhoto(Integer photo_code, String scope, String nickname, String location_name, String device, LocalDate photo_date, String path,Double x,Double y) throws SQLException{
         Connection connection = DatabaseConnection.getInstance().getConnection();
         Photo foto=new Photo();
@@ -99,6 +96,21 @@ public class FotoDAOImp implements FotoDAO {
         }
       return foto;
     }
+public String getPath(Integer photo_code)throws SQLException{
+    Connection connection = DatabaseConnection.getInstance().getConnection();
+    String path=new String();
+    String sql="SELECT path FROM photogallery.photo WHERE photo_code=?";
+    PreparedStatement prepStat = connection.prepareStatement(sql);
+    prepStat.setInt(1,photo_code);
+    ResultSet resultSet = prepStat.executeQuery();
+    if(resultSet.next()){
+        path=resultSet.getString("path");
+        System.out.println("path trovato");
+
+    }
+
+    return path;
+}
 
 }
 
