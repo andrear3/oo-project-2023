@@ -1,13 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GUI.MiaGalleria">
-  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="8" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="11" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="17" width="555" height="403"/>
+      <xy x="20" y="17" width="624" height="403"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
+      <component id="a83ad" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="La mia galleria personale"/>
+        </properties>
+      </component>
+      <component id="5aab1" class="javax.swing.JLabel" binding="photo_field">
+        <constraints>
+          <grid row="2" column="0" row-span="7" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="9c820" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="93" height="16"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Numero di foto:"/>
+        </properties>
+      </component>
+      <component id="aa4b2" class="javax.swing.JLabel" binding="photonumLabel">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="152" height="16"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="photonum"/>
+        </properties>
+      </component>
+      <component id="2428c" class="javax.swing.JButton" binding="aggiungiFotoButton" default-binding="true">
+        <constraints>
+          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Aggiungi Foto"/>
+        </properties>
+      </component>
+      <component id="c3cfd" class="javax.swing.JButton" binding="galleriaVideoButton" default-binding="true">
+        <constraints>
+          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Galleria Video"/>
+        </properties>
+      </component>
+      <component id="4855a" class="javax.swing.JButton" binding="fotoPrecedenteButton" default-binding="true">
+        <constraints>
+          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Foto Precedente"/>
+        </properties>
+      </component>
+      <component id="4e068" class="javax.swing.JButton" binding="fotoSuccessivaButton" default-binding="true">
+        <constraints>
+          <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Foto Successiva"/>
+        </properties>
+      </component>
+      <component id="57f0f" class="javax.swing.JButton" binding="tornaIndietroButton" default-binding="true">
+        <constraints>
+          <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Torna Indietro"/>
+        </properties>
+      </component>
+      <component id="5680e" class="javax.swing.JButton" binding="modificaFotoButton" default-binding="true">
+        <constraints>
+          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Modifica Foto"/>
+        </properties>
+      </component>
+      <component id="57613" class="javax.swing.JButton" binding="eliminaFotoButton" default-binding="true">
+        <constraints>
+          <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Elimina Foto"/>
+        </properties>
+      </component>
       <component id="7d223" class="javax.swing.JLabel">
         <constraints>
           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
@@ -16,44 +108,6 @@
         </constraints>
         <properties>
           <text value="Codice:"/>
-        </properties>
-      </component>
-      <component id="95c2c" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="93" height="16"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="Luogo:"/>
-        </properties>
-      </component>
-      <component id="7a561" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="93" height="16"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="Dispositivo:"/>
-        </properties>
-      </component>
-      <component id="90d89" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="93" height="16"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="Data:"/>
-        </properties>
-      </component>
-      <component id="57f0f" class="javax.swing.JButton" binding="tornaIndietroButton" default-binding="true">
-        <constraints>
-          <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Torna Indietro"/>
         </properties>
       </component>
       <component id="f203a" class="javax.swing.JLabel" binding="CodLabel">
@@ -86,6 +140,16 @@
           <text value="Vis"/>
         </properties>
       </component>
+      <component id="95c2c" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="93" height="16"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Luogo:"/>
+        </properties>
+      </component>
       <component id="9b84e" class="javax.swing.JLabel" binding="LuoLabel">
         <constraints>
           <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
@@ -96,9 +160,51 @@
           <text value="Luo"/>
         </properties>
       </component>
+      <component id="57e11" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Coordinate X:"/>
+        </properties>
+      </component>
+      <component id="5223c" class="javax.swing.JLabel" binding="X">
+        <constraints>
+          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="X"/>
+        </properties>
+      </component>
+      <component id="16b71" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Coordinate Y:"/>
+        </properties>
+      </component>
+      <component id="499aa" class="javax.swing.JLabel" binding="Y">
+        <constraints>
+          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Y"/>
+        </properties>
+      </component>
+      <component id="7a561" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="93" height="16"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Dispositivo:"/>
+        </properties>
+      </component>
       <component id="f9d33" class="javax.swing.JLabel" binding="DisLabel">
         <constraints>
-          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="152" height="16"/>
           </grid>
         </constraints>
@@ -106,19 +212,29 @@
           <text value="Dis"/>
         </properties>
       </component>
-      <component id="72b83" class="javax.swing.JLabel">
+      <component id="90d89" class="javax.swing.JLabel">
         <constraints>
-          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="93" height="16"/>
           </grid>
         </constraints>
         <properties>
-          <text value="Utenti Taggati:"/>
+          <text value="Data:"/>
+        </properties>
+      </component>
+      <component id="ec76f" class="javax.swing.JLabel" binding="DaLabel">
+        <constraints>
+          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="152" height="16"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Da"/>
         </properties>
       </component>
       <component id="a6691" class="javax.swing.JLabel">
         <constraints>
-          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="93" height="16"/>
           </grid>
         </constraints>
@@ -126,118 +242,34 @@
           <text value="Soggetto:"/>
         </properties>
       </component>
-      <component id="cfc12" class="javax.swing.JLabel" binding="UtTag">
-        <constraints>
-          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="152" height="16"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="Label"/>
-        </properties>
-      </component>
       <component id="f9723" class="javax.swing.JLabel" binding="SogTag">
-        <constraints>
-          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="152" height="16"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="Label"/>
-        </properties>
-      </component>
-      <component id="c3cfd" class="javax.swing.JButton" binding="galleriaVideoButton" default-binding="true">
-        <constraints>
-          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Galleria Video"/>
-        </properties>
-      </component>
-      <component id="aa4b2" class="javax.swing.JLabel" binding="photonumLabel">
         <constraints>
           <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="152" height="16"/>
           </grid>
         </constraints>
         <properties>
-          <text value="photonum"/>
+          <text value="Label"/>
         </properties>
       </component>
-      <component id="9c820" class="javax.swing.JLabel">
+      <component id="72b83" class="javax.swing.JLabel">
         <constraints>
-          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="93" height="16"/>
           </grid>
         </constraints>
         <properties>
-          <text value="Numero di foto:"/>
+          <text value="Utenti Taggati:"/>
         </properties>
       </component>
-      <component id="4855a" class="javax.swing.JButton" binding="fotoPrecedenteButton" default-binding="true">
+      <component id="cfc12" class="javax.swing.JLabel" binding="UtTag">
         <constraints>
-          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Foto Precedente"/>
-        </properties>
-      </component>
-      <component id="4e068" class="javax.swing.JButton" binding="fotoSuccessivaButton" default-binding="true">
-        <constraints>
-          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Foto Successiva"/>
-        </properties>
-      </component>
-      <component id="5680e" class="javax.swing.JButton" binding="modificaFotoButton" default-binding="true">
-        <constraints>
-          <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Modifica Foto"/>
-        </properties>
-      </component>
-      <component id="2428c" class="javax.swing.JButton" binding="aggiungiFotoButton" default-binding="true">
-        <constraints>
-          <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Aggiungi Foto"/>
-        </properties>
-      </component>
-      <component id="57613" class="javax.swing.JButton" binding="eliminaFotoButton" default-binding="true">
-        <constraints>
-          <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Elimina Foto"/>
-        </properties>
-      </component>
-      <component id="a83ad" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="La mia galleria personale"/>
-        </properties>
-      </component>
-      <component id="5aab1" class="javax.swing.JLabel" binding="photo_field">
-        <constraints>
-          <grid row="2" column="0" row-span="5" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value=""/>
-        </properties>
-      </component>
-      <component id="ec76f" class="javax.swing.JLabel" binding="DaLabel">
-        <constraints>
-          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="152" height="16"/>
           </grid>
         </constraints>
         <properties>
-          <text value="Da"/>
+          <text value="Label"/>
         </properties>
       </component>
     </children>

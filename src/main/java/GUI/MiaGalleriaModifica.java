@@ -17,7 +17,7 @@ public class MiaGalleriaModifica {
     private JRadioButton privataRadioButton;
     private JRadioButton pubblicaRadioButton;
     private JTextField textField2;
-    private JTextField textField1;
+    private JTextField utentetext;
     private JButton tornaIndietroButton;
     private JPanel Panel1;
     private JButton aggiungiUserTag;
@@ -38,6 +38,14 @@ public class MiaGalleriaModifica {
             String checkTag = String.valueOf(comboBox1.getSelectedItem());
             try {
                 currentphoto = controller.aggiungiSoggettoCTRL(currentphoto.getPhoto_code(), checkTag);
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        aggiungiUserTag.addActionListener(e -> {
+            try {
+                currentphoto = controller.aggiungiUserTagCTRL(currentphoto.getPhoto_code(), utentetext.getText());
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }

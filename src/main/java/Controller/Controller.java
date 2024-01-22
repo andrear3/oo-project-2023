@@ -87,6 +87,10 @@ private LocationDAOImp top3 =new LocationDAOImp();
     public Photo aggiungiSoggettoCTRL(Integer photo_code, String tag_name) throws SQLException {
         return PhotoTagDAO.aggiungiSoggetto(photo_code, tag_name);
     }
+
+    public Photo aggiungiUserTagCTRL(Integer photo_code, String nickname2) throws SQLException {
+        return UserTagDAO.aggiungiUserTag(photo_code, nickname2);
+    }
     public Utente modDNCTRL(String nickname, Date dataN) throws SQLException{
         return  utenteDAO.modDN(nickname,dataN);
     }

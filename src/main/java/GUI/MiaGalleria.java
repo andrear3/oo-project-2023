@@ -41,12 +41,14 @@ public class MiaGalleria {
     private JLabel SogTag;
     private JLabel photo_field;
     private JButton aggiungiFotoButton;
+    private JLabel X;
+    private JLabel Y;
 
     private static JFrame frame;
     public MiaGalleria(Utente utente){
         this.frame = new JFrame("MiaGalleria");
         frame.setContentPane(panel1);
-        frame.setSize(600,300);
+        frame.setSize(650,400);
         frame.setVisible(true);
         try {
             activePhoto = controller.fotoStessoUtenteCTRL(utente.getNicknameUtente());
@@ -71,7 +73,7 @@ public class MiaGalleria {
         DaLabel.setText(activePhoto.get(counter).getPhoto_date().toString());
         UtTag.setText(UserTag);
         SogTag.setText(PhotoTag);
-        final ImageIcon[] ph = {controller.setImgPathSize(activePhoto.get(counter).getPath(), 150, 150)};
+        final ImageIcon[] ph = {controller.setImgPathSize(activePhoto.get(counter).getPath(), 250, 250)};
         photo_field.setIcon(ph[0]);
 
         tornaIndietroButton.addActionListener(e ->{
@@ -96,7 +98,7 @@ public class MiaGalleria {
                     LuoLabel.setText(currentphoto.getLocation_name());
                     DisLabel.setText(currentphoto.getDevice());
                     DaLabel.setText(currentphoto.getPhoto_date().toString());
-                    ph[0] = controller.setImgPathSize(currentphoto.getPath(),150,150);
+                    ph[0] = controller.setImgPathSize(currentphoto.getPath(),250,250);
                     photo_field.setIcon(ph[0]);
                     try {
                         UserTag = controller.PersoneTaggateCTRL(currentphoto.getPhoto_code());
@@ -125,7 +127,7 @@ public class MiaGalleria {
                     LuoLabel.setText(currentphoto.getLocation_name());
                     DisLabel.setText(currentphoto.getDevice());
                     DaLabel.setText(currentphoto.getPhoto_date().toString());
-                    ph[0] = controller.setImgPathSize(currentphoto.getPath(),150,150);
+                    ph[0] = controller.setImgPathSize(currentphoto.getPath(),250,250);
                     photo_field.setIcon(ph[0]);
                     try {
                         UserTag = controller.PersoneTaggateCTRL(currentphoto.getPhoto_code());
