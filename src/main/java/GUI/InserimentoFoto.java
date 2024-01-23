@@ -28,8 +28,6 @@ public class InserimentoFoto {
     private JButton selezionaFotoButton;
     private JLabel tipoJLabel;
     private JComboBox tipoJcombo;
-    private JLabel soggettoJLable;
-    private JComboBox soggettoJCombo;
     private JLabel longitudineJLable;
     private JLabel latitudineJLable;
     private JLabel Luogo;
@@ -38,8 +36,6 @@ public class InserimentoFoto {
     private JTextField longitudineJField;
     private JButton indietroButton;
     private JButton inserisciFotoButton;
-    private JLabel tagUtenteJLabel;
-    private JTextField textField2;
     private JLabel fotoVisualLabel;
     private JLabel deviceJLable;
     private JTextField deviceJField;
