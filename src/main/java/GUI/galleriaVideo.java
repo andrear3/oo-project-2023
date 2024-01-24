@@ -63,11 +63,6 @@ public class galleriaVideo {
             throw new RuntimeException(ex);
         }
 
-        /*
-        photoinvideo.forEach(test -> {
-            fotovideo.setText(fotovideo + test.toString());
-        });
-         */
 
         CodLabel.setText(currentVideo.getvideocode().toString());
         ListaFoto.setText(lista_foto);
