@@ -24,6 +24,7 @@ public class DettagliFoto {
     private JTextField tagJField;
     private JLabel dettagliOpzFoto;
     private JButton insAtroTag;
+    private JButton insertSoggJbutton;
 
     public DettagliFoto(Utente utente) {
 
@@ -40,23 +41,9 @@ public class DettagliFoto {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //inserimento soggetto
-                Integer a=0;
-
-                Integer photo_code;
-
-                String soggetto = (String) soggettoComboBox.getSelectedItem();
-
-
-                System.out.println("il soggeto preso è " + soggetto);
-                try {
-                    photo_code=controller.getPhoto_codeCTRL(a);
-                    controller.aggiungiSoggettoCTRL(photo_code,soggetto);
-                    System.out.println("photocode valore = " + photo_code);
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
-
-
+                MiaGalleria miagalleria =new MiaGalleria(activeUtente);
+                frame.setVisible(false);
+                frame.dispose();
             }
         });
 //listener fi conferma e caricamento della foto e caricamento nel del tag
@@ -73,6 +60,27 @@ public class DettagliFoto {
                     photo_code2=controller.getPhoto_codeCTRL(a2);
                     controller.aggiungiUserTagCTRL(photo_code2,tag);
                 }catch (SQLException ex){
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+        insertSoggJbutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Integer a=0;
+
+                Integer photo_code;
+
+                String soggetto = (String) soggettoComboBox.getSelectedItem();
+
+
+                System.out.println("il soggeto preso è " + soggetto);
+                try {
+                    photo_code=controller.getPhoto_codeCTRL(a);
+                    controller.aggiungiSoggettoCTRL(photo_code,soggetto);
+                    System.out.println("photocode valore = " + photo_code);
+                } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
             }

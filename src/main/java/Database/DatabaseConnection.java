@@ -8,8 +8,8 @@ public class DatabaseConnection {
 
     private static DatabaseConnection instance;//consente solo UNA instance
     private final String name = "postgres";
-    private final String url = "jdbc:postgresql://localhost:5432/photogal";
-    private final String password = "test";
+    private final String url = "jdbc:postgresql://localhost:5432/bd-project-22";
+    private final String password = "postgres123";
     private final String driver = "org.postgresql.Driver";
 
     private Connection connection = null;
