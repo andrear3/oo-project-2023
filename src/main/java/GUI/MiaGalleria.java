@@ -29,6 +29,7 @@ public class MiaGalleria {
     private JButton tornaIndietroButton;
     private JLabel photonumLabel;
 
+    private JLabel photo_field;
     private JLabel CodLabel;
     private JLabel VisLabel;
     private JLabel LuoLabel;
@@ -36,8 +37,9 @@ public class MiaGalleria {
     private JLabel DaLabel;
     private JLabel UtTag;
     private JLabel SogTag;
-    private JLabel photo_field;
     private JButton aggiungiFotoButton;
+
+    private JButton eliminaFotoButton;
     private JLabel X;
     private JLabel Y;
 
