@@ -5,8 +5,6 @@ import Model.Photo;
 import Model.Utente;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -29,7 +27,6 @@ public class MiaGalleria {
     private JButton modificaFotoButton;
     private JButton galleriaVideoButton;
     private JButton tornaIndietroButton;
-    private JButton eliminaFotoButton;
     private JLabel photonumLabel;
 
     private JLabel CodLabel;
@@ -46,7 +43,7 @@ public class MiaGalleria {
 
     private static JFrame frame;
     public MiaGalleria(Utente utente){
-        this.frame = new JFrame("MiaGalleria");
+        frame = new JFrame("MiaGalleria");
         frame.setContentPane(panel1);
         frame.setSize(650,400);
         frame.setVisible(true);
@@ -79,100 +76,85 @@ public class MiaGalleria {
         photo_field.setIcon(ph[0]);
 
         tornaIndietroButton.addActionListener(e ->{
-            ProfiloUtente profiloutente = new ProfiloUtente(activeUtente);
+            new ProfiloUtente(activeUtente);
             frame.setVisible(false);
             frame.dispose();
         });
 
 
-        fotoSuccessivaButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(counter<activePhoto.size()-1)
-                {
-                    Integer temp = counter+1;
-                    currentphoto = activePhoto.get(temp);
-                    System.out.println(counter);
-                    counter = ++counter;
-                    System.out.println(counter);
-                    CodLabel.setText(currentphoto.getPhoto_code().toString());
-                    VisLabel.setText(currentphoto.getScope());
-                    LuoLabel.setText(currentphoto.getLocation_name());
-                    DisLabel.setText(currentphoto.getDevice());
-                    DaLabel.setText(currentphoto.getPhoto_date().toString());
-                    X.setText(currentphoto.getX_coordinates().toString());
-                    Y.setText(currentphoto.getY_coordinates().toString());
-                    ph[0] = controller.setImgPathSize(currentphoto.getPath(),250,250);
-                    photo_field.setIcon(ph[0]);
-                    try {
-                        UserTag = controller.PersoneTaggateCTRL(currentphoto.getPhoto_code());
-                        PhotoTag = controller.SoggettoInFotoCTRL(currentphoto.getPhoto_code());
-                    }
-                    catch (SQLException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                    UtTag.setText(UserTag);
-                    SogTag.setText(PhotoTag);
+        fotoSuccessivaButton.addActionListener(e -> {
+            if(counter<activePhoto.size()-1)
+            {
+                int temp = counter+1;
+                currentphoto = activePhoto.get(temp);
+                System.out.println(counter);
+                ++counter;
+                System.out.println(counter);
+                CodLabel.setText(currentphoto.getPhoto_code().toString());
+                VisLabel.setText(currentphoto.getScope());
+                LuoLabel.setText(currentphoto.getLocation_name());
+                DisLabel.setText(currentphoto.getDevice());
+                DaLabel.setText(currentphoto.getPhoto_date().toString());
+                X.setText(currentphoto.getX_coordinates().toString());
+                Y.setText(currentphoto.getY_coordinates().toString());
+                ph[0] = controller.setImgPathSize(currentphoto.getPath(),250,250);
+                photo_field.setIcon(ph[0]);
+                try {
+                    UserTag = controller.PersoneTaggateCTRL(currentphoto.getPhoto_code());
+                    PhotoTag = controller.SoggettoInFotoCTRL(currentphoto.getPhoto_code());
                 }
-            }
-        });
-        fotoPrecedenteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(counter>0)
-                {
-                    Integer temp2 = counter-1;
-                    currentphoto = activePhoto.get(temp2);
-                    System.out.println(counter);
-                    counter = --counter;
-                    System.out.println(counter);
-                    CodLabel.setText(currentphoto.getPhoto_code().toString());
-                    VisLabel.setText(currentphoto.getScope());
-                    LuoLabel.setText(currentphoto.getLocation_name());
-                    DisLabel.setText(currentphoto.getDevice());
-                    DaLabel.setText(currentphoto.getPhoto_date().toString());
-                    X.setText(currentphoto.getX_coordinates().toString());
-                    Y.setText(currentphoto.getY_coordinates().toString());
-                    ph[0] = controller.setImgPathSize(currentphoto.getPath(),250,250);
-                    photo_field.setIcon(ph[0]);
-                    try {
-                        UserTag = controller.PersoneTaggateCTRL(currentphoto.getPhoto_code());
-                        PhotoTag = controller.SoggettoInFotoCTRL(currentphoto.getPhoto_code());
-                    }
-                    catch (SQLException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                    UtTag.setText(UserTag);
-                    SogTag.setText(PhotoTag);
+                catch (SQLException ex) {
+                    throw new RuntimeException(ex);
                 }
+                UtTag.setText(UserTag);
+                SogTag.setText(PhotoTag);
             }
         });
-        aggiungiFotoButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            InserimentoFoto inserimentoFoto=new InserimentoFoto(activeUtente);
-                frame.setVisible(false);
-                frame.dispose();
-
+        fotoPrecedenteButton.addActionListener(e -> {
+            if(counter>0)
+            {
+                int temp2 = counter-1;
+                currentphoto = activePhoto.get(temp2);
+                System.out.println(counter);
+                --counter;
+                System.out.println(counter);
+                CodLabel.setText(currentphoto.getPhoto_code().toString());
+                VisLabel.setText(currentphoto.getScope());
+                LuoLabel.setText(currentphoto.getLocation_name());
+                DisLabel.setText(currentphoto.getDevice());
+                DaLabel.setText(currentphoto.getPhoto_date().toString());
+                X.setText(currentphoto.getX_coordinates().toString());
+                Y.setText(currentphoto.getY_coordinates().toString());
+                ph[0] = controller.setImgPathSize(currentphoto.getPath(),250,250);
+                photo_field.setIcon(ph[0]);
+                try {
+                    UserTag = controller.PersoneTaggateCTRL(currentphoto.getPhoto_code());
+                    PhotoTag = controller.SoggettoInFotoCTRL(currentphoto.getPhoto_code());
+                }
+                catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                UtTag.setText(UserTag);
+                SogTag.setText(PhotoTag);
             }
         });
+        aggiungiFotoButton.addActionListener(e -> {
+            new InserimentoFoto(activeUtente);
+            frame.setVisible(false);
+            frame.dispose();
 
-        modificaFotoButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MiaGalleriaModifica miagalleriamodifica =new MiaGalleriaModifica(currentphoto, activeUtente);
-                frame.setVisible(false);
-                frame.dispose();
-            }
         });
 
-        galleriaVideoButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                galleriaVideo video =new galleriaVideo(activeUtente);
-                frame.setVisible(false);
-                frame.dispose();
-            }
+        modificaFotoButton.addActionListener(e -> {
+            new MiaGalleriaModifica(currentphoto, activeUtente);
+            frame.setVisible(false);
+            frame.dispose();
+        });
+
+        galleriaVideoButton.addActionListener(e -> {
+            new galleriaVideo(activeUtente);
+            frame.setVisible(false);
+            frame.dispose();
         });
     }
 

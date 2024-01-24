@@ -27,6 +27,8 @@ public class ImpostazioniUtente {
 
 
 
+
+
     public ImpostazioniUtente(Utente utente){
         this.frame = new JFrame("Impostazioni Utente");
         nomeUtente.setText(utente.getNicknameUtente());

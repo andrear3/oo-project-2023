@@ -121,8 +121,27 @@ public Location aggLocationPhotoCTRL(String location_name,Double x_coordinates,D
         return videoDAO.videoStessoUtente(nickname);
     }
 
-    public ArrayList<Integer> fotoInVideoCTRL(Integer video_code) throws SQLException {
+    public ArrayList<Photo> fotoInVideoCTRL(Integer video_code) throws SQLException {
         return videoDAO.fotoInVideo(video_code);
+    }
+
+    public String listafotovideoCTRL(Integer video_code) throws SQLException{
+        return videoDAO.listafotovideo(video_code);
+    }
+
+    public void modificaTitoloCTRL(Integer video_code, String title) throws SQLException{
+        videoDAO.modificaTitolo(video_code, title);
+    }
+    public void modificaDescCTRL(Integer video_code, String desc) throws SQLException{
+        videoDAO.modificaDesc(video_code, desc);
+    }
+
+    public void aggiungiFotoVideoCTRL(Integer video_code, Integer photo_code) throws SQLException{
+        videoDAO.aggiungiFotoVideo(video_code, photo_code);
+    }
+
+    public void eliminaFotoVideoCTRL(Integer video_code, Integer photo_code) throws SQLException{
+        videoDAO.eliminaFotoVideo(video_code, photo_code);
     }
     public Controller(){
     };

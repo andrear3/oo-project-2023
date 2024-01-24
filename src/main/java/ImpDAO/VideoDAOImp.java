@@ -15,7 +15,7 @@ public class VideoDAOImp {
     public ArrayList<Video> videoStessoUtente(String nickname) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
         Video tempVideo = new Video();
-        ArrayList<Video> tempArrayVideo = new ArrayList<Video>();
+        ArrayList<Video> tempArrayVideo = new ArrayList<>();
         String sql = "SELECT * FROM photogallery.video WHERE nickname = ?";
         PreparedStatement prepStat = connection.prepareStatement(sql);
         prepStat.setString(1, nickname);
@@ -34,16 +34,19 @@ public class VideoDAOImp {
         return tempArrayVideo;
     }
 
-    public ArrayList<Integer> fotoInVideo(Integer video_code) throws SQLException{
+    public ArrayList<Photo> fotoInVideo(Integer video_code) throws SQLException{
         Connection connection = DatabaseConnection.getInstance().getConnection();
-        ArrayList<Integer> photos = new ArrayList<Integer>();
-        String sql = "SELECT photo_code FROM photogallery.is_in_video WHERE video_code = ?";
+        ArrayList<Photo> photos = new ArrayList<Photo>();
+        String sql = "SELECT *\n" +
+                "FROM photogallery.photo as PH NATURAL JOIN photogallery.is_in_video as V \n" +
+                "WHERE V.video_code = ?";
         PreparedStatement prepStat = connection.prepareStatement(sql);
         prepStat.setInt(1, video_code);
 
         ResultSet resultSet = prepStat.executeQuery();
+
         while (resultSet.next()) {
-            photos.add(resultSet.getInt("photo_code"));
+            photos.add(new Photo(resultSet.getInt("photo_code"), resultSet.getString("scope"), resultSet.getString("nickname"), resultSet.getString("location_name"), resultSet.getString("device"),resultSet.getDate("photo_date"),resultSet.getString("path"),resultSet.getDouble("x_coordinates"),resultSet.getDouble("y_coordinates")));
         }
 
 
@@ -54,4 +57,90 @@ public class VideoDAOImp {
 
         return photos;
     }
+
+    public String listafotovideo(Integer video_code) throws SQLException {
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        String Res = new String();
+        String sql = "SELECT string_agg(photo_code::varchar, ', ') FROM photogallery.is_in_video WHERE video_code = ?";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+        prepStat.setInt(1, video_code);
+        ResultSet resultSet = prepStat.executeQuery();
+        if(resultSet.next()) {
+            Res = resultSet.getString(1);
+        }
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+        return Res;
+    }
+
+    public void modificaTitolo(Integer video_code, String title) throws SQLException {
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        String sql = "UPDATE photogallery.video SET video_title = ? WHERE video_code = ?";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+        prepStat.setString(1, title);
+        prepStat.setInt(2, video_code);
+        ResultSet resultSet = prepStat.executeQuery();
+        /*
+        if(resultSet.next()) {
+            Res = resultSet.getString(1);
+        }
+         */
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+    }
+
+    public void modificaDesc(Integer video_code, String desc) throws SQLException {
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        String sql = "UPDATE photogallery.video SET video_desc = ? WHERE video_code = ?";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+        prepStat.setString(1, desc);
+        prepStat.setInt(2, video_code);
+        ResultSet resultSet = prepStat.executeQuery();
+        /*
+        if(resultSet.next()) {
+            Res = resultSet.getString(1);
+        }
+         */
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+    }
+
+    public void aggiungiFotoVideo(Integer video_code, Integer photo_code) throws SQLException {
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        String sql = "INSERT INTO photogallery.is_in_video VALUES(?, ?)";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+        prepStat.setInt(1, video_code);
+        prepStat.setInt(2, photo_code);
+        ResultSet resultSet = prepStat.executeQuery();
+        /*
+        if(resultSet.next()) {
+            Res = resultSet.getString(1);
+        }
+         */
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+    }
+
+    public void eliminaFotoVideo(Integer video_code, Integer photo_code) throws SQLException {
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        String sql = "DELETE FROM photogallery.is_in_video WHERE video_code = ? AND photo_code = ?";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+        prepStat.setInt(1, video_code);
+        prepStat.setInt(2, photo_code);
+        ResultSet resultSet = prepStat.executeQuery();
+        /*
+        if(resultSet.next()) {
+            Res = resultSet.getString(1);
+        }
+         */
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+    }
+
+
 }

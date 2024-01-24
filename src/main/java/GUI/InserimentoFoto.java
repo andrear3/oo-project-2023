@@ -16,8 +16,6 @@ import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-import static java.nio.file.Files.copy;
-
 public class InserimentoFoto {
     Utente activeUtente = new Utente();
     Controller controller=new Controller();

@@ -7,8 +7,8 @@ import Model.Video;
 
 import javax.swing.*;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
+import java.util.Timer;
 
 public class galleriaVideo {
 
@@ -16,11 +16,15 @@ public class galleriaVideo {
     Utente activeUtente;
     Integer counter = 0;
 
-    ArrayList<Integer> photoinvideo;
+    Integer video_counter = 0;
+
+    ArrayList<Photo> photoinvideo;
 
     ArrayList<Video> activeVideo;
 
     Video currentVideo;
+
+    String lista_foto;
     private JLabel videoshow;
     private JButton aggiungiVideoButton;
     private JButton eliminaVideoButton;
@@ -32,14 +36,14 @@ public class galleriaVideo {
     private JLabel CodLabel;
     private JLabel Title;
     private JLabel Desc;
-    private JLabel fotovideo;
+    private JLabel ListaFoto;
 
     private static JFrame frame;
     public galleriaVideo(Utente utente)
     {
-        this.frame = new JFrame("galleriaVideo");
+        frame = new JFrame("galleriaVideo");
         frame.setContentPane(panel1);
-        frame.setSize(600,300);
+        frame.setSize(600,400);
         frame.setVisible(true);
         activeUtente = utente;
         try {
@@ -49,32 +53,154 @@ public class galleriaVideo {
             throw new RuntimeException(ex);
         }
 
-        currentVideo = activeVideo.get(0);
+        currentVideo = activeVideo.get(video_counter);
 
         try{
             photoinvideo = controller.fotoInVideoCTRL(currentVideo.getvideocode());
+            lista_foto = controller.listafotovideoCTRL(currentVideo.getvideocode());
         }
         catch (SQLException ex){
             throw new RuntimeException(ex);
         }
+
         /*
         photoinvideo.forEach(test -> {
             fotovideo.setText(fotovideo + test.toString());
         });
          */
+
         CodLabel.setText(currentVideo.getvideocode().toString());
+        ListaFoto.setText(lista_foto);
         Title.setText(currentVideo.getvideotitle());
         Desc.setText(currentVideo.getvideodesc());
-        /*
         final ImageIcon[] ph = {controller.setImgPathSize(photoinvideo.get(counter).getPath(), 250, 250)};
         videoshow.setIcon(ph[0]);
-         */
+
+        System.out.println(photoinvideo.size());
+
+
+        int i = 0;
+        Timer timer = new Timer();
+        while(i<photoinvideo.size()) {
+            Integer finalI = i;
+            TimerTask task = new TimerTask() {
+                @Override
+                public void run() {
+                    ph[0] = controller.setImgPathSize(photoinvideo.get(finalI).getPath(), 250, 250);
+                    videoshow.setIcon(ph[0]);
+                    System.out.println("Codice attuale:" + photoinvideo.get(finalI).getPhoto_code());
+                    System.out.println("Valore di I:" + finalI);
+                }
+            };
+            timer.schedule(task, 3000L * i++);
+        }
+
+        videoSuccessivoButton.addActionListener(e -> {
+            if(counter<activeVideo.size()-1)
+            {
+                video_counter = video_counter+1;
+                currentVideo = activeVideo.get(video_counter);
+
+                try{
+                    photoinvideo = controller.fotoInVideoCTRL(currentVideo.getvideocode());
+                    lista_foto = controller.listafotovideoCTRL(currentVideo.getvideocode());
+                }
+                catch (SQLException ex){
+                    throw new RuntimeException(ex);
+                }
+
+                CodLabel.setText(currentVideo.getvideocode().toString());
+                ListaFoto.setText(lista_foto);
+                Title.setText(currentVideo.getvideotitle());
+                Desc.setText(currentVideo.getvideodesc());
+
+                final ImageIcon[] ph1 = {controller.setImgPathSize(photoinvideo.get(counter).getPath(), 250, 250)};
+                videoshow.setIcon(ph1[0]);
+
+                System.out.println(photoinvideo.size());
+
+
+                int i1 = 0;
+                Timer timer1 = new Timer();
+                while(i1 <photoinvideo.size()) {
+                    //String value = photoinvideo.next();
+                    Integer finalI = i1;
+                    TimerTask task = new TimerTask() {
+                        @Override
+                        public void run() {
+                            ph1[0] = controller.setImgPathSize(photoinvideo.get(finalI).getPath(), 250, 250);
+                            videoshow.setIcon(ph1[0]);
+                            System.out.println("Codice attuale:" + photoinvideo.get(finalI).getPhoto_code());
+                            System.out.println("Valore di I:" + finalI);
+                        }
+                    };
+                    timer1.schedule(task, 3000L * i1++);
+                }
+            }
+        });
+
+        videoPrecedenteButton.addActionListener(e -> {
+            if(video_counter>0)
+            {
+                video_counter = video_counter-1;
+                currentVideo = activeVideo.get(video_counter);
+
+                try{
+                    photoinvideo = controller.fotoInVideoCTRL(currentVideo.getvideocode());
+                    lista_foto = controller.listafotovideoCTRL(currentVideo.getvideocode());
+                }
+                catch (SQLException ex){
+                    throw new RuntimeException(ex);
+                }
+
+                CodLabel.setText(currentVideo.getvideocode().toString());
+                ListaFoto.setText(lista_foto);
+                Title.setText(currentVideo.getvideotitle());
+                Desc.setText(currentVideo.getvideodesc());
+
+                final ImageIcon[] ph12 = {controller.setImgPathSize(photoinvideo.get(counter).getPath(), 250, 250)};
+                videoshow.setIcon(ph12[0]);
+
+                System.out.println(photoinvideo.size());
+
+
+                int i12 = 0;
+                Timer timer12 = new Timer();
+                while(i12 <photoinvideo.size()) {
+                    //String value = photoinvideo.next();
+                    Integer finalI = i12;
+                    TimerTask task = new TimerTask() {
+                        @Override
+                        public void run() {
+                            ph12[0] = controller.setImgPathSize(photoinvideo.get(finalI).getPath(), 250, 250);
+                            videoshow.setIcon(ph12[0]);
+                            System.out.println("Codice attuale:" + photoinvideo.get(finalI).getPhoto_code());
+                            System.out.println("Valore di I:" + finalI);
+                        }
+                    };
+                    timer12.schedule(task, 3000L * i12++);
+                }
+            }
+        });
+
+
+
 
         tornaIndietroButton.addActionListener(e -> {
-            MiaGalleria miagalleria = new MiaGalleria(activeUtente);
+            new MiaGalleria(activeUtente);
             frame.setVisible(false);
             frame.dispose();
         });
+
+
+
+        modificaVideoButton.addActionListener(e -> {
+            new galleriaVideoModifica(currentVideo, activeUtente);
+            frame.setVisible(false);
+            frame.dispose();
+        });
+
+
     }
 }
 
