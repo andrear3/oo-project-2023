@@ -37,7 +37,7 @@ public class MiaGalleriaModifica {
         aggiungiPhotoTag.addActionListener(e -> {
             String checkTag = String.valueOf(comboBox1.getSelectedItem());
             try {
-                currentphoto = controller.aggiungiSoggettoCTRL(currentphoto.getPhoto_code(), checkTag);
+                controller.aggiungiSoggettoCTRL(currentphoto.getPhoto_code(), checkTag);
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }

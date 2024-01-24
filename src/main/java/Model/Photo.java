@@ -20,9 +20,13 @@ public class Photo {
 
     private String path;
 
+    private Double x_coordinates;
+
+    private Double y_coordinates;
+
     //Costruttore
 
-    public Photo(Integer photo_code, String scope, String nickname, String location_name, String device, Date photo_date, String path){
+    public Photo(Integer photo_code, String scope, String nickname, String location_name, String device, Date photo_date, String path, Double x_coordinates, Double y_coordinates){
         this.device = device;
         this.photo_date = photo_date;
         this.location_name = location_name;
@@ -30,6 +34,8 @@ public class Photo {
         this.scope = scope;
         this.photo_code = photo_code;
         this.path = path;
+        this.x_coordinates = x_coordinates;
+        this.y_coordinates = y_coordinates;
     }
 
     public Photo(){
@@ -95,4 +101,7 @@ public class Photo {
     public String getScope() {
         return scope;
     }
+
+    public Double getX_coordinates() {return x_coordinates;}
+    public Double getY_coordinates() {return y_coordinates;}
 }

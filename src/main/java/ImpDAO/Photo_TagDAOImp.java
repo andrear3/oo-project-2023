@@ -29,7 +29,7 @@ public class Photo_TagDAOImp implements Photo_TagDAO{
     }
 
     //Questa funzione funziona, ma ha degli errori che non riesco a fixare del tutto.
-    public Photo aggiungiSoggetto(Integer photo_code, String tag_name) throws SQLException {
+    public void aggiungiSoggetto(Integer photo_code, String tag_name) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
         String sql = "INSERT INTO photogallery.photo_tag VALUES(?,?)";
         PreparedStatement prepStat = connection.prepareStatement(sql);
@@ -44,8 +44,6 @@ public class Photo_TagDAOImp implements Photo_TagDAO{
         resultSet.close();
         prepStat.close();
         connection.close();
-
-        return null;
     }
     public Photo aggiungiSoggetto2etag(Integer photo_code, String tag_name,String tag_utente) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();

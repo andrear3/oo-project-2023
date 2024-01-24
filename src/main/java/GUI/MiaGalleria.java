@@ -71,6 +71,8 @@ public class MiaGalleria {
         LuoLabel.setText(activePhoto.get(counter).getLocation_name());
         DisLabel.setText(activePhoto.get(counter).getDevice());
         DaLabel.setText(activePhoto.get(counter).getPhoto_date().toString());
+        X.setText(activePhoto.get(counter).getX_coordinates().toString());
+        Y.setText(activePhoto.get(counter).getY_coordinates().toString());
         UtTag.setText(UserTag);
         SogTag.setText(PhotoTag);
         final ImageIcon[] ph = {controller.setImgPathSize(activePhoto.get(counter).getPath(), 250, 250)};
@@ -98,6 +100,8 @@ public class MiaGalleria {
                     LuoLabel.setText(currentphoto.getLocation_name());
                     DisLabel.setText(currentphoto.getDevice());
                     DaLabel.setText(currentphoto.getPhoto_date().toString());
+                    X.setText(currentphoto.getX_coordinates().toString());
+                    Y.setText(currentphoto.getY_coordinates().toString());
                     ph[0] = controller.setImgPathSize(currentphoto.getPath(),250,250);
                     photo_field.setIcon(ph[0]);
                     try {
@@ -127,6 +131,8 @@ public class MiaGalleria {
                     LuoLabel.setText(currentphoto.getLocation_name());
                     DisLabel.setText(currentphoto.getDevice());
                     DaLabel.setText(currentphoto.getPhoto_date().toString());
+                    X.setText(currentphoto.getX_coordinates().toString());
+                    Y.setText(currentphoto.getY_coordinates().toString());
                     ph[0] = controller.setImgPathSize(currentphoto.getPath(),250,250);
                     photo_field.setIcon(ph[0]);
                     try {
@@ -155,6 +161,15 @@ public class MiaGalleria {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MiaGalleriaModifica miagalleriamodifica =new MiaGalleriaModifica(currentphoto, activeUtente);
+                frame.setVisible(false);
+                frame.dispose();
+            }
+        });
+
+        galleriaVideoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                galleriaVideo video =new galleriaVideo(activeUtente);
                 frame.setVisible(false);
                 frame.dispose();
             }

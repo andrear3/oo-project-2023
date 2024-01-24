@@ -32,6 +32,8 @@ private LocationDAOImp top3 =new LocationDAOImp();
     private Photo_TagDAOImp PhotoTagDAO = new Photo_TagDAOImp();
     private LocationDAOImp locationDAO= new LocationDAOImp();
 
+    private VideoDAOImp videoDAO = new VideoDAOImp();
+
     //Metodi
     public boolean checkUtenteExistsCTRL(String nickname,String password) throws SQLException {
             return utenteDAO.checkUtenteExists(nickname,password);
@@ -84,8 +86,8 @@ private LocationDAOImp top3 =new LocationDAOImp();
         return PhotoTagDAO.SoggettoInFoto(photo_code);
     }
 
-    public Photo aggiungiSoggettoCTRL(Integer photo_code, String tag_name) throws SQLException {
-        return PhotoTagDAO.aggiungiSoggetto(photo_code, tag_name);
+    public void aggiungiSoggettoCTRL(Integer photo_code, String tag_name) throws SQLException {
+        PhotoTagDAO.aggiungiSoggetto(photo_code, tag_name);
     }
 
     public Photo aggiungiUserTagCTRL(Integer photo_code, String nickname2) throws SQLException {
@@ -114,6 +116,13 @@ public Location aggLocationPhotoCTRL(String location_name,Double x_coordinates,D
     }
     public String getPathCTRL(Integer photo_code)throws SQLException{
        return photoDAO.getPath(photo_code);
+    }
+    public ArrayList<Video> videoStessoUtenteCTRL(String nickname) throws SQLException {
+        return videoDAO.videoStessoUtente(nickname);
+    }
+
+    public ArrayList<Integer> fotoInVideoCTRL(Integer video_code) throws SQLException {
+        return videoDAO.fotoInVideo(video_code);
     }
     public Controller(){
     };
