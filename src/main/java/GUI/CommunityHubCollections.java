@@ -5,6 +5,7 @@ import Model.*;
 import javafx.scene.layout.Pane;
 
 import javax.swing.*;
+import java.awt.*;
 import java.lang.reflect.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,6 +16,8 @@ public class CommunityHubCollections {
     private static JFrame frame ;
     private JPanel PanelCollections;
     private JLabel infoLabel;
+
+    JLabel testLabel = new JLabel();
 
     public CommunityHubCollections(Utente utente) throws SQLException {
 
@@ -31,12 +34,6 @@ public class CommunityHubCollections {
         frame.setSize(500, 300);
         frame.setVisible(true);
 
-
-
-
-
-
-
         ArrayList<String> collectionArray;
         try {
             collectionArray = controller.getAllPubCollectionCTRL();
@@ -45,22 +42,42 @@ public class CommunityHubCollections {
         }
 
         for (String labelName : collectionArray) {
-            JLabel label = new JLabel(labelName);
-            System.out.println(label.getText());
-            ArrayList<Integer> photoCodes = controller.getAllPhotoFromCollectionCTRL(label.getText());
-            System.out.println(photoCodes);
-            ArrayList<Photo> photoModelArray = controller.getAllInfoFromPhotoCodesCTRL(photoCodes);
-            System.out.println(photoModelArray);
 
-            for(int i = 0; i<photoModelArray.size(); i++){
+            JPanel collectionPanel = new JPanel();
+            collectionPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+            JLabel collectionLabel = new JLabel(labelName);
+            collectionPanel.add(collectionLabel);
+
+            ArrayList<Integer> photoCodes = controller.getAllPhotoFromCollectionCTRL(labelName);
+
+            for (int i = 0; i < photoCodes.size(); i++) {
                 String textLabel = String.valueOf(photoCodes.get(i));
-                JLabel label2 = new JLabel(textLabel);
-                PanelCollections.add(label2);
-                PanelCollections.add(label);
-                this.PanelCollections.add(new JButton("Button"));
-                this.PanelCollections.revalidate();
+
+                ImageIcon test = controller.setImgPathSize(controller.getPathCTRL(Integer.valueOf(textLabel)), 100,100);
+                JLabel testLabel = new JLabel(test);
+
+                System.out.println(testLabel);
+                //JLabel photoLabel = new JLabel(textLabel);
+
+
+                collectionPanel.add(testLabel);
+                //collectionPanel.add(photoLabel);
+
+                //AL TERZO ELEMENTO FINISCE LA ROW
+                if ((i + 1) % 3 == 0) {
+                    PanelCollections.add(collectionPanel);
+                    collectionPanel = new JPanel();
+                    collectionPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+                    //collectionPanel.setBorder(BorderFactory.createEmptyBorder(0, 100, 0, 0));
+                }
+            }
+
+            PanelCollections.add(collectionPanel);
+            PanelCollections.revalidate();
             }
         }
     }
-}
+
 

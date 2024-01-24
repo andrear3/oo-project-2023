@@ -10,5 +10,6 @@ public interface PubCollectionDAO {
     void newPubCollection(String collection_name) throws SQLException;
 
     ArrayList<Integer> getAllPhotoFromCollection(String collection_name) throws SQLException;
+
 }
 

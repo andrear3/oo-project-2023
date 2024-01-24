@@ -17,7 +17,6 @@ public class CommunityHub {
 
     private static JFrame frame ;
     private JButton accediAlleCollezioniPubblicheButton;
-    private JButton accediAlleFotoPubblicheButton;
     private JButton ricercaAvanzataButton;
     private JButton creaUnaNuovaCollezioneButton;
     private JPanel PanelCommunity;

@@ -41,6 +41,7 @@ public class SchermataIniziale {
             }
 
             if(loginStatus){
+
                 System.out.println("Login effettuato");
                 try {
                     activeUtente = controller.getUtenteDBCTRL(checkNickname);
@@ -62,6 +63,7 @@ public class SchermataIniziale {
 
                 frame.setVisible(false);
                 frame.dispose();
+
             }
         });
         showPassCK.addActionListener(new ActionListener() {

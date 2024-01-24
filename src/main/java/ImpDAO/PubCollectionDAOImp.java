@@ -56,7 +56,7 @@ public class PubCollectionDAOImp {
         while (resultSet.next()) {
             tempArrayPhoto.add(resultSet.getInt(1));
             System.out.println("getAll: ");
-            System.out.println(tempArrayPhoto.add(resultSet.getInt(1)));
+            //System.out.println(tempArrayPhoto.add(resultSet.getInt(1)));
         }
 
         resultSet.close();

@@ -76,6 +76,25 @@ public class FotoDAOImp implements FotoDAO {
         return tempArrayPhoto;
     }
 
+    public ArrayList<String> getPathFromPhoto(Integer photo_code) throws SQLException {
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        ArrayList<String> tempArrayPath = new ArrayList<>();
+        String sql = "SELECT path FROM photogallery.photo WHERE photo_code = ?";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+        prepStat.setInt(1, photo_code);
+
+        ResultSet resultSet = prepStat.executeQuery();
+        if (resultSet.next()) {
+            tempArrayPath.add(resultSet.getString("path"));
+        }
+
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+
+        return tempArrayPath;
+    }
+
     public Photo insertPhoto(Integer photo_code, String scope, String nickname, String location_name, String device, LocalDate photo_date, String path,Double x,Double y) throws SQLException{
         Connection connection = DatabaseConnection.getInstance().getConnection();
         Photo foto=new Photo();
