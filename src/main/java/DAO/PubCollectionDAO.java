@@ -11,5 +11,8 @@ public interface PubCollectionDAO {
 
     ArrayList<Integer> getAllPhotoFromCollection(String collection_name) throws SQLException;
 
+    public void insertPhotoInCollection(Integer photo_code, String collection_name) throws SQLException;
+
+    public void deleteSharedPhoto(Integer photo_code) throws SQLException;
 }
 

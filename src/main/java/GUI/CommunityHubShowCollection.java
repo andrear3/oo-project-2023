@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class CommunityHubShowCollection {
 
@@ -22,6 +23,10 @@ public class CommunityHubShowCollection {
     private JButton prevButton;
     private JButton nextButton;
     private JLabel photoOwner;
+    private JLabel tagLabel;
+    private JLabel soggettoPhoto;
+    private JLabel soggettoLabel;
+    private JButton deleteButton;
 
     static Integer counter = 0;
     public CommunityHubShowCollection(Utente utente, String galleryName){
@@ -30,6 +35,8 @@ public class CommunityHubShowCollection {
         frame.setSize(900,500);
         frame.setVisible(true);
         activeUtente = utente;
+        deleteButton.setVisible(false);
+
 
         ArrayList<Integer> photoCodeArray = new ArrayList<>();
         try {
@@ -49,6 +56,25 @@ public class CommunityHubShowCollection {
             ImageIcon temp = controller.setImgPathSize(photoArray.get(0).getPath(),400,300);
             photoImgLabel.setIcon(temp);
             photoOwner.setText(photoArray.get(0).getNickname());
+            String tempText;
+            try {
+                tempText = controller.PersoneTaggateCTRL(photoArray.get(0).getPhoto_code());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            tagLabel.setText(tempText);
+            String tempSoggetto;
+            try {
+                tempSoggetto = controller.SoggettoInFotoCTRL(photoArray.get(0).getPhoto_code());
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+            soggettoLabel.setText(tempSoggetto);
+            if(Objects.equals(photoArray.get(0).getNickname(), utente.getNicknameUtente())){
+                deleteButton.setVisible(true);
+            } else {
+                deleteButton.setVisible(false);
+            }
         }
 
         /*for(Integer i=0;i<photoArray.size();i++){
@@ -67,6 +93,27 @@ public class CommunityHubShowCollection {
                     ImageIcon temp = controller.setImgPathSize(finalPhotoArray.get(counter).getPath(),400,300);
                     photoImgLabel.setIcon(temp);
                     photoOwner.setText(finalPhotoArray.get(counter).getNickname());
+                    String tempText;
+                    try {
+                        tempText = controller.PersoneTaggateCTRL(finalPhotoArray.get(counter).getPhoto_code());
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    tagLabel.setText(tempText);
+                    String tempSoggetto;
+                    try {
+                        tempSoggetto = controller.SoggettoInFotoCTRL(finalPhotoArray.get(counter).getPhoto_code());
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    soggettoLabel.setText(tempSoggetto);
+                    System.out.println(finalPhotoArray.get(counter).getNickname());
+                    System.out.println(utente.getNicknameUtente());
+                    if(Objects.equals(finalPhotoArray.get(counter).getNickname(), utente.getNicknameUtente())){
+                        System.out.println("IF ENTRATO");
+                        deleteButton.setVisible(true);
+
+                    }
                 }
             }
         });
@@ -80,6 +127,25 @@ public class CommunityHubShowCollection {
                     ImageIcon temp = controller.setImgPathSize(finalPhotoArray.get(counter).getPath(),400,300);
                     photoImgLabel.setIcon(temp);
                     photoOwner.setText(finalPhotoArray.get(counter).getNickname());
+                    String tempText;
+                    try {
+                        tempText = controller.PersoneTaggateCTRL(finalPhotoArray.get(counter).getPhoto_code());
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    tagLabel.setText(tempText);
+                    String tempSoggetto;
+                    try {
+                        tempSoggetto = controller.SoggettoInFotoCTRL(finalPhotoArray.get(counter).getPhoto_code());
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    soggettoLabel.setText(tempSoggetto);
+                    if(Objects.equals(finalPhotoArray.get(counter).getNickname(), utente.getNicknameUtente())){
+                        deleteButton.setVisible(true);
+                    } else {
+                        deleteButton.setVisible(false);
+                    }
                 }
             }
         });
@@ -89,6 +155,18 @@ public class CommunityHubShowCollection {
                 CommunityHubCollections communityHubCollections = new CommunityHubCollections(utente);
                 frame.setVisible(false);
                 frame.dispose();
+            }
+        });
+
+
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    controller.deleteSharedPhotoCTRL(finalPhotoArray.get(counter).getPhoto_code());
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
     }

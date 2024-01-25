@@ -52,8 +52,15 @@ private LocationDAOImp top3 =new LocationDAOImp();
         return temp;
     }
 
+    public void insertPhotoInCollectionCTRL(Integer photo_code, String collection_name) throws SQLException {
+        pubCollectionDAOImp.insertPhotoInCollection(photo_code,collection_name);
+    }
 
-    public ArrayList<Integer> getAllPhotoFromCollectionCTRL (String collection_name) throws SQLException {
+    public void deleteSharedPhotoCTRL(Integer photo_code) throws SQLException {
+        pubCollectionDAOImp.deleteSharedPhoto(photo_code);
+    }
+
+        public ArrayList<Integer> getAllPhotoFromCollectionCTRL (String collection_name) throws SQLException {
         return pubCollectionDAOImp.getAllPhotoFromCollection(collection_name);
     }
 

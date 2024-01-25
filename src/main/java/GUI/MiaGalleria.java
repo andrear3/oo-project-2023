@@ -5,6 +5,8 @@ import Model.Photo;
 import Model.Utente;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -42,6 +44,7 @@ public class MiaGalleria {
     private JButton eliminaFotoButton;
     private JLabel X;
     private JLabel Y;
+    private JButton insColPubJButton;
 
     private static JFrame frame;
     public MiaGalleria(Utente utente){
@@ -157,6 +160,14 @@ public class MiaGalleria {
             new galleriaVideo(activeUtente);
             frame.setVisible(false);
             frame.dispose();
+        });
+        insColPubJButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MiaGalleriaAddToCollection miaGalleriaAddToCollection = new MiaGalleriaAddToCollection(activeUtente, activePhoto.get(counter));
+                frame.setVisible(false);
+                frame.dispose();
+            }
         });
     }
 

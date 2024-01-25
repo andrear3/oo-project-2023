@@ -65,5 +65,44 @@ public class PubCollectionDAOImp {
 
         return tempArrayPhoto;
     }
+
+    public void insertPhotoInCollection(Integer photo_code, String collection_name) throws SQLException {
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        String sql = "INSERT INTO photogallery.shared_photo VALUES(?,?)";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+        prepStat.setString(1, collection_name);
+        prepStat.setInt(2, photo_code);
+
+        ResultSet resultSet = prepStat.executeQuery();
+
+
+        /*if (resultSet.next()) {
+            System.out.println(photo_code);
+            System.out.println(collection_name);
+        }*/
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+
+    }
+
+    public void deleteSharedPhoto(Integer photo_code) throws SQLException {
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        String sql = "DELETE FROM photogallery.shared_photo WHERE photo_code = ?";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+        prepStat.setInt(1, photo_code);
+
+        ResultSet resultSet = prepStat.executeQuery();
+
+
+        /*if (resultSet.next()) {
+            System.out.println(photo_code);
+            System.out.println(collection_name);
+        }*/
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+    }
+
 }
 
