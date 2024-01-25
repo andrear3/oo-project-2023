@@ -31,11 +31,7 @@ public class CommunityHub {
         accediAlleCollezioniPubblicheButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    CommunityHubCollections communityHubCollections = new CommunityHubCollections(activeUtente);
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
+                CommunityHubCollections communityHubCollections = new CommunityHubCollections(activeUtente);
                 frame.setVisible(false);
                 frame.dispose();
             }
