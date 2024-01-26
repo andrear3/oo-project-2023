@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public interface FotoDAO {
-     ArrayList<Integer> fotoStessoLuogo(String location_name ) throws SQLException;
+     public ArrayList<Integer> fotoStessoLuogo(String location_name ) throws SQLException;
 
      ArrayList<Photo> fotoStessoUtente(String nickname ) throws SQLException;
 

@@ -45,6 +45,15 @@ public class CommunityHub {
             }
         });
 
+        ricercaAvanzataButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RicercaAvanzata ricercaAvanzata = new RicercaAvanzata(activeUtente);
+                frame.setVisible(false);
+                frame.dispose();
+            }
+        });
+
     }
 
     public CommunityHub(){

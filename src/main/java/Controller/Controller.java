@@ -85,6 +85,10 @@ private LocationDAOImp top3 =new LocationDAOImp();
         return photoDAO.fotoStessoUtente(nickname);
     }
 
+    public ArrayList<Integer> fotoStessoSoggettoCTRL(String tag_name) throws SQLException {
+        return PhotoTagDAO.fotoStessoSoggetto(tag_name);
+    }
+
     public String PersoneTaggateCTRL(Integer photo_code) throws SQLException {
         return UserTagDAO.PersoneTaggate(photo_code);
     }

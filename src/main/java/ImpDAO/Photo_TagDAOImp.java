@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Photo_TagDAOImp implements Photo_TagDAO{
 
@@ -44,6 +45,26 @@ public class Photo_TagDAOImp implements Photo_TagDAO{
         resultSet.close();
         prepStat.close();
         connection.close();
+    }
+
+    public ArrayList<Integer> fotoStessoSoggetto(String tag_name ) throws SQLException {
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        ArrayList<Integer> tempPhotoCode=new ArrayList<Integer>();
+        String sql = "SELECT photo_code FROM photogallery.photo_tag WHERE tag_name = ?"; //? è placeholder
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+        prepStat.setString(1, tag_name); //sostituisce placeholder
+
+        ResultSet resultSet = prepStat.executeQuery();
+        while (resultSet.next()!= false){
+            tempPhotoCode.add(resultSet.getInt("photo_code"));
+            System.out.println(resultSet.getInt("photo_code"));
+        }
+
+
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+        return tempPhotoCode;
     }
     public Photo aggiungiSoggetto2etag(Integer photo_code, String tag_name,String tag_utente) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();

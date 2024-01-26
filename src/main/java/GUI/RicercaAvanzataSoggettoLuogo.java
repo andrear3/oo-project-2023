@@ -1,23 +1,26 @@
 package GUI;
 
-import Controller.*;
-import Model.Photo;
-import Model.Utente;
-
 import javax.swing.*;
+import Model.*;
+import Controller.Controller;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class CommunityHubShowCollection {
 
-    Utente activeUtente = new Utente();
+public class RicercaAvanzataSoggettoLuogo {
+
+    JFrame frame = new JFrame();
 
     Controller controller = new Controller();
-    private static JFrame frame;
-    private JPanel CommunityHubPanel;
+
+    Utente activeUtente;
+
+    Integer counter = 0;
+
     private JLabel photoImgLabel;
     private JButton addButton;
     private JButton prevButton;
@@ -27,30 +30,21 @@ public class CommunityHubShowCollection {
     private JLabel soggettoPhoto;
     private JLabel soggettoLabel;
     private JButton deleteButton;
+    private JPanel PanelSL;
 
-    static Integer counter = 0;
-    public CommunityHubShowCollection(Utente utente, String galleryName){
-        this.frame = new JFrame("CommunityHubShowCollection");
-        frame.setContentPane(CommunityHubPanel);
-        frame.setSize(900,500);
+    public RicercaAvanzataSoggettoLuogo(Utente utente, ArrayList<Integer> listaFoto){
+        this.frame = new JFrame("RicercaAvanzataSoggettoLuogo");
+        frame.setContentPane(PanelSL);
+        frame.setSize(700, 300);
         frame.setVisible(true);
         activeUtente = utente;
-        deleteButton.setVisible(false);
 
-
-        ArrayList<Integer> photoCodeArray = new ArrayList<>();
-        try {
-            photoCodeArray = controller.getAllPhotoFromCollectionCTRL(galleryName);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
         ArrayList<Photo> photoArray = new ArrayList<Photo>();
         try {
-            photoArray = controller.getAllInfoFromPhotoCodesCTRL(photoCodeArray);
+            photoArray = controller.getAllInfoFromPhotoCodesCTRL(listaFoto);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
 
         if(photoArray.get(0)!=null){
             ImageIcon temp = controller.setImgPathSize(photoArray.get(0).getPath(),400,300);
@@ -76,13 +70,6 @@ public class CommunityHubShowCollection {
                 deleteButton.setVisible(false);
             }
         }
-
-        /*for(Integer i=0;i<photoArray.size();i++){
-            String temp;
-            temp = photoArray.get(i).getDevice();
-            System.out.println(temp);
-
-        }*/
 
         ArrayList<Photo> finalPhotoArray = photoArray;
         nextButton.addActionListener(new ActionListener() {
@@ -146,26 +133,6 @@ public class CommunityHubShowCollection {
                     } else {
                         deleteButton.setVisible(false);
                     }
-                }
-            }
-        });
-        addButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CommunityHubCollections communityHubCollections = new CommunityHubCollections(utente);
-                frame.setVisible(false);
-                frame.dispose();
-            }
-        });
-
-
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    controller.deleteSharedPhotoCTRL(finalPhotoArray.get(counter).getPhoto_code());
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
                 }
             }
         });
