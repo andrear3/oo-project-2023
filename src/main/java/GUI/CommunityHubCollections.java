@@ -2,13 +2,10 @@ package GUI;
 
 import Controller.Controller;
 import Model.*;
-import javafx.scene.layout.Pane;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -18,6 +15,7 @@ public class CommunityHubCollections {
     private static JFrame frame;
     private JPanel PanelCollections;
     private JLabel infoLabel;
+    private JButton backButton;
 
     JLabel testLabel = new JLabel();
 
@@ -60,6 +58,14 @@ public class CommunityHubCollections {
                 if e.getSource()==tempButton()
             }*/
         }
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CommunityHub communityHub = new CommunityHub(activeUtente);
+                frame.setVisible(false);
+                frame.dispose();
+            }
+        });
     }
 
 

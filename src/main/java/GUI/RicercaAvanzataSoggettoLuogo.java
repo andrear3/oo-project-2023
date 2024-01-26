@@ -22,14 +22,13 @@ public class RicercaAvanzataSoggettoLuogo {
     Integer counter = 0;
 
     private JLabel photoImgLabel;
-    private JButton addButton;
+    private JButton backButton;
     private JButton prevButton;
     private JButton nextButton;
     private JLabel photoOwner;
     private JLabel tagLabel;
     private JLabel soggettoPhoto;
     private JLabel soggettoLabel;
-    private JButton deleteButton;
     private JPanel PanelSL;
 
     public RicercaAvanzataSoggettoLuogo(Utente utente, ArrayList<Integer> listaFoto){
@@ -64,11 +63,7 @@ public class RicercaAvanzataSoggettoLuogo {
                 throw new RuntimeException(ex);
             }
             soggettoLabel.setText(tempSoggetto);
-            if(Objects.equals(photoArray.get(0).getNickname(), utente.getNicknameUtente())){
-                deleteButton.setVisible(true);
-            } else {
-                deleteButton.setVisible(false);
-            }
+
         }
 
         ArrayList<Photo> finalPhotoArray = photoArray;
@@ -96,11 +91,7 @@ public class RicercaAvanzataSoggettoLuogo {
                     soggettoLabel.setText(tempSoggetto);
                     System.out.println(finalPhotoArray.get(counter).getNickname());
                     System.out.println(utente.getNicknameUtente());
-                    if(Objects.equals(finalPhotoArray.get(counter).getNickname(), utente.getNicknameUtente())){
-                        System.out.println("IF ENTRATO");
-                        deleteButton.setVisible(true);
 
-                    }
                 }
             }
         });
@@ -128,12 +119,16 @@ public class RicercaAvanzataSoggettoLuogo {
                         throw new RuntimeException(ex);
                     }
                     soggettoLabel.setText(tempSoggetto);
-                    if(Objects.equals(finalPhotoArray.get(counter).getNickname(), utente.getNicknameUtente())){
-                        deleteButton.setVisible(true);
-                    } else {
-                        deleteButton.setVisible(false);
-                    }
+
                 }
+            }
+        });
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RicercaAvanzata ricercaAvanzata = new RicercaAvanzata(activeUtente);
+                frame.setVisible(false);
+                frame.dispose();
             }
         });
     }

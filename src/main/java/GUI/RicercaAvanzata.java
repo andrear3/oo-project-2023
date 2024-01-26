@@ -24,6 +24,10 @@ public class RicercaAvanzata {
     private JButton buttonTop3;
     private JLabel labelTop3;
     private JPanel PanelAvanzato;
+    private JLabel firstLuogo;
+    private JLabel secondLuogo;
+    private JLabel thirdLuogo;
+    private JButton indietroButton;
 
     public RicercaAvanzata(Utente utente) {
         this.frame = new JFrame("RicercaAvanzata");
@@ -32,6 +36,15 @@ public class RicercaAvanzata {
         frame.setVisible(true);
         activeUtente = utente;
 
+        ArrayList<String> array3;
+        try {
+            array3 = controller.top3LuoghiCTRL();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        firstLuogo.setText(array3.get(0));
+        secondLuogo.setText(array3.get(1));
+        thirdLuogo.setText(array3.get(2));
 
         buttonLuogo.addActionListener(new ActionListener() {
             @Override
@@ -61,10 +74,13 @@ public class RicercaAvanzata {
                 frame.dispose();
             }
         });
-        buttonTop3.addActionListener(new ActionListener() {
+
+        indietroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                CommunityHub communityHub = new CommunityHub(activeUtente);
+                frame.setVisible(false);
+                frame.dispose();
             }
         });
     }

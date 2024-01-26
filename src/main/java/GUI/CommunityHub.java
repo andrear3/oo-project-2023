@@ -6,9 +6,6 @@ import Model.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
-import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class CommunityHub {
 
@@ -20,6 +17,7 @@ public class CommunityHub {
     private JButton ricercaAvanzataButton;
     private JButton creaUnaNuovaCollezioneButton;
     private JPanel PanelCommunity;
+    private JButton tornaIndietroButton;
 
     public CommunityHub(Utente utente){
         this.frame = new JFrame("CommunityHub");
@@ -58,6 +56,14 @@ public class CommunityHub {
 
     public CommunityHub(){
 
+        tornaIndietroButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ProfiloUtente profiloUtente = new ProfiloUtente(activeUtente);
+                frame.setVisible(false);
+                frame.dispose();
+            }
+        });
     }
 
 
