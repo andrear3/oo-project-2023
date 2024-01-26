@@ -33,10 +33,11 @@ public class CommunityHubCollections {
         frame.getContentPane().add(scrollPane); //scrolling
         frame.setSize(500, 300);
         frame.setVisible(true);
+        activeUtente = utente;
 
         ArrayList<String> collectionArray;
         try {
-            collectionArray = controller.getAllPubCollectionCTRL();
+            collectionArray = controller.getAllPubCollection2CTRL();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -58,7 +59,13 @@ public class CommunityHubCollections {
                 if e.getSource()==tempButton()
             }*/
         }
-        backButton.addActionListener(new ActionListener() {
+
+        JButton tempButton2 = new JButton();
+        tempButton2.setText("Torna Indietro");
+        tempButton2.setVerticalTextPosition(JButton.BOTTOM);
+        tempButton2.setHorizontalTextPosition(JButton.RIGHT);
+        PanelCollections.add(tempButton2);
+        tempButton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CommunityHub communityHub = new CommunityHub(activeUtente);

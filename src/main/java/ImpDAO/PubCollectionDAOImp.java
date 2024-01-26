@@ -10,7 +10,7 @@ public class PubCollectionDAOImp {
     public ArrayList<String> getAllPubCollection() throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
         ArrayList<String> resArray = new ArrayList<>();
-        String sql = "SELECT P.collection_name FROM photogallery.public_collection AS P JOIN photogallery.shared_photo AS S ON S.collection_name = P.collection_name WHERE S.photo_code IS NOT NULL";
+        String sql = "SELECT collection_name FROM photogallery.public_collection WHERE TRUE";
         PreparedStatement prepStat = connection.prepareStatement(sql);
 
         ResultSet resultSet = prepStat.executeQuery();
@@ -20,6 +20,28 @@ public class PubCollectionDAOImp {
         while (resultSet.next() != false){
             resArray.add(resultSet.getString("collection_name"));
             System.out.println(resultSet.getString("collection_name"));
+        }
+
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+
+        return resArray;
+    }
+
+    public ArrayList<String> getAllPubCollection2() throws SQLException {
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        ArrayList<String> resArray = new ArrayList<>();
+        String sql = "SELECT P.collection_name FROM photogallery.public_collection AS P JOIN photogallery.shared_photo AS S ON S.collection_name = P.collection_name WHERE S.photo_code IS NOT NULL GROUP BY P.collection_name";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+
+        ResultSet resultSet = prepStat.executeQuery();
+        /*if (!resultSet.next()){
+            System.out.println("No collection was found");
+        }*/
+        while (resultSet.next() != false){
+            resArray.add(resultSet.getString("collection_name"));
+            //System.out.println(resultSet.getString("collection_name"));
         }
 
         resultSet.close();

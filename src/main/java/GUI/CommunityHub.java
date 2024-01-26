@@ -52,10 +52,6 @@ public class CommunityHub {
             }
         });
 
-    }
-
-    public CommunityHub(){
-
         tornaIndietroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -64,7 +60,9 @@ public class CommunityHub {
                 frame.dispose();
             }
         });
+
     }
+
 
 
 
