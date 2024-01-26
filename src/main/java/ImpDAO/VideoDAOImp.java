@@ -142,5 +142,25 @@ public class VideoDAOImp {
         connection.close();
     }
 
+    public void nuovoVideo(String desc, String title, String nickname) throws SQLException {
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        String sql = "INSERT INTO photogallery.video VALUES (DEFAULT, ?, ?, ?)";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+        prepStat.setString(1, desc);
+        prepStat.setString(2, title);
+        prepStat.setString(3, nickname);
+        ResultSet resultSet = prepStat.executeQuery();
+        /*
+        if(resultSet.next()) {
+            Res = resultSet.getString(1);
+        }
+         */
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+    }
+
+
+
 
 }

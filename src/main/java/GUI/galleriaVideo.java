@@ -183,7 +183,11 @@ public class galleriaVideo {
             }
         });
 
-
+        aggiungiVideoButton.addActionListener(e -> {
+            new galleriaVideoAggiungi(activeUtente);
+            frame.setVisible(false);
+            frame.dispose();
+        });
 
 
         tornaIndietroButton.addActionListener(e -> {

@@ -12,6 +12,8 @@ public interface FotoDAO {
 
      ArrayList<Photo> fotoStessoUtente(String nickname ) throws SQLException;
 
+    public ArrayList<Integer> foto_StessoUtente_o_Pubbliche(String nickname) throws SQLException;
+
     //void DettagliFoto(String photo_code) throws SQLException;
 
     //void FotoUtente(String photo_code, String username) throws SQLException;
@@ -26,5 +28,6 @@ public interface FotoDAO {
 
     public ArrayList<String> getPathFromPhoto(Integer photo_code) throws SQLException;
     Photo insertPhoto(Integer photo_code, String scope, String nickname, String location_name, String device, LocalDate photo_date, String path,Double x,Double y) throws SQLException;
+    public void deletePhoto(Integer photo_code) throws SQLException;
     String getPath(Integer photo_code)throws SQLException;
 }

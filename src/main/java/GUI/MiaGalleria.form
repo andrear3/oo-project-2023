@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GUI.MiaGalleria">
-  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="11" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="12" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="17" width="824" height="403"/>
@@ -52,14 +52,6 @@
           <text value="Aggiungi Foto"/>
         </properties>
       </component>
-      <component id="c3cfd" class="javax.swing.JButton" binding="galleriaVideoButton" default-binding="true">
-        <constraints>
-          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Galleria Video"/>
-        </properties>
-      </component>
       <component id="4855a" class="javax.swing.JButton" binding="fotoPrecedenteButton" default-binding="true">
         <constraints>
           <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -74,22 +66,6 @@
         </constraints>
         <properties>
           <text value="Foto Successiva"/>
-        </properties>
-      </component>
-      <component id="57f0f" class="javax.swing.JButton" binding="tornaIndietroButton" default-binding="true">
-        <constraints>
-          <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Torna Indietro"/>
-        </properties>
-      </component>
-      <component id="5680e" class="javax.swing.JButton" binding="modificaFotoButton" default-binding="true">
-        <constraints>
-          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Modifica Foto"/>
         </properties>
       </component>
       <component id="57613" class="javax.swing.JButton" binding="eliminaFotoButton" default-binding="true">
@@ -272,12 +248,44 @@
           <text value="Label"/>
         </properties>
       </component>
+      <component id="c3cfd" class="javax.swing.JButton" binding="galleriaVideoButton" default-binding="true">
+        <constraints>
+          <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Galleria Video"/>
+        </properties>
+      </component>
+      <component id="57f0f" class="javax.swing.JButton" binding="tornaIndietroButton" default-binding="true">
+        <constraints>
+          <grid row="11" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Torna Indietro"/>
+        </properties>
+      </component>
+      <component id="5680e" class="javax.swing.JButton" binding="modificaFotoButton" default-binding="true">
+        <constraints>
+          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Modifica Foto"/>
+        </properties>
+      </component>
       <component id="16411" class="javax.swing.JButton" binding="insColPubJButton">
         <constraints>
-          <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Inserisci in Collezione Pubblica"/>
+        </properties>
+      </component>
+      <component id="fb3c0" class="javax.swing.JButton" binding="aggiungiVideoButton" default-binding="true">
+        <constraints>
+          <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Aggiungi Video"/>
         </properties>
       </component>
     </children>

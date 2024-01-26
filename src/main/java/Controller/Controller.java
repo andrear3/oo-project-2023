@@ -97,6 +97,14 @@ private LocationDAOImp top3 =new LocationDAOImp();
         return photoDAO.fotoStessoUtente(nickname);
     }
 
+    public ArrayList<Integer> foto_StessoUtente_o_PubblicheCTRL(String nickname) throws SQLException{
+        return photoDAO.foto_StessoUtente_o_Pubbliche(nickname);
+    }
+
+    public void deletePhotoCTRL(Integer photo_code) throws SQLException{
+        photoDAO.deletePhoto(photo_code);
+    }
+
     public ArrayList<Integer> fotoStessoSoggettoCTRL(String tag_name) throws SQLException {
         return PhotoTagDAO.fotoStessoSoggetto(tag_name);
     }
@@ -165,6 +173,10 @@ public Location aggLocationPhotoCTRL(String location_name,Double x_coordinates,D
 
     public void eliminaFotoVideoCTRL(Integer video_code, Integer photo_code) throws SQLException{
         videoDAO.eliminaFotoVideo(video_code, photo_code);
+    }
+
+    public void nuovoVideoCTRL(String desc, String title, String nickname) throws SQLException{
+        videoDAO.nuovoVideo(desc, title, nickname);
     }
     public Controller(){
     };

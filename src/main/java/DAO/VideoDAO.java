@@ -17,6 +17,8 @@ public interface VideoDAO {
      public void aggiungiFotoVideo(Integer video_code, Integer photo_code) throws SQLException;
      public void eliminaFotoVideo(Integer video_code, Integer photo_code) throws SQLException;
 
+     public void nuovoVideo(String desc, String title, String nickname) throws SQLException;
+
 
 
 }

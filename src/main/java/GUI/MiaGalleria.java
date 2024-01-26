@@ -3,6 +3,7 @@ package GUI;
 import Controller.Controller;
 import Model.Photo;
 import Model.Utente;
+import Model.Video;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -15,6 +16,8 @@ public class MiaGalleria {
     Controller controller = new Controller();
     Utente activeUtente;
     ArrayList<Photo> activePhoto;
+
+    ArrayList<Video> activeVideo;
     Photo currentphoto;
 
     String UserTag;
@@ -45,15 +48,17 @@ public class MiaGalleria {
     private JLabel X;
     private JLabel Y;
     private JButton insColPubJButton;
+    private JButton aggiungiVideoButton;
 
     private static JFrame frame;
     public MiaGalleria(Utente utente){
         frame = new JFrame("MiaGalleria");
         frame.setContentPane(panel1);
-        frame.setSize(650,400);
+        frame.setSize(750,500);
         frame.setVisible(true);
         try {
             activePhoto = controller.fotoStessoUtenteCTRL(utente.getNicknameUtente());
+            activeVideo = controller.videoStessoUtenteCTRL(utente.getNicknameUtente());
             UserTag = controller.PersoneTaggateCTRL(activePhoto.get(counter).getPhoto_code());
             PhotoTag = controller.SoggettoInFotoCTRL(activePhoto.get(counter).getPhoto_code());
         }
@@ -157,10 +162,33 @@ public class MiaGalleria {
         });
 
         galleriaVideoButton.addActionListener(e -> {
-            new galleriaVideo(activeUtente);
+            boolean check = activeVideo.contains(utente.getNicknameUtente());
+
+            if(check) {
+                new galleriaVideo(activeUtente);
+                frame.setVisible(false);
+                frame.dispose();
+            }
+        });
+
+        aggiungiVideoButton.addActionListener(e -> {
+            new galleriaVideoAggiungi(activeUtente);
             frame.setVisible(false);
             frame.dispose();
         });
+
+        eliminaFotoButton.addActionListener(e -> {
+            try{
+                controller.deletePhotoCTRL(currentphoto.getPhoto_code());
+            }
+            catch(SQLException ex){
+                throw new RuntimeException(ex);
+            }
+            new MiaGalleria(activeUtente);
+            frame.setVisible(false);
+            frame.dispose();
+        });
+
         insColPubJButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

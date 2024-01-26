@@ -54,6 +54,28 @@ public class FotoDAOImp implements FotoDAO {
         return tempArrayPhoto;
     }
 
+    public ArrayList<Integer> foto_StessoUtente_o_Pubbliche(String nickname) throws SQLException {
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        Photo tempPhoto = new Photo();
+        ArrayList<Integer> tempArrayPhoto = new ArrayList<Integer>();
+        String sql = "SELECT photo_code FROM photogallery.photo WHERE (nickname = ? AND scope <> 'Eliminated') OR scope = 'Public' ORDER BY photo_code ASC";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+        prepStat.setString(1, nickname);
+
+        ResultSet resultSet = prepStat.executeQuery();
+        while (resultSet.next()) {
+            tempArrayPhoto.add(resultSet.getInt("photo_code"));
+        }
+
+
+        //
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+
+        return tempArrayPhoto;
+    }
+
     public ArrayList<Photo> getAllInfoFromPhotoCodes (ArrayList<Integer> photoCodes) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
         ArrayList<Photo> tempArrayPhoto = new ArrayList<>();
@@ -130,6 +152,23 @@ public String getPath(Integer photo_code)throws SQLException{
 
     return path;
 }
+
+    public void deletePhoto(Integer photo_code) throws SQLException{
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        Photo foto=new Photo();
+        String sql="DELETE FROM photogallery.photo WHERE photo_code = ?";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+
+        prepStat.setInt(1,photo_code);
+        ResultSet resultSet = prepStat.executeQuery();
+        if(resultSet.next()){
+            System.out.println("foto eliminata");
+        }
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+    }
+
 
 }
 
