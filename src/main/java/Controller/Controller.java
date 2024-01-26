@@ -139,8 +139,8 @@ public Photo insertPhotoCTRL(Integer photo_code, String scope, String nickname, 
 public Location aggLocationPhotoCTRL(String location_name,Double x_coordinates,Double y_coordinates,Integer poto_count)throws SQLException{
     return locationDAO.aggLocationPhoto(location_name,x_coordinates,y_coordinates,poto_count);
 }
-    public Photo aggiungiSoggetto2etagCTRL(Integer photo_code, String tag_name,String tag_utente) throws SQLException {
-        return PhotoTagDAO.aggiungiSoggetto2etag(photo_code, tag_name,tag_utente);
+    public void aggiungiSoggetto2etagCTRL(Integer photo_code, String tag_name,String tag_utente) throws SQLException {
+         PhotoTagDAO.aggiungiSoggetto2etag(photo_code, tag_name,tag_utente);
     }
     public Integer getPhoto_codeCTRL(Integer a)throws SQLException{
     return PhotoTagDAO.getPhoto_code(a);

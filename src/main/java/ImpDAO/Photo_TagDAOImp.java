@@ -86,7 +86,7 @@ public class Photo_TagDAOImp implements Photo_TagDAO{
 
         return tempPhotoTags;
     }
-    public Photo aggiungiSoggetto2etag(Integer photo_code, String tag_name,String tag_utente) throws SQLException {
+    public void aggiungiSoggetto2etag(Integer photo_code, String tag_name,String tag_utente) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
         String sql = "INSERT INTO photogallery.photo_tag VALUES(?,?)";
         String sql2 = "INSERT INTO photogalley.user_tag VALUES(?,?)";
@@ -113,7 +113,7 @@ public class Photo_TagDAOImp implements Photo_TagDAO{
         prepStat2.close();
         connection.close();
 
-        return null;
+
     }
 public Integer getPhoto_code(Integer a)throws SQLException{
     Connection connection = DatabaseConnection.getInstance().getConnection();

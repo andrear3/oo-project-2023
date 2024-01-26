@@ -69,7 +69,7 @@ public class InserimentoFoto {
                 //fileChooser.setCurrentDirectory(new File());// in new File() se inseriamo "." new File(".") andrà a cercare il file nella directory del nostro progetto
 
                 if(risultato==JFileChooser.APPROVE_OPTION) {
-                    //se viene sezionato correttamente viene crato il file che dobbiamo inserire
+                    //se viene selezionato correttamente viene creato il file che dobbiamo inserire
                     File file=fileChooser.getSelectedFile();
                     String path="src/main/resources/anteprima";//path di destinazione
                     Path destinazione=Path.of(path,file.getName());//andiamo a settare il path di destinazione e il nome del file che abbiamo caricato
