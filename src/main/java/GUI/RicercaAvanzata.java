@@ -49,29 +49,57 @@ public class RicercaAvanzata {
         buttonLuogo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ArrayList<Integer> tempArray;
+                ArrayList<String> allTags;
+                boolean tagContained = false;
                 try {
-                    tempArray = controller.fotoStessoLuogoCTRL(textLuogo.getText());
+                    allTags = controller.getAllLocations();
+                    if (allTags.contains(textLuogo.getText())) {
+                        tagContained = true;
+                    }
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
-                RicercaAvanzataSoggettoLuogo ricercaAvanzataSoggettoLuogo = new RicercaAvanzataSoggettoLuogo(activeUtente, tempArray);
-                frame.setVisible(false);
-                frame.dispose();
-            }
+                ArrayList<Integer> tempArray = new ArrayList<>();
+                if (tagContained == true) {
+                    try {
+                        tempArray = controller.fotoStessoLuogoCTRL(textLuogo.getText());
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+                if (tagContained == true) {
+                    RicercaAvanzataSoggettoLuogo ricercaAvanzataSoggettoLuogo = new RicercaAvanzataSoggettoLuogo(activeUtente, tempArray);
+                    frame.setVisible(false);
+                    frame.dispose();
+                    }
+                }
         });
         buttonSoggetto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ArrayList<Integer> tempArray;
+                ArrayList<String> allTags;
+                boolean tagContained = false;
                 try {
-                    tempArray = controller.fotoStessoSoggettoCTRL(textSoggetto.getText());
+                    allTags = controller.getAllTags();
+                    if(allTags.contains(textSoggetto.getText())){
+                        tagContained = true;
+                    }
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
-                RicercaAvanzataSoggettoLuogo ricercaAvanzataSoggettoLuogo = new RicercaAvanzataSoggettoLuogo(activeUtente, tempArray);
-                frame.setVisible(false);
-                frame.dispose();
+                ArrayList<Integer> tempArray = new ArrayList<>();
+                if(tagContained == true) {
+                    try {
+                        tempArray = controller.fotoStessoSoggettoCTRL(textSoggetto.getText());
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+                if(tagContained == true) {
+                    RicercaAvanzataSoggettoLuogo ricercaAvanzataSoggettoLuogo = new RicercaAvanzataSoggettoLuogo(activeUtente, tempArray);
+                    frame.setVisible(false);
+                    frame.dispose();
+                }
             }
         });
 

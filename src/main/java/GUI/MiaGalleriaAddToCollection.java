@@ -16,6 +16,7 @@ public class MiaGalleriaAddToCollection {
     private JPanel AddPanel;
     private JComboBox comboBox1;
     private JButton addToCollection;
+    private JButton tornaIndietroButton;
     Utente activeUtente;
 
     Controller controller = new Controller();
@@ -46,6 +47,14 @@ public class MiaGalleriaAddToCollection {
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
+            }
+        });
+        tornaIndietroButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                frame.setVisible(false);
+                frame.dispose();
             }
         });
     }

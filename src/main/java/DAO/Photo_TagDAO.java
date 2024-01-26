@@ -11,4 +11,6 @@ public interface Photo_TagDAO {
      public Integer getPhoto_code(Integer a)throws SQLException;
 
      public ArrayList<Integer> fotoStessoSoggetto(String tag_name ) throws SQLException;
+
+     public ArrayList<String> getAllTags() throws SQLException;
 }

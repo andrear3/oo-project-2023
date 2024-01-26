@@ -31,6 +31,26 @@ for(int i =0;i<3;i++){
         return tempLuogo;
 
     }
+
+    public ArrayList<String> getAllLocations() throws SQLException {
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        ArrayList<String> tempLocationTags=new ArrayList<String>();
+        String sql = "SELECT location_name FROM photogallery.location WHERE TRUE"; //? è placeholder
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+
+        ResultSet resultSet = prepStat.executeQuery();
+        while (resultSet.next()!= false){
+            tempLocationTags.add(resultSet.getString("location_name"));
+            System.out.println(resultSet.getString("location_name"));
+        }
+
+
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+
+        return tempLocationTags;
+    }
 public Location aggLocationPhoto(String location_name,Double x_coordinates,Double y_coordinates,Integer poto_count ) throws SQLException{
     Connection connection = DatabaseConnection.getInstance().getConnection();
     Location location=new Location();

@@ -165,10 +165,12 @@ public class MiaGalleria {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MiaGalleriaAddToCollection miaGalleriaAddToCollection = new MiaGalleriaAddToCollection(activeUtente, activePhoto.get(counter));
-                frame.setVisible(false);
-                frame.dispose();
+                //frame.setVisible(false);
+                //frame.dispose();
             }
         });
+
+
     }
 
 

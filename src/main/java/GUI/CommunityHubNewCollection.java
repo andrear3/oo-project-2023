@@ -28,10 +28,13 @@ public class CommunityHubNewCollection {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String getNewCollection =  textField1.getText();
-                try {
-                    controller.newPubCollectionCTRL(getNewCollection);
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
+                if(getNewCollection.length()!=0){
+                    try {
+                        System.out.println("Funziona");
+                        controller.newPubCollectionCTRL(getNewCollection);
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
             }
         });

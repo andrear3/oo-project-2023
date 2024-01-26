@@ -34,7 +34,7 @@ public class RicercaAvanzataSoggettoLuogo {
     public RicercaAvanzataSoggettoLuogo(Utente utente, ArrayList<Integer> listaFoto){
         this.frame = new JFrame("RicercaAvanzataSoggettoLuogo");
         frame.setContentPane(PanelSL);
-        frame.setSize(700, 300);
+        frame.setSize(900, 500);
         frame.setVisible(true);
         activeUtente = utente;
 

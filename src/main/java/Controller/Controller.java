@@ -74,6 +74,14 @@ private LocationDAOImp top3 =new LocationDAOImp();
     public ArrayList<String> getAllPubCollection2CTRL() throws SQLException {
         return pubCollectionDAOImp.getAllPubCollection2();
     }
+
+    public ArrayList<String> getAllTags() throws SQLException {
+        return PhotoTagDAO.getAllTags();
+    }
+
+    public ArrayList<String> getAllLocations() throws SQLException {
+        return locationDAO.getAllLocations();
+    }
     //foto
      public ArrayList<Integer> fotoStessoLuogoCTRL(String location_name) throws SQLException{ // da connettere ad una schermata
         return photoDAO.fotoStessoLuogo((location_name));
