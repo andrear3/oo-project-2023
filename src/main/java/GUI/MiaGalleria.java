@@ -162,7 +162,7 @@ public class MiaGalleria {
         });
 
         galleriaVideoButton.addActionListener(e -> {
-            boolean check = activeVideo.contains(utente.getNicknameUtente());
+            boolean check = activeVideo.contains(activeVideo.get(0));
 
             if(check) {
                 new galleriaVideo(activeUtente);

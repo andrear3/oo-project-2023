@@ -1,7 +1,6 @@
 package GUI;
 
 import Controller.Controller;
-import Model.Photo;
 import Model.Utente;
 import Model.Video;
 

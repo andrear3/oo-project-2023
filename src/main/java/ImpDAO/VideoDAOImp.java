@@ -160,6 +160,20 @@ public class VideoDAOImp {
         connection.close();
     }
 
+    public void deleteVideo(Integer video_code) throws SQLException{
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        String sql="DELETE FROM photogallery.video WHERE video_code = ?";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+
+        prepStat.setInt(1, video_code);
+        ResultSet resultSet = prepStat.executeQuery();
+        if(resultSet.next()){
+            System.out.println("video eliminato");
+        }
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+    }
 
 
 

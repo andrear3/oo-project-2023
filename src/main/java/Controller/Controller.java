@@ -178,6 +178,10 @@ public Location aggLocationPhotoCTRL(String location_name,Double x_coordinates,D
     public void nuovoVideoCTRL(String desc, String title, String nickname) throws SQLException{
         videoDAO.nuovoVideo(desc, title, nickname);
     }
+
+    public void deleteVideoCTRL(Integer video_code) throws SQLException{
+        videoDAO.deleteVideo(video_code);
+    }
     public Controller(){
     };
 }

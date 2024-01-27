@@ -63,11 +63,7 @@ public class galleriaVideo {
             throw new RuntimeException(ex);
         }
 
-        /*
-        photoinvideo.forEach(test -> {
-            fotovideo.setText(fotovideo + test.toString());
-        });
-         */
+
 
         CodLabel.setText(currentVideo.getvideocode().toString());
         ListaFoto.setText(lista_foto);
@@ -200,6 +196,20 @@ public class galleriaVideo {
 
         modificaVideoButton.addActionListener(e -> {
             new galleriaVideoModifica(currentVideo, activeUtente);
+            frame.setVisible(false);
+            frame.dispose();
+        });
+
+        eliminaVideoButton.addActionListener(e -> {
+
+            try{
+                controller.deleteVideoCTRL(currentVideo.getvideocode());
+            }
+            catch(SQLException ex){
+                throw new RuntimeException(ex);
+            }
+
+            new MiaGalleria(activeUtente);
             frame.setVisible(false);
             frame.dispose();
         });

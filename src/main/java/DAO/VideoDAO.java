@@ -19,6 +19,8 @@ public interface VideoDAO {
 
      public void nuovoVideo(String desc, String title, String nickname) throws SQLException;
 
+     public void deleteVideo(Integer video_code) throws SQLException;
+
 
 
 }

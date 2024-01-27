@@ -53,14 +53,12 @@ public class galleriaVideoAggiungi {
 
             if(check) {
                 new galleriaVideo(activeutente);
-                frame.setVisible(false);
-                frame.dispose();
             }
             else {
                 new MiaGalleria(activeutente);
-                frame.setVisible(false);
-                frame.dispose();
             }
+            frame.setVisible(false);
+            frame.dispose();
         });
     }
 }
