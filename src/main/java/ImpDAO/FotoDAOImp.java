@@ -34,7 +34,6 @@ public class FotoDAOImp implements FotoDAO {
 
     public ArrayList<Photo> fotoStessoUtente(String nickname) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
-        Photo tempPhoto = new Photo();
         ArrayList<Photo> tempArrayPhoto = new ArrayList<Photo>();
         String sql = "SELECT * FROM photogallery.photo WHERE nickname = ? AND scope <> 'Eliminated' ORDER BY photo_code ASC";
         PreparedStatement prepStat = connection.prepareStatement(sql);
@@ -45,8 +44,6 @@ public class FotoDAOImp implements FotoDAO {
             tempArrayPhoto.add(new Photo(resultSet.getInt("photo_code"), resultSet.getString("scope"), resultSet.getString("nickname"), resultSet.getString("location_name"), resultSet.getString("device"),resultSet.getDate("photo_date"),resultSet.getString("path"),resultSet.getDouble("x_coordinates"),resultSet.getDouble("y_coordinates")));
         }
 
-
-        //
         resultSet.close();
         prepStat.close();
         connection.close();
@@ -54,7 +51,7 @@ public class FotoDAOImp implements FotoDAO {
         return tempArrayPhoto;
     }
 
-    public ArrayList<Integer> foto_StessoUtente_o_Pubbliche(String nickname) throws SQLException {
+    public ArrayList<Integer> fotoStessoUtenteOrPubbliche(String nickname) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
         Photo tempPhoto = new Photo();
         ArrayList<Integer> tempArrayPhoto = new ArrayList<Integer>();
@@ -67,8 +64,6 @@ public class FotoDAOImp implements FotoDAO {
             tempArrayPhoto.add(resultSet.getInt("photo_code"));
         }
 
-
-        //
         resultSet.close();
         prepStat.close();
         connection.close();

@@ -1,10 +1,9 @@
 package DAO;
-import Model.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface PubCollectionDAO {
+public interface Pub_CollectionDAO {
     ArrayList<String> getAllPubCollection() throws SQLException;
 
     public ArrayList<String> getAllPubCollection2() throws SQLException;

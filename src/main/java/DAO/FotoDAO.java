@@ -2,7 +2,6 @@ package DAO;
 
 import Model.Photo;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ public interface FotoDAO {
 
      ArrayList<Photo> fotoStessoUtente(String nickname ) throws SQLException;
 
-    public ArrayList<Integer> foto_StessoUtente_o_Pubbliche(String nickname) throws SQLException;
+    public ArrayList<Integer> fotoStessoUtenteOrPubbliche(String nickname) throws SQLException;
 
     //void DettagliFoto(String photo_code) throws SQLException;
 

@@ -25,7 +25,7 @@ public class Controller {
 
     //PUBLIC COLLECTION
     private Pub_Collection pubCollection = new Pub_Collection();
-    private PubCollectionDAOImp pubCollectionDAOImp = new PubCollectionDAOImp();
+    private Pub_CollectionDAOImp pubCollectionDAOImp = new Pub_CollectionDAOImp();
 
     private User_TagDAOImp UserTagDAO = new User_TagDAOImp();
 private LocationDAOImp top3 =new LocationDAOImp();
@@ -98,7 +98,7 @@ private LocationDAOImp top3 =new LocationDAOImp();
     }
 
     public ArrayList<Integer> foto_StessoUtente_o_PubblicheCTRL(String nickname) throws SQLException{
-        return photoDAO.foto_StessoUtente_o_Pubbliche(nickname);
+        return photoDAO.fotoStessoUtenteOrPubbliche(nickname);
     }
 
     public void deletePhotoCTRL(Integer photo_code) throws SQLException{
@@ -110,11 +110,11 @@ private LocationDAOImp top3 =new LocationDAOImp();
     }
 
     public String PersoneTaggateCTRL(Integer photo_code) throws SQLException {
-        return UserTagDAO.PersoneTaggate(photo_code);
+        return UserTagDAO.personeTaggate(photo_code);
     }
 
     public String SoggettoInFotoCTRL(Integer photo_code) throws SQLException {
-        return PhotoTagDAO.SoggettoInFoto(photo_code);
+        return PhotoTagDAO.soggettoInFoto(photo_code);
     }
 
     public void aggiungiSoggettoCTRL(Integer photo_code, String tag_name) throws SQLException {
@@ -125,13 +125,13 @@ private LocationDAOImp top3 =new LocationDAOImp();
         return UserTagDAO.aggiungiUserTag(photo_code, nickname2);
     }
     public Utente modDNCTRL(String nickname, Date dataN) throws SQLException{
-        return  utenteDAO.modDN(nickname,dataN);
+        return  utenteDAO.modDataNascita(nickname,dataN);
     }
     public Utente eliminaUCTRL(String nickname) throws  SQLException{
-        return  utenteDAO.eliminaU(nickname);
+        return  utenteDAO.eliminaUtente(nickname);
     };
  public Utente registraUCTRL(String nickname, String name, String surname, Date birthdate, String gender, String password)throws SQLException{
-     return  utenteDAO.registraU( nickname,name,surname,birthdate,gender,password);
+     return  utenteDAO.registraUtente( nickname,name,surname,birthdate,gender,password);
  };
 public Photo insertPhotoCTRL(Integer photo_code, String scope, String nickname, String location_name, String device, LocalDate photo_date, String path,Double x, Double y) throws SQLException{
      return photoDAO.insertPhoto(photo_code, scope, nickname, location_name, device, photo_date, path,x,y);
@@ -143,7 +143,7 @@ public Location aggLocationPhotoCTRL(String location_name,Double x_coordinates,D
          PhotoTagDAO.aggiungiSoggetto2etag(photo_code, tag_name,tag_utente);
     }
     public Integer getPhoto_codeCTRL(Integer a)throws SQLException{
-    return PhotoTagDAO.getPhoto_code(a);
+    return PhotoTagDAO.getPhotoCode(a);
     }
     public String getPathCTRL(Integer photo_code)throws SQLException{
        return photoDAO.getPath(photo_code);
@@ -157,7 +157,7 @@ public Location aggLocationPhotoCTRL(String location_name,Double x_coordinates,D
     }
 
     public String listafotovideoCTRL(Integer video_code) throws SQLException{
-        return videoDAO.listafotovideo(video_code);
+        return videoDAO.listaFotoVideo(video_code);
     }
 
     public void modificaTitoloCTRL(Integer video_code, String title) throws SQLException{

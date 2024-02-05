@@ -9,7 +9,7 @@ import java.sql.*;
 public class UtenteDAOImp implements UtenteDAO {
 
 
-    //funzione con uso di stringa sql che ritorna se un utente esiste o meno (usato in fase di login)
+    //Funzione con uso di stringa sql che ritorna se un utente esiste o meno (usato in fase di login)
     @Override
     public boolean checkUtenteExists(String nickname, String password) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
@@ -30,7 +30,7 @@ public class UtenteDAOImp implements UtenteDAO {
 
         return userExistance;
     }
-    //funzione con uso di stringa sql che restituisce i le informazioni di un utente
+    //Funzione con uso di stringa sql che restituisce i le informazioni di un utente
     @Override
     public Utente getUtenteDB(String nickname) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
@@ -50,14 +50,13 @@ public class UtenteDAOImp implements UtenteDAO {
             System.out.println("Nickname not found");
         }
 
-        //
         resultSet.close();
         prepStat.close();
         connection.close();
 
         return tempUtente;
     }
-    //funzione con uso di stringa sql che va a modificare la password id un utente
+    //Funzione con uso di stringa sql che va a modificare la password id un utente
     @Override
     public Utente modPass(String nickname, String password) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
@@ -80,12 +79,12 @@ public class UtenteDAOImp implements UtenteDAO {
         }
 
     @Override
-    public Utente modDN(String nickname, java.util.Date dataN) throws SQLException {
+    public Utente modDataNascita(String nickname, java.util.Date dataN) throws SQLException {
         return null;
     }
-    //funzione con uso di stringa sql che va a modificare la data di nascita
+    //Funzione con uso di stringa sql che va a modificare la data di nascita
     @Override
-       public Utente modDN(String nickname, Date dataN) throws SQLException{
+       public Utente modDataNascita(String nickname, Date dataN) throws SQLException{
            Connection connection = DatabaseConnection.getInstance().getConnection();
            Utente tempUtente = new Utente();
            String sql="UPDATE photogallery.utente SET birthdate = ? WHERE nickname=? ";
@@ -102,9 +101,9 @@ public class UtenteDAOImp implements UtenteDAO {
 
            return tempUtente;
         }
-    //funzione con uso di stringa sql che elimina un utente
+    //Funzione con uso di stringa sql che elimina un utente
         @Override
-    public Utente eliminaU(String nickname)throws SQLException{
+        public Utente eliminaUtente(String nickname)throws SQLException{
         Connection connection = DatabaseConnection.getInstance().getConnection();
         Utente tempUtente = new Utente();
         String sql="DELETE FROM photogallery.utente WHERE nickname= ? ";
@@ -121,8 +120,9 @@ public class UtenteDAOImp implements UtenteDAO {
 
         return tempUtente;
     }
-    //funzione con uso di stringa sql usata per la registrazione di un utente
-    public Utente registraU(String nickname, String name, String surname, Date birthdate, String gender, String password)throws SQLException{
+    //Funzione con uso di stringa sql usata per la registrazione di un utente
+    @Override
+    public Utente registraUtente(String nickname, String name, String surname, Date birthdate, String gender, String password)throws SQLException{
         Connection connection = DatabaseConnection.getInstance().getConnection();
         Utente tempUtente = new Utente();
         String sql="INSERT INTO photogallery.utente  VALUES(?,?,?,?,?,?)";

@@ -25,8 +25,6 @@ public class VideoDAOImp {
             tempArrayVideo.add(new Video(resultSet.getInt("video_code"), resultSet.getString("video_desc"), resultSet.getString("video_title"), resultSet.getString("nickname")));
         }
 
-
-        //
         resultSet.close();
         prepStat.close();
         connection.close();
@@ -49,8 +47,6 @@ public class VideoDAOImp {
             photos.add(new Photo(resultSet.getInt("photo_code"), resultSet.getString("scope"), resultSet.getString("nickname"), resultSet.getString("location_name"), resultSet.getString("device"),resultSet.getDate("photo_date"),resultSet.getString("path"),resultSet.getDouble("x_coordinates"),resultSet.getDouble("y_coordinates")));
         }
 
-
-        //
         resultSet.close();
         prepStat.close();
         connection.close();
@@ -58,20 +54,20 @@ public class VideoDAOImp {
         return photos;
     }
 
-    public String listafotovideo(Integer video_code) throws SQLException {
+    public String listaFotoVideo(Integer video_code) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
-        String Res = new String();
+        String res = new String();
         String sql = "SELECT string_agg(photo_code::varchar, ', ') FROM photogallery.is_in_video WHERE video_code = ?";
         PreparedStatement prepStat = connection.prepareStatement(sql);
         prepStat.setInt(1, video_code);
         ResultSet resultSet = prepStat.executeQuery();
         if(resultSet.next()) {
-            Res = resultSet.getString(1);
+            res = resultSet.getString(1);
         }
         resultSet.close();
         prepStat.close();
         connection.close();
-        return Res;
+        return res;
     }
 
     public void modificaTitolo(Integer video_code, String title) throws SQLException {
@@ -81,11 +77,7 @@ public class VideoDAOImp {
         prepStat.setString(1, title);
         prepStat.setInt(2, video_code);
         ResultSet resultSet = prepStat.executeQuery();
-        /*
-        if(resultSet.next()) {
-            Res = resultSet.getString(1);
-        }
-         */
+
         resultSet.close();
         prepStat.close();
         connection.close();
@@ -98,11 +90,7 @@ public class VideoDAOImp {
         prepStat.setString(1, desc);
         prepStat.setInt(2, video_code);
         ResultSet resultSet = prepStat.executeQuery();
-        /*
-        if(resultSet.next()) {
-            Res = resultSet.getString(1);
-        }
-         */
+
         resultSet.close();
         prepStat.close();
         connection.close();
@@ -115,11 +103,7 @@ public class VideoDAOImp {
         prepStat.setInt(1, video_code);
         prepStat.setInt(2, photo_code);
         ResultSet resultSet = prepStat.executeQuery();
-        /*
-        if(resultSet.next()) {
-            Res = resultSet.getString(1);
-        }
-         */
+
         resultSet.close();
         prepStat.close();
         connection.close();
@@ -132,11 +116,7 @@ public class VideoDAOImp {
         prepStat.setInt(1, video_code);
         prepStat.setInt(2, photo_code);
         ResultSet resultSet = prepStat.executeQuery();
-        /*
-        if(resultSet.next()) {
-            Res = resultSet.getString(1);
-        }
-         */
+
         resultSet.close();
         prepStat.close();
         connection.close();
@@ -150,11 +130,7 @@ public class VideoDAOImp {
         prepStat.setString(2, title);
         prepStat.setString(3, nickname);
         ResultSet resultSet = prepStat.executeQuery();
-        /*
-        if(resultSet.next()) {
-            Res = resultSet.getString(1);
-        }
-         */
+
         resultSet.close();
         prepStat.close();
         connection.close();
@@ -174,7 +150,5 @@ public class VideoDAOImp {
         prepStat.close();
         connection.close();
     }
-
-
 
 }

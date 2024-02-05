@@ -12,24 +12,23 @@ import java.util.ArrayList;
 
 public class Photo_TagDAOImp implements Photo_TagDAO{
 
-    public String SoggettoInFoto(Integer photo_code) throws SQLException {
+    public String soggettoInFoto(Integer photo_code) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
-        String Res = new String();
+        String res = new String();
         String sql = "SELECT string_agg(tag_name, ', ') FROM photogallery.photo_tag WHERE photo_code = ?";
         PreparedStatement prepStat = connection.prepareStatement(sql);
         prepStat.setInt(1, photo_code);
         ResultSet resultSet = prepStat.executeQuery();
 
         if(resultSet.next()) {
-            Res = resultSet.getString(1);
+            res = resultSet.getString(1);
         }
         resultSet.close();
         prepStat.close();
         connection.close();
-        return Res;
+        return res;
     }
 
-    //Questa funzione funziona, ma ha degli errori che non riesco a fixare del tutto.
     public void aggiungiSoggetto(Integer photo_code, String tag_name) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
         String sql = "INSERT INTO photogallery.photo_tag VALUES(?,?)";
@@ -37,11 +36,7 @@ public class Photo_TagDAOImp implements Photo_TagDAO{
         prepStat.setString(1, tag_name);
         prepStat.setInt(2, photo_code);
         ResultSet resultSet = prepStat.executeQuery();
-        /*
-        if(resultSet.next()) {
-            Res = resultSet.getString(1);
-        }
-         */
+
         resultSet.close();
         prepStat.close();
         connection.close();
@@ -60,10 +55,10 @@ public class Photo_TagDAOImp implements Photo_TagDAO{
             System.out.println(resultSet.getInt("photo_code"));
         }
 
-
         resultSet.close();
         prepStat.close();
         connection.close();
+
         return tempPhotoCode;
     }
 
@@ -78,7 +73,6 @@ public class Photo_TagDAOImp implements Photo_TagDAO{
             tempPhotoTags.add(resultSet.getString("tag_name"));
             System.out.println(resultSet.getString("tag_name"));
         }
-
 
         resultSet.close();
         prepStat.close();
@@ -106,7 +100,6 @@ public class Photo_TagDAOImp implements Photo_TagDAO{
             System.out.println("tag utente inserito correttamente ");
         }
 
-
         resultSet.close();
         prepStat.close();
         resultSet2.close();
@@ -115,17 +108,17 @@ public class Photo_TagDAOImp implements Photo_TagDAO{
 
 
     }
-public Integer getPhoto_code(Integer a)throws SQLException{
+public Integer getPhotoCode(Integer a)throws SQLException{
     Connection connection = DatabaseConnection.getInstance().getConnection();
-    Integer p_c = null;
+    Integer res = null;
     String sql="SELECT MAX(photo_code) FROM photogallery.photo  ";
     PreparedStatement prepStat =connection.prepareStatement(sql);
     ResultSet resultSet=prepStat.executeQuery();
 
-    if ( resultSet.next()){
-       p_c=resultSet.getInt(1);
+    if (resultSet.next()){
+       res = resultSet.getInt(1);
     }
-    return p_c;
+    return res;
 
 
 }
