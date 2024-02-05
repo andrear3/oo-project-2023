@@ -29,13 +29,14 @@ public class SchermataRegistrazione {
     private JPanel panelPrincipale;
     private JButton invioRegistraButton;
     private JButton loginButton;
+    private JLabel annoLab;
     private static JFrame frame;
     Controller controller = new Controller();
     Utente utente=new Utente();
 
 
     public SchermataRegistrazione(JFrame schermataIniziale) {
-        this.frame = new JFrame("Registrazione");
+        frame = new JFrame("Registrazione");
         frame.setContentPane(panelPrincipale);
 
         frame.setSize(500, 300);

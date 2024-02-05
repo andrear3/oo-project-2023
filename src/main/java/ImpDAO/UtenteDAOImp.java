@@ -134,9 +134,7 @@ public class UtenteDAOImp implements UtenteDAO {
         prepStat.setString(5,surname);
         prepStat.setString(6,password);
         ResultSet resultSet = prepStat.executeQuery();
-        if (resultSet.next()) {
-            System.out.println("utente creato ");
-        }
+
 
         resultSet.close();
         prepStat.close();
