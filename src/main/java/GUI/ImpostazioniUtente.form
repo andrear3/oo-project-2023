@@ -30,7 +30,7 @@
       </component>
       <component id="36efb" class="javax.swing.JPasswordField" binding="passwordField1" default-binding="true">
         <constraints>
-          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="1" fill="0" indent="0" use-parent-layout="false">
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="9" fill="0" indent="0" use-parent-layout="false">
             <minimum-size width="152" height="30"/>
             <preferred-size width="152" height="30"/>
             <maximum-size width="152" height="30"/>
