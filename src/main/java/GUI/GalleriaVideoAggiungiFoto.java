@@ -8,32 +8,27 @@ import javax.swing.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class galleriaVideoAggiungiFoto {
-
-    Utente activeutente;
-
-    Video activevideo;
-
+public class GalleriaVideoAggiungiFoto {
+    Utente activeUtente;
+    Video activeVideo;
     ArrayList<Integer> photos;
     private JTextField textField1;
     private JButton aggiungiFotoButton;
     private JButton confermaECreaIlButton;
-
     Controller controller = new Controller();
     private JPanel panel1;
-
     private static JFrame frame;
 
-    public galleriaVideoAggiungiFoto(Video video, Utente utente){
+    public GalleriaVideoAggiungiFoto(Video video, Utente utente){
         frame = new JFrame("galleriaVideoAggiungiFoto");
         frame.setContentPane(panel1);
         frame.setSize(600,300);
         frame.setVisible(true);
-        activevideo = video;
-        activeutente = utente;
+        activeVideo = video;
+        activeUtente = utente;
 
         try{
-            photos = controller.foto_StessoUtente_o_PubblicheCTRL(activeutente.getNicknameUtente());
+            photos = controller.foto_StessoUtente_o_PubblicheCTRL(activeUtente.getNicknameUtente());
         }
         catch (SQLException ex)
         {
@@ -48,7 +43,7 @@ public class galleriaVideoAggiungiFoto {
             if(check) {
 
                 try {
-                    controller.aggiungiFotoVideoCTRL(activevideo.getVideoCode(), photo);
+                    controller.aggiungiFotoVideoCTRL(activeVideo.getVideoCode(), photo);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -60,7 +55,7 @@ public class galleriaVideoAggiungiFoto {
         });
 
         confermaECreaIlButton.addActionListener(e -> {
-            new galleriaVideo(activeutente);
+            new GalleriaVideo(activeUtente);
             frame.setVisible(false);
             frame.dispose();
         });

@@ -13,8 +13,8 @@ import java.sql.SQLException;
 public class DettagliFoto {
     Utente activeUtente = new Utente();
     Controller controller=new Controller();
-    Photo lastPH =new Photo();
-    Photo ph=new Photo();
+    Photo lastPH = new Photo();
+    Photo ph = new Photo();
     private static JFrame frame;
     private JPanel panel1;
     private JLabel visualPhotoIns;
@@ -75,7 +75,7 @@ public class DettagliFoto {
                 String soggetto = (String) soggettoComboBox.getSelectedItem();
 
 
-                System.out.println("il soggeto preso è " + soggetto);
+                System.out.println("il soggetto preso è " + soggetto);
                 try {
                     photo_code=controller.getPhoto_codeCTRL(a);
                     controller.aggiungiSoggettoCTRL(photo_code,soggetto);

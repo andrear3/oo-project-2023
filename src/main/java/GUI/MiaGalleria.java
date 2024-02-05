@@ -12,27 +12,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MiaGalleria {
-
     Controller controller = new Controller();
     Utente activeUtente;
     ArrayList<Photo> activePhoto;
-
     ArrayList<Video> activeVideo;
-    Photo currentphoto;
-
+    Photo currentPhoto;
     String UserTag;
-
     String PhotoTag;
     Integer counter = 0;
-
     private JPanel panel1;
-
     private JButton fotoSuccessivaButton;
     private JButton fotoPrecedenteButton;
     private JButton modificaFotoButton;
     private JButton galleriaVideoButton;
     private JButton tornaIndietroButton;
-    private JLabel photonumLabel;
+    private JLabel photoNumLabel;
 
     private JLabel photo_field;
     private JLabel CodLabel;
@@ -43,7 +37,6 @@ public class MiaGalleria {
     private JLabel UtTag;
     private JLabel SogTag;
     private JButton aggiungiFotoButton;
-
     private JButton eliminaFotoButton;
     private JLabel X;
     private JLabel Y;
@@ -67,11 +60,11 @@ public class MiaGalleria {
         }
 
         activeUtente = utente;
-        currentphoto = activePhoto.get(0);
+        currentPhoto = activePhoto.get(0);
         System.out.println(activePhoto.get(0).getPhotoCode());
 
 
-        photonumLabel.setText(String.valueOf(activePhoto.size()));
+        photoNumLabel.setText(String.valueOf(activePhoto.size()));
 
         CodLabel.setText(activePhoto.get(counter).getPhotoCode().toString());
         VisLabel.setText(activePhoto.get(counter).getScope());
@@ -96,22 +89,22 @@ public class MiaGalleria {
             if(counter<activePhoto.size()-1)
             {
                 int temp = counter+1;
-                currentphoto = activePhoto.get(temp);
+                currentPhoto = activePhoto.get(temp);
                 System.out.println(counter);
                 ++counter;
                 System.out.println(counter);
-                CodLabel.setText(currentphoto.getPhotoCode().toString());
-                VisLabel.setText(currentphoto.getScope());
-                LuoLabel.setText(currentphoto.getLocationName());
-                DisLabel.setText(currentphoto.getDevice());
-                DaLabel.setText(currentphoto.getPhotoDate().toString());
-                X.setText(currentphoto.getXCoordinates().toString());
-                Y.setText(currentphoto.getYCoordinates().toString());
-                ph[0] = controller.setImgPathSize(currentphoto.getPath(),250,250);
+                CodLabel.setText(currentPhoto.getPhotoCode().toString());
+                VisLabel.setText(currentPhoto.getScope());
+                LuoLabel.setText(currentPhoto.getLocationName());
+                DisLabel.setText(currentPhoto.getDevice());
+                DaLabel.setText(currentPhoto.getPhotoDate().toString());
+                X.setText(currentPhoto.getXCoordinates().toString());
+                Y.setText(currentPhoto.getYCoordinates().toString());
+                ph[0] = controller.setImgPathSize(currentPhoto.getPath(),250,250);
                 photo_field.setIcon(ph[0]);
                 try {
-                    UserTag = controller.PersoneTaggateCTRL(currentphoto.getPhotoCode());
-                    PhotoTag = controller.SoggettoInFotoCTRL(currentphoto.getPhotoCode());
+                    UserTag = controller.PersoneTaggateCTRL(currentPhoto.getPhotoCode());
+                    PhotoTag = controller.SoggettoInFotoCTRL(currentPhoto.getPhotoCode());
                 }
                 catch (SQLException ex) {
                     throw new RuntimeException(ex);
@@ -124,22 +117,22 @@ public class MiaGalleria {
             if(counter>0)
             {
                 int temp2 = counter-1;
-                currentphoto = activePhoto.get(temp2);
+                currentPhoto = activePhoto.get(temp2);
                 System.out.println(counter);
                 --counter;
                 System.out.println(counter);
-                CodLabel.setText(currentphoto.getPhotoCode().toString());
-                VisLabel.setText(currentphoto.getScope());
-                LuoLabel.setText(currentphoto.getLocationName());
-                DisLabel.setText(currentphoto.getDevice());
-                DaLabel.setText(currentphoto.getPhotoDate().toString());
-                X.setText(currentphoto.getXCoordinates().toString());
-                Y.setText(currentphoto.getYCoordinates().toString());
-                ph[0] = controller.setImgPathSize(currentphoto.getPath(),250,250);
+                CodLabel.setText(currentPhoto.getPhotoCode().toString());
+                VisLabel.setText(currentPhoto.getScope());
+                LuoLabel.setText(currentPhoto.getLocationName());
+                DisLabel.setText(currentPhoto.getDevice());
+                DaLabel.setText(currentPhoto.getPhotoDate().toString());
+                X.setText(currentPhoto.getXCoordinates().toString());
+                Y.setText(currentPhoto.getYCoordinates().toString());
+                ph[0] = controller.setImgPathSize(currentPhoto.getPath(),250,250);
                 photo_field.setIcon(ph[0]);
                 try {
-                    UserTag = controller.PersoneTaggateCTRL(currentphoto.getPhotoCode());
-                    PhotoTag = controller.SoggettoInFotoCTRL(currentphoto.getPhotoCode());
+                    UserTag = controller.PersoneTaggateCTRL(currentPhoto.getPhotoCode());
+                    PhotoTag = controller.SoggettoInFotoCTRL(currentPhoto.getPhotoCode());
                 }
                 catch (SQLException ex) {
                     throw new RuntimeException(ex);
@@ -156,7 +149,7 @@ public class MiaGalleria {
         });
 
         modificaFotoButton.addActionListener(e -> {
-            new MiaGalleriaModifica(currentphoto, activeUtente);
+            new MiaGalleriaModifica(currentPhoto, activeUtente);
             frame.setVisible(false);
             frame.dispose();
         });
@@ -165,21 +158,21 @@ public class MiaGalleria {
             boolean check = activeVideo.contains(activeVideo.get(0));
 
             if(check) {
-                new galleriaVideo(activeUtente);
+                new GalleriaVideo(activeUtente);
                 frame.setVisible(false);
                 frame.dispose();
             }
         });
 
         aggiungiVideoButton.addActionListener(e -> {
-            new galleriaVideoAggiungi(activeUtente);
+            new GalleriaVideoAggiungi(activeUtente);
             frame.setVisible(false);
             frame.dispose();
         });
 
         eliminaFotoButton.addActionListener(e -> {
             try{
-                controller.deletePhotoCTRL(currentphoto.getPhotoCode());
+                controller.deletePhotoCTRL(currentPhoto.getPhotoCode());
             }
             catch(SQLException ex){
                 throw new RuntimeException(ex);
@@ -193,14 +186,10 @@ public class MiaGalleria {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MiaGalleriaAddToCollection miaGalleriaAddToCollection = new MiaGalleriaAddToCollection(activeUtente, activePhoto.get(counter));
-                //frame.setVisible(false);
-                //frame.dispose();
             }
         });
 
 
     }
 
-
-    //QUA ANDRA' IL CODICE PER FAR COMPARIRE LE FOTO PERSONALI
 }

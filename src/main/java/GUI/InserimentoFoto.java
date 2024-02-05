@@ -20,7 +20,6 @@ public class InserimentoFoto {
     Utente activeUtente = new Utente();
     Controller controller=new Controller();
     private JFileChooser fileChooser;
-
     private static JFrame frame;
     private JPanel panel1;
     private JButton selezionaFotoButton;

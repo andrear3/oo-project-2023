@@ -12,5 +12,4 @@ public interface UtenteDAO {
     Utente modDataNascita(String nickname, java.sql.Date dataN) throws SQLException;
     Utente eliminaUtente(String nickname)throws SQLException;
     Utente registraUtente(String nickname, String name, String surname, java.sql.Date birthdate, String gender, String password)throws SQLException;
-
 }

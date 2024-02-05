@@ -12,9 +12,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class CommunityHubShowCollection {
-
     Utente activeUtente = new Utente();
-
     Controller controller = new Controller();
     private static JFrame frame;
     private JPanel CommunityHubPanel;
@@ -77,12 +75,6 @@ public class CommunityHubShowCollection {
             }
         }
 
-        /*for(Integer i=0;i<photoArray.size();i++){
-            String temp;
-            temp = photoArray.get(i).getDevice();
-            System.out.println(temp);
-
-        }*/
 
         ArrayList<Photo> finalPhotoArray = photoArray;
         nextButton.addActionListener(new ActionListener() {

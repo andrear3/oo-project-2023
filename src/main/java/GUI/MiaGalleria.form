@@ -34,7 +34,7 @@
           <text value="Numero di foto:"/>
         </properties>
       </component>
-      <component id="aa4b2" class="javax.swing.JLabel" binding="photonumLabel">
+      <component id="aa4b2" class="javax.swing.JLabel" binding="photoNumLabel">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="152" height="16"/>

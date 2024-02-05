@@ -10,22 +10,18 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.Timer;
 
-public class galleriaVideo {
+public class GalleriaVideo {
 
     Controller controller = new Controller();
     Utente activeUtente;
     Integer counter = 0;
+    Integer videoCounter = 0;
 
-    Integer video_counter = 0;
-
-    ArrayList<Photo> photoinvideo;
-
+    ArrayList<Photo> photoInVideo;
     ArrayList<Video> activeVideo;
-
     Video currentVideo;
-
-    String lista_foto;
-    private JLabel videoshow;
+    String listaFoto;
+    private JLabel videoShow;
     private JButton aggiungiVideoButton;
     private JButton eliminaVideoButton;
     private JButton modificaVideoButton;
@@ -39,7 +35,7 @@ public class galleriaVideo {
     private JLabel ListaFoto;
 
     private static JFrame frame;
-    public galleriaVideo(Utente utente)
+    public GalleriaVideo(Utente utente)
     {
         frame = new JFrame("galleriaVideo");
         frame.setContentPane(panel1);
@@ -53,11 +49,11 @@ public class galleriaVideo {
             throw new RuntimeException(ex);
         }
 
-        currentVideo = activeVideo.get(video_counter);
+        currentVideo = activeVideo.get(videoCounter);
 
         try{
-            photoinvideo = controller.fotoInVideoCTRL(currentVideo.getVideoCode());
-            lista_foto = controller.listafotovideoCTRL(currentVideo.getVideoCode());
+            photoInVideo = controller.fotoInVideoCTRL(currentVideo.getVideoCode());
+            listaFoto = controller.listafotovideoCTRL(currentVideo.getVideoCode());
         }
         catch (SQLException ex){
             throw new RuntimeException(ex);
@@ -66,25 +62,25 @@ public class galleriaVideo {
 
 
         CodLabel.setText(currentVideo.getVideoCode().toString());
-        ListaFoto.setText(lista_foto);
+        ListaFoto.setText(listaFoto);
         Title.setText(currentVideo.getVideoTitle());
         Desc.setText(currentVideo.getVideoDesc());
-        final ImageIcon[] ph = {controller.setImgPathSize(photoinvideo.get(counter).getPath(), 250, 250)};
-        videoshow.setIcon(ph[0]);
+        final ImageIcon[] ph = {controller.setImgPathSize(photoInVideo.get(counter).getPath(), 250, 250)};
+        videoShow.setIcon(ph[0]);
 
-        System.out.println(photoinvideo.size());
+        System.out.println(photoInVideo.size());
 
 
         int i = 0;
         Timer timer = new Timer();
-        while(i<photoinvideo.size()) {
+        while(i< photoInVideo.size()) {
             Integer finalI = i;
             TimerTask task = new TimerTask() {
                 @Override
                 public void run() {
-                    ph[0] = controller.setImgPathSize(photoinvideo.get(finalI).getPath(), 250, 250);
-                    videoshow.setIcon(ph[0]);
-                    System.out.println("Codice attuale:" + photoinvideo.get(finalI).getPhotoCode());
+                    ph[0] = controller.setImgPathSize(photoInVideo.get(finalI).getPath(), 250, 250);
+                    videoShow.setIcon(ph[0]);
+                    System.out.println("Codice attuale:" + photoInVideo.get(finalI).getPhotoCode());
                     System.out.println("Valore di I:" + finalI);
                 }
             };
@@ -94,39 +90,39 @@ public class galleriaVideo {
         videoSuccessivoButton.addActionListener(e -> {
             if(counter<activeVideo.size()-1)
             {
-                video_counter = video_counter+1;
-                currentVideo = activeVideo.get(video_counter);
+                videoCounter = videoCounter +1;
+                currentVideo = activeVideo.get(videoCounter);
 
                 try{
-                    photoinvideo = controller.fotoInVideoCTRL(currentVideo.getVideoCode());
-                    lista_foto = controller.listafotovideoCTRL(currentVideo.getVideoCode());
+                    photoInVideo = controller.fotoInVideoCTRL(currentVideo.getVideoCode());
+                    listaFoto = controller.listafotovideoCTRL(currentVideo.getVideoCode());
                 }
                 catch (SQLException ex){
                     throw new RuntimeException(ex);
                 }
 
                 CodLabel.setText(currentVideo.getVideoCode().toString());
-                ListaFoto.setText(lista_foto);
+                ListaFoto.setText(listaFoto);
                 Title.setText(currentVideo.getVideoTitle());
                 Desc.setText(currentVideo.getVideoDesc());
 
-                final ImageIcon[] ph1 = {controller.setImgPathSize(photoinvideo.get(counter).getPath(), 250, 250)};
-                videoshow.setIcon(ph1[0]);
+                final ImageIcon[] ph1 = {controller.setImgPathSize(photoInVideo.get(counter).getPath(), 250, 250)};
+                videoShow.setIcon(ph1[0]);
 
-                System.out.println(photoinvideo.size());
+                System.out.println(photoInVideo.size());
 
 
                 int i1 = 0;
                 Timer timer1 = new Timer();
-                while(i1 <photoinvideo.size()) {
+                while(i1 < photoInVideo.size()) {
                     //String value = photoinvideo.next();
                     Integer finalI = i1;
                     TimerTask task = new TimerTask() {
                         @Override
                         public void run() {
-                            ph1[0] = controller.setImgPathSize(photoinvideo.get(finalI).getPath(), 250, 250);
-                            videoshow.setIcon(ph1[0]);
-                            System.out.println("Codice attuale:" + photoinvideo.get(finalI).getPhotoCode());
+                            ph1[0] = controller.setImgPathSize(photoInVideo.get(finalI).getPath(), 250, 250);
+                            videoShow.setIcon(ph1[0]);
+                            System.out.println("Codice attuale:" + photoInVideo.get(finalI).getPhotoCode());
                             System.out.println("Valore di I:" + finalI);
                         }
                     };
@@ -136,41 +132,41 @@ public class galleriaVideo {
         });
 
         videoPrecedenteButton.addActionListener(e -> {
-            if(video_counter>0)
+            if(videoCounter >0)
             {
-                video_counter = video_counter-1;
-                currentVideo = activeVideo.get(video_counter);
+                videoCounter = videoCounter -1;
+                currentVideo = activeVideo.get(videoCounter);
 
                 try{
-                    photoinvideo = controller.fotoInVideoCTRL(currentVideo.getVideoCode());
-                    lista_foto = controller.listafotovideoCTRL(currentVideo.getVideoCode());
+                    photoInVideo = controller.fotoInVideoCTRL(currentVideo.getVideoCode());
+                    listaFoto = controller.listafotovideoCTRL(currentVideo.getVideoCode());
                 }
                 catch (SQLException ex){
                     throw new RuntimeException(ex);
                 }
 
                 CodLabel.setText(currentVideo.getVideoCode().toString());
-                ListaFoto.setText(lista_foto);
+                ListaFoto.setText(listaFoto);
                 Title.setText(currentVideo.getVideoTitle());
                 Desc.setText(currentVideo.getVideoDesc());
 
-                final ImageIcon[] ph12 = {controller.setImgPathSize(photoinvideo.get(counter).getPath(), 250, 250)};
-                videoshow.setIcon(ph12[0]);
+                final ImageIcon[] ph12 = {controller.setImgPathSize(photoInVideo.get(counter).getPath(), 250, 250)};
+                videoShow.setIcon(ph12[0]);
 
-                System.out.println(photoinvideo.size());
+                System.out.println(photoInVideo.size());
 
 
                 int i12 = 0;
                 Timer timer12 = new Timer();
-                while(i12 <photoinvideo.size()) {
+                while(i12 < photoInVideo.size()) {
                     //String value = photoinvideo.next();
                     Integer finalI = i12;
                     TimerTask task = new TimerTask() {
                         @Override
                         public void run() {
-                            ph12[0] = controller.setImgPathSize(photoinvideo.get(finalI).getPath(), 250, 250);
-                            videoshow.setIcon(ph12[0]);
-                            System.out.println("Codice attuale:" + photoinvideo.get(finalI).getPhotoCode());
+                            ph12[0] = controller.setImgPathSize(photoInVideo.get(finalI).getPath(), 250, 250);
+                            videoShow.setIcon(ph12[0]);
+                            System.out.println("Codice attuale:" + photoInVideo.get(finalI).getPhotoCode());
                             System.out.println("Valore di I:" + finalI);
                         }
                     };
@@ -180,7 +176,7 @@ public class galleriaVideo {
         });
 
         aggiungiVideoButton.addActionListener(e -> {
-            new galleriaVideoAggiungi(activeUtente);
+            new GalleriaVideoAggiungi(activeUtente);
             frame.setVisible(false);
             frame.dispose();
         });
@@ -195,7 +191,7 @@ public class galleriaVideo {
 
 
         modificaVideoButton.addActionListener(e -> {
-            new galleriaVideoModifica(currentVideo, activeUtente);
+            new GalleriaVideoModifica(currentVideo, activeUtente);
             frame.setVisible(false);
             frame.dispose();
         });
