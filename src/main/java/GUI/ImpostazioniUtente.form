@@ -69,7 +69,7 @@
       </component>
       <component id="10fad" class="javax.swing.JButton" binding="modificaPassword">
         <constraints>
-          <grid row="1" column="1" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false">
+          <grid row="1" column="1" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false">
             <minimum-size width="152" height="30"/>
             <preferred-size width="152" height="30"/>
             <maximum-size width="152" height="30"/>
@@ -81,7 +81,7 @@
       </component>
       <component id="31fb4" class="javax.swing.JButton" binding="modificaDN">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false">
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false">
             <minimum-size width="152" height="30"/>
             <preferred-size width="199" height="30"/>
             <maximum-size width="152" height="30"/>
