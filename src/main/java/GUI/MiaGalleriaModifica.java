@@ -37,7 +37,7 @@ public class MiaGalleriaModifica {
         aggiungiPhotoTag.addActionListener(e -> {
             String checkTag = String.valueOf(comboBox1.getSelectedItem());
             try {
-                controller.aggiungiSoggettoCTRL(currentphoto.getPhoto_code(), checkTag);
+                controller.aggiungiSoggettoCTRL(currentphoto.getPhotoCode(), checkTag);
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
@@ -45,7 +45,7 @@ public class MiaGalleriaModifica {
 
         aggiungiUserTag.addActionListener(e -> {
             try {
-                currentphoto = controller.aggiungiUserTagCTRL(currentphoto.getPhoto_code(), utentetext.getText());
+                currentphoto = controller.aggiungiUserTagCTRL(currentphoto.getPhotoCode(), utentetext.getText());
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }

@@ -59,8 +59,8 @@ public class MiaGalleria {
         try {
             activePhoto = controller.fotoStessoUtenteCTRL(utente.getNicknameUtente());
             activeVideo = controller.videoStessoUtenteCTRL(utente.getNicknameUtente());
-            UserTag = controller.PersoneTaggateCTRL(activePhoto.get(counter).getPhoto_code());
-            PhotoTag = controller.SoggettoInFotoCTRL(activePhoto.get(counter).getPhoto_code());
+            UserTag = controller.PersoneTaggateCTRL(activePhoto.get(counter).getPhotoCode());
+            PhotoTag = controller.SoggettoInFotoCTRL(activePhoto.get(counter).getPhotoCode());
         }
         catch (SQLException ex) {
             throw new RuntimeException(ex);
@@ -68,18 +68,18 @@ public class MiaGalleria {
 
         activeUtente = utente;
         currentphoto = activePhoto.get(0);
-        System.out.println(activePhoto.get(0).getPhoto_code());
+        System.out.println(activePhoto.get(0).getPhotoCode());
 
 
         photonumLabel.setText(String.valueOf(activePhoto.size()));
 
-        CodLabel.setText(activePhoto.get(counter).getPhoto_code().toString());
+        CodLabel.setText(activePhoto.get(counter).getPhotoCode().toString());
         VisLabel.setText(activePhoto.get(counter).getScope());
-        LuoLabel.setText(activePhoto.get(counter).getLocation_name());
+        LuoLabel.setText(activePhoto.get(counter).getLocationName());
         DisLabel.setText(activePhoto.get(counter).getDevice());
-        DaLabel.setText(activePhoto.get(counter).getPhoto_date().toString());
-        X.setText(activePhoto.get(counter).getX_coordinates().toString());
-        Y.setText(activePhoto.get(counter).getY_coordinates().toString());
+        DaLabel.setText(activePhoto.get(counter).getPhotoDate().toString());
+        X.setText(activePhoto.get(counter).getXCoordinates().toString());
+        Y.setText(activePhoto.get(counter).getYCoordinates().toString());
         UtTag.setText(UserTag);
         SogTag.setText(PhotoTag);
         final ImageIcon[] ph = {controller.setImgPathSize(activePhoto.get(counter).getPath(), 250, 250)};
@@ -100,18 +100,18 @@ public class MiaGalleria {
                 System.out.println(counter);
                 ++counter;
                 System.out.println(counter);
-                CodLabel.setText(currentphoto.getPhoto_code().toString());
+                CodLabel.setText(currentphoto.getPhotoCode().toString());
                 VisLabel.setText(currentphoto.getScope());
-                LuoLabel.setText(currentphoto.getLocation_name());
+                LuoLabel.setText(currentphoto.getLocationName());
                 DisLabel.setText(currentphoto.getDevice());
-                DaLabel.setText(currentphoto.getPhoto_date().toString());
-                X.setText(currentphoto.getX_coordinates().toString());
-                Y.setText(currentphoto.getY_coordinates().toString());
+                DaLabel.setText(currentphoto.getPhotoDate().toString());
+                X.setText(currentphoto.getXCoordinates().toString());
+                Y.setText(currentphoto.getYCoordinates().toString());
                 ph[0] = controller.setImgPathSize(currentphoto.getPath(),250,250);
                 photo_field.setIcon(ph[0]);
                 try {
-                    UserTag = controller.PersoneTaggateCTRL(currentphoto.getPhoto_code());
-                    PhotoTag = controller.SoggettoInFotoCTRL(currentphoto.getPhoto_code());
+                    UserTag = controller.PersoneTaggateCTRL(currentphoto.getPhotoCode());
+                    PhotoTag = controller.SoggettoInFotoCTRL(currentphoto.getPhotoCode());
                 }
                 catch (SQLException ex) {
                     throw new RuntimeException(ex);
@@ -128,18 +128,18 @@ public class MiaGalleria {
                 System.out.println(counter);
                 --counter;
                 System.out.println(counter);
-                CodLabel.setText(currentphoto.getPhoto_code().toString());
+                CodLabel.setText(currentphoto.getPhotoCode().toString());
                 VisLabel.setText(currentphoto.getScope());
-                LuoLabel.setText(currentphoto.getLocation_name());
+                LuoLabel.setText(currentphoto.getLocationName());
                 DisLabel.setText(currentphoto.getDevice());
-                DaLabel.setText(currentphoto.getPhoto_date().toString());
-                X.setText(currentphoto.getX_coordinates().toString());
-                Y.setText(currentphoto.getY_coordinates().toString());
+                DaLabel.setText(currentphoto.getPhotoDate().toString());
+                X.setText(currentphoto.getXCoordinates().toString());
+                Y.setText(currentphoto.getYCoordinates().toString());
                 ph[0] = controller.setImgPathSize(currentphoto.getPath(),250,250);
                 photo_field.setIcon(ph[0]);
                 try {
-                    UserTag = controller.PersoneTaggateCTRL(currentphoto.getPhoto_code());
-                    PhotoTag = controller.SoggettoInFotoCTRL(currentphoto.getPhoto_code());
+                    UserTag = controller.PersoneTaggateCTRL(currentphoto.getPhotoCode());
+                    PhotoTag = controller.SoggettoInFotoCTRL(currentphoto.getPhotoCode());
                 }
                 catch (SQLException ex) {
                     throw new RuntimeException(ex);
@@ -179,7 +179,7 @@ public class MiaGalleria {
 
         eliminaFotoButton.addActionListener(e -> {
             try{
-                controller.deletePhotoCTRL(currentphoto.getPhoto_code());
+                controller.deletePhotoCTRL(currentphoto.getPhotoCode());
             }
             catch(SQLException ex){
                 throw new RuntimeException(ex);

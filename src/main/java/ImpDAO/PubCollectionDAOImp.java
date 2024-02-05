@@ -1,7 +1,5 @@
 package ImpDAO;
 import Database.DatabaseConnection;
-import Model.Photo;
-import Model.PubCollection;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,15 +1,14 @@
 package Model;
 
-public class PubCollection {
+public class Pub_Collection {
     //Attributi
     private String collection_name;
 
-    //Costruttore
-
-    public PubCollection(){
+    //Costruttori
+    public Pub_Collection(){
 
     }
-    public PubCollection(String collection_name) {
+    public Pub_Collection(String collection_name) {
         this.collection_name = collection_name;
     }
 

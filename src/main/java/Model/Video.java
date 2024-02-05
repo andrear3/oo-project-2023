@@ -1,43 +1,36 @@
 package Model;
 
-import java.util.Date;
-
 public class Video {
-
+    //Attributi
     private Integer video_code;
-
     private String video_desc;
-
     private String video_title;
-
     private String nickname;
 
+    //Costruttori
     public Video(Integer video_code, String video_desc, String video_title, String nickname){
         this.video_code = video_code;
         this.video_desc = video_desc;
         this.video_title = video_title;
         this.nickname = nickname;
     }
-
     public Video(){
 
     }
-
-    public Integer getvideocode() {
+    //Getters
+    public Integer getVideoCode() {
         return video_code;
     }
-
-    public String getvideotitle() {
+    public String getVideoTitle() {
         return video_title;
     }
-
-    public String getvideodesc() {
+    public String getVideoDesc() {
         return video_desc;
     }
-
-    public String getvideonickname() {
+    public String getVideoNickname() {
         return nickname;
     }
+    //Setters
     public void setVideoCode(Integer video_code){
         this.video_code = video_code;
     }

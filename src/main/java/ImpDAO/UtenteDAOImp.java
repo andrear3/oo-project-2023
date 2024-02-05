@@ -23,6 +23,11 @@ public class UtenteDAOImp implements UtenteDAO {
         if (resultSet.next()) {
             userExistance = true;
         }
+
+        resultSet.close();
+        prepStat.close();
+        connection.close();
+
         return userExistance;
     }
     //funzione con uso di stringa sql che restituisce i le informazioni di un utente

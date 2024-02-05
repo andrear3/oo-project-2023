@@ -43,7 +43,7 @@ public class MiaGalleriaAddToCollection {
                 Object temp = comboBox1.getSelectedItem();
                 String tmp = temp.toString();
                 try {
-                    controller.insertPhotoInCollectionCTRL(photo.getPhoto_code(),tmp);
+                    controller.insertPhotoInCollectionCTRL(photo.getPhotoCode(),tmp);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }

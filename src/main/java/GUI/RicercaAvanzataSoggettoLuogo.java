@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 
 public class RicercaAvanzataSoggettoLuogo {
@@ -51,14 +50,14 @@ public class RicercaAvanzataSoggettoLuogo {
             photoOwner.setText(photoArray.get(0).getNickname());
             String tempText;
             try {
-                tempText = controller.PersoneTaggateCTRL(photoArray.get(0).getPhoto_code());
+                tempText = controller.PersoneTaggateCTRL(photoArray.get(0).getPhotoCode());
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
             tagLabel.setText(tempText);
             String tempSoggetto;
             try {
-                tempSoggetto = controller.SoggettoInFotoCTRL(photoArray.get(0).getPhoto_code());
+                tempSoggetto = controller.SoggettoInFotoCTRL(photoArray.get(0).getPhotoCode());
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
@@ -77,14 +76,14 @@ public class RicercaAvanzataSoggettoLuogo {
                     photoOwner.setText(finalPhotoArray.get(counter).getNickname());
                     String tempText;
                     try {
-                        tempText = controller.PersoneTaggateCTRL(finalPhotoArray.get(counter).getPhoto_code());
+                        tempText = controller.PersoneTaggateCTRL(finalPhotoArray.get(counter).getPhotoCode());
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     }
                     tagLabel.setText(tempText);
                     String tempSoggetto;
                     try {
-                        tempSoggetto = controller.SoggettoInFotoCTRL(finalPhotoArray.get(counter).getPhoto_code());
+                        tempSoggetto = controller.SoggettoInFotoCTRL(finalPhotoArray.get(counter).getPhotoCode());
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     }
@@ -107,14 +106,14 @@ public class RicercaAvanzataSoggettoLuogo {
                     photoOwner.setText(finalPhotoArray.get(counter).getNickname());
                     String tempText;
                     try {
-                        tempText = controller.PersoneTaggateCTRL(finalPhotoArray.get(counter).getPhoto_code());
+                        tempText = controller.PersoneTaggateCTRL(finalPhotoArray.get(counter).getPhotoCode());
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     }
                     tagLabel.setText(tempText);
                     String tempSoggetto;
                     try {
-                        tempSoggetto = controller.SoggettoInFotoCTRL(finalPhotoArray.get(counter).getPhoto_code());
+                        tempSoggetto = controller.SoggettoInFotoCTRL(finalPhotoArray.get(counter).getPhotoCode());
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     }

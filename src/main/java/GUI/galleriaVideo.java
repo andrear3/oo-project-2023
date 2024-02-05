@@ -56,8 +56,8 @@ public class galleriaVideo {
         currentVideo = activeVideo.get(video_counter);
 
         try{
-            photoinvideo = controller.fotoInVideoCTRL(currentVideo.getvideocode());
-            lista_foto = controller.listafotovideoCTRL(currentVideo.getvideocode());
+            photoinvideo = controller.fotoInVideoCTRL(currentVideo.getVideoCode());
+            lista_foto = controller.listafotovideoCTRL(currentVideo.getVideoCode());
         }
         catch (SQLException ex){
             throw new RuntimeException(ex);
@@ -65,10 +65,10 @@ public class galleriaVideo {
 
 
 
-        CodLabel.setText(currentVideo.getvideocode().toString());
+        CodLabel.setText(currentVideo.getVideoCode().toString());
         ListaFoto.setText(lista_foto);
-        Title.setText(currentVideo.getvideotitle());
-        Desc.setText(currentVideo.getvideodesc());
+        Title.setText(currentVideo.getVideoTitle());
+        Desc.setText(currentVideo.getVideoDesc());
         final ImageIcon[] ph = {controller.setImgPathSize(photoinvideo.get(counter).getPath(), 250, 250)};
         videoshow.setIcon(ph[0]);
 
@@ -84,7 +84,7 @@ public class galleriaVideo {
                 public void run() {
                     ph[0] = controller.setImgPathSize(photoinvideo.get(finalI).getPath(), 250, 250);
                     videoshow.setIcon(ph[0]);
-                    System.out.println("Codice attuale:" + photoinvideo.get(finalI).getPhoto_code());
+                    System.out.println("Codice attuale:" + photoinvideo.get(finalI).getPhotoCode());
                     System.out.println("Valore di I:" + finalI);
                 }
             };
@@ -98,17 +98,17 @@ public class galleriaVideo {
                 currentVideo = activeVideo.get(video_counter);
 
                 try{
-                    photoinvideo = controller.fotoInVideoCTRL(currentVideo.getvideocode());
-                    lista_foto = controller.listafotovideoCTRL(currentVideo.getvideocode());
+                    photoinvideo = controller.fotoInVideoCTRL(currentVideo.getVideoCode());
+                    lista_foto = controller.listafotovideoCTRL(currentVideo.getVideoCode());
                 }
                 catch (SQLException ex){
                     throw new RuntimeException(ex);
                 }
 
-                CodLabel.setText(currentVideo.getvideocode().toString());
+                CodLabel.setText(currentVideo.getVideoCode().toString());
                 ListaFoto.setText(lista_foto);
-                Title.setText(currentVideo.getvideotitle());
-                Desc.setText(currentVideo.getvideodesc());
+                Title.setText(currentVideo.getVideoTitle());
+                Desc.setText(currentVideo.getVideoDesc());
 
                 final ImageIcon[] ph1 = {controller.setImgPathSize(photoinvideo.get(counter).getPath(), 250, 250)};
                 videoshow.setIcon(ph1[0]);
@@ -126,7 +126,7 @@ public class galleriaVideo {
                         public void run() {
                             ph1[0] = controller.setImgPathSize(photoinvideo.get(finalI).getPath(), 250, 250);
                             videoshow.setIcon(ph1[0]);
-                            System.out.println("Codice attuale:" + photoinvideo.get(finalI).getPhoto_code());
+                            System.out.println("Codice attuale:" + photoinvideo.get(finalI).getPhotoCode());
                             System.out.println("Valore di I:" + finalI);
                         }
                     };
@@ -142,17 +142,17 @@ public class galleriaVideo {
                 currentVideo = activeVideo.get(video_counter);
 
                 try{
-                    photoinvideo = controller.fotoInVideoCTRL(currentVideo.getvideocode());
-                    lista_foto = controller.listafotovideoCTRL(currentVideo.getvideocode());
+                    photoinvideo = controller.fotoInVideoCTRL(currentVideo.getVideoCode());
+                    lista_foto = controller.listafotovideoCTRL(currentVideo.getVideoCode());
                 }
                 catch (SQLException ex){
                     throw new RuntimeException(ex);
                 }
 
-                CodLabel.setText(currentVideo.getvideocode().toString());
+                CodLabel.setText(currentVideo.getVideoCode().toString());
                 ListaFoto.setText(lista_foto);
-                Title.setText(currentVideo.getvideotitle());
-                Desc.setText(currentVideo.getvideodesc());
+                Title.setText(currentVideo.getVideoTitle());
+                Desc.setText(currentVideo.getVideoDesc());
 
                 final ImageIcon[] ph12 = {controller.setImgPathSize(photoinvideo.get(counter).getPath(), 250, 250)};
                 videoshow.setIcon(ph12[0]);
@@ -170,7 +170,7 @@ public class galleriaVideo {
                         public void run() {
                             ph12[0] = controller.setImgPathSize(photoinvideo.get(finalI).getPath(), 250, 250);
                             videoshow.setIcon(ph12[0]);
-                            System.out.println("Codice attuale:" + photoinvideo.get(finalI).getPhoto_code());
+                            System.out.println("Codice attuale:" + photoinvideo.get(finalI).getPhotoCode());
                             System.out.println("Valore di I:" + finalI);
                         }
                     };
@@ -203,7 +203,7 @@ public class galleriaVideo {
         eliminaVideoButton.addActionListener(e -> {
 
             try{
-                controller.deleteVideoCTRL(currentVideo.getvideocode());
+                controller.deleteVideoCTRL(currentVideo.getVideoCode());
             }
             catch(SQLException ex){
                 throw new RuntimeException(ex);

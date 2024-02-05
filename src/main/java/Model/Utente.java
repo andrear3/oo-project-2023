@@ -13,7 +13,7 @@ public class Utente {
     private String gender;
     private String password;
 
-    //Costruttore
+    //Costruttori
     public Utente(String nickname, String name, String surname, Date birthdate, String gender,String password){
         this.nickname = nickname;
         this.name = name;

@@ -24,7 +24,7 @@ public class Controller {
     private FotoDAOImp photoDAO= new FotoDAOImp();
 
     //PUBLIC COLLECTION
-    private PubCollection pubCollection = new PubCollection();
+    private Pub_Collection pubCollection = new Pub_Collection();
     private PubCollectionDAOImp pubCollectionDAOImp = new PubCollectionDAOImp();
 
     private User_TagDAOImp UserTagDAO = new User_TagDAOImp();

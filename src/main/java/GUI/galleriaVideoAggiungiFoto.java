@@ -48,7 +48,7 @@ public class galleriaVideoAggiungiFoto {
             if(check) {
 
                 try {
-                    controller.aggiungiFotoVideoCTRL(activevideo.getvideocode(), photo);
+                    controller.aggiungiFotoVideoCTRL(activevideo.getVideoCode(), photo);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }

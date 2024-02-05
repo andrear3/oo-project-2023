@@ -40,7 +40,7 @@ public class galleriaVideoModifica {
         activeutente = utente;
 
         try{
-            listafoto = controller.listafotovideoCTRL(currentvideo.getvideocode());
+            listafoto = controller.listafotovideoCTRL(currentvideo.getVideoCode());
         }
         catch (SQLException ex){
             throw new RuntimeException(ex);
@@ -49,7 +49,7 @@ public class galleriaVideoModifica {
         edit_title.addActionListener(e -> {
             String title = String.valueOf(edit_title_field.getText());
             try {
-                controller.modificaTitoloCTRL(currentvideo.getvideocode(), title);
+                controller.modificaTitoloCTRL(currentvideo.getVideoCode(), title);
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
@@ -58,7 +58,7 @@ public class galleriaVideoModifica {
         edit_desc.addActionListener(e -> {
             String desc = String.valueOf(edit_desc_field.getText());
             try {
-                controller.modificaDescCTRL(currentvideo.getvideocode(), desc);
+                controller.modificaDescCTRL(currentvideo.getVideoCode(), desc);
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
@@ -67,8 +67,8 @@ public class galleriaVideoModifica {
         add_photo.addActionListener(e -> {
             Integer photo = Integer.valueOf(add_photo_field.getText());
             try {
-                controller.aggiungiFotoVideoCTRL(currentvideo.getvideocode(), photo);
-                listafoto = controller.listafotovideoCTRL(currentvideo.getvideocode());
+                controller.aggiungiFotoVideoCTRL(currentvideo.getVideoCode(), photo);
+                listafoto = controller.listafotovideoCTRL(currentvideo.getVideoCode());
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
@@ -77,8 +77,8 @@ public class galleriaVideoModifica {
         del_photo.addActionListener(e -> {
             Integer photo = Integer.valueOf(del_photo_field.getText());
             try {
-                controller.eliminaFotoVideoCTRL(currentvideo.getvideocode(), photo);
-                listafoto = controller.listafotovideoCTRL(currentvideo.getvideocode());
+                controller.eliminaFotoVideoCTRL(currentvideo.getVideoCode(), photo);
+                listafoto = controller.listafotovideoCTRL(currentvideo.getVideoCode());
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
