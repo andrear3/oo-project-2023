@@ -59,10 +59,10 @@ public class SchermataIniziale {
         registraButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SchermataRegistrazione schermataRegistrazione=new SchermataRegistrazione();
+                SchermataRegistrazione schermataRegistrazione=new SchermataRegistrazione(frame);
 
                 frame.setVisible(false);
-                frame.dispose();
+
 
             }
         });

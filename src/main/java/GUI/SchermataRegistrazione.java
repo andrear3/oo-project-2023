@@ -28,12 +28,13 @@ public class SchermataRegistrazione {
     private JCheckBox showPassCK;
     private JPanel panelPrincipale;
     private JButton invioRegistraButton;
+    private JButton loginButton;
     private static JFrame frame;
     Controller controller = new Controller();
     Utente utente=new Utente();
 
 
-    public SchermataRegistrazione() {
+    public SchermataRegistrazione(JFrame schermataIniziale) {
         this.frame = new JFrame("Registrazione");
         frame.setContentPane(panelPrincipale);
 
@@ -68,6 +69,14 @@ public class SchermataRegistrazione {
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
+            }
+        });
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                schermataIniziale.setVisible(true);
+                frame.setVisible(false);
+                frame.dispose();
             }
         });
     }
