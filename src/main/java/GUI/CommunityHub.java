@@ -38,8 +38,6 @@ public class CommunityHub {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CommunityHubNewCollection communityHubNewCollection = new CommunityHubNewCollection(activeUtente);
-                //frame.setVisible(false);
-                //frame.dispose();
             }
         });
 

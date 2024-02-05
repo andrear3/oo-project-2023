@@ -38,4 +38,16 @@ public class Video {
     public String getvideonickname() {
         return nickname;
     }
+    public void setVideoCode(Integer video_code){
+        this.video_code = video_code;
+    }
+    public void setVideoTitle(String video_title){
+        this.video_title = video_title;
+    }
+    public void setVideoDesc(String video_desc){
+        this.video_desc = video_desc;
+    }
+    public void setVideoNickname(String nickname){
+        this.nickname = nickname;
+    }
 }

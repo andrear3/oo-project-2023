@@ -22,15 +22,13 @@ public class CommunityHubCollections {
     public CommunityHubCollections(Utente utente) {
 
         Controller controller = new Controller();
-        //!!!!!!!!!!!!!!
         PanelCollections.setLayout(new BoxLayout(PanelCollections, BoxLayout.PAGE_AXIS));
-        //!!!!!!!!!!!!!!
         JScrollPane scrollPane = new JScrollPane(PanelCollections);
 
 
         this.frame = new JFrame("CommunityHubCollections");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(scrollPane); //scrolling
+        frame.getContentPane().add(scrollPane);
         frame.setSize(500, 300);
         frame.setVisible(true);
         activeUtente = utente;
@@ -55,9 +53,6 @@ public class CommunityHubCollections {
                     frame.dispose();
                 }
             });
-            /*public void actionPerformed(ActionEvent e){
-                if e.getSource()==tempButton()
-            }*/
         }
 
         JButton tempButton2 = new JButton();

@@ -8,28 +8,7 @@ import java.sql.*;
 
 public class UtenteDAOImp implements UtenteDAO {
 
-    //in tutte le si effettua il collegamento al Database e tramite la stringa che contiene il comando sql si effettuano operazioni nel database
-    //funzione con uso di stringa sql che restituisce il sesso dell'utente
-    @Override
-    public void printGender(String nickname) throws SQLException {
-        Connection connection = DatabaseConnection.getInstance().getConnection();
 
-        String sql = "SELECT gender FROM photogallery.utente WHERE nickname = ?"; //? è placeholder
-        PreparedStatement prepStat = connection.prepareStatement(sql);
-        prepStat.setString(1, nickname); //sostituisce placeholder
-
-        ResultSet resultSet = prepStat.executeQuery();
-        if (resultSet.next()) {
-            String genderRetrieved = resultSet.getString("gender");
-            System.out.println(genderRetrieved);
-        } else {
-            System.out.println("Nickname not found");
-        }
-
-        resultSet.close();
-        prepStat.close();
-        connection.close();
-    }
     //funzione con uso di stringa sql che ritorna se un utente esiste o meno (usato in fase di login)
     @Override
     public boolean checkUtenteExists(String nickname, String password) throws SQLException {

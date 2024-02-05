@@ -30,7 +30,6 @@ public class CommunityHubNewCollection {
                 String getNewCollection =  textField1.getText();
                 if(getNewCollection.length()!=0){
                     try {
-                        System.out.println("Funziona");
                         controller.newPubCollectionCTRL(getNewCollection);
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);

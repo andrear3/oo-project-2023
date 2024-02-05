@@ -21,6 +21,7 @@ public class RicercaAvanzata {
     private JTextField textSoggetto;
     private JButton buttonSoggetto;
     private JLabel labelSoggetto;
+
     private JButton buttonTop3;
     private JLabel labelTop3;
     private JPanel PanelAvanzato;
