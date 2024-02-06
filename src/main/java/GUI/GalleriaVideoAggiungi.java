@@ -12,6 +12,8 @@ public class GalleriaVideoAggiungi {
 
     Utente activeUtente;
     ArrayList<Video> activeVideo;
+
+    Video newVideo;
     Controller controller = new Controller();
     private JButton tornaIndietroButton;
     private JButton confermaEAggiungiFotoButton;
@@ -39,9 +41,15 @@ public class GalleriaVideoAggiungi {
             String desc = String.valueOf(textField2.getText());
             try {
                 controller.nuovoVideoCTRL(desc, title, activeUtente.getNicknameUtente());
+                activeVideo = controller.videoStessoUtenteCTRL(utente.getNicknameUtente());
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
+            newVideo = activeVideo.get(activeVideo.size()-1);
+            System.out.println(newVideo.getVideoCode());
+            new GalleriaVideoAggiungiFoto(newVideo, activeUtente);
+            frame.setVisible(false);
+            frame.dispose();
 
         });
 

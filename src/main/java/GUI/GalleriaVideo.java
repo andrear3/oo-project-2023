@@ -37,7 +37,7 @@ public class GalleriaVideo {
     private static JFrame frame;
     public GalleriaVideo(Utente utente)
     {
-        frame = new JFrame("galleriaVideo");
+        frame = new JFrame("GalleriaVideo");
         frame.setContentPane(panel1);
         frame.setSize(600,400);
         frame.setVisible(true);

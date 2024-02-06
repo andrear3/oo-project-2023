@@ -102,9 +102,8 @@ public class VideoDAOImp {
         PreparedStatement prepStat = connection.prepareStatement(sql);
         prepStat.setInt(1, video_code);
         prepStat.setInt(2, photo_code);
-        ResultSet resultSet = prepStat.executeQuery();
+        Integer test = prepStat.executeUpdate();
 
-        resultSet.close();
         prepStat.close();
         connection.close();
     }
@@ -116,7 +115,6 @@ public class VideoDAOImp {
         prepStat.setInt(1, video_code);
         prepStat.setInt(2, photo_code);
         ResultSet resultSet = prepStat.executeQuery();
-
         resultSet.close();
         prepStat.close();
         connection.close();
@@ -124,14 +122,13 @@ public class VideoDAOImp {
 
     public void nuovoVideo(String desc, String title, String nickname) throws SQLException {
         Connection connection = DatabaseConnection.getInstance().getConnection();
-        String sql = "INSERT INTO photogallery.video VALUES (DEFAULT, ?, ?, ?)";
+        String sql = "INSERT INTO photogallery.video(video_code, video_desc, video_title, nickname) " +
+                "SELECT MAX(video_code) + 1, ?, ?, ? FROM photogallery.video";
         PreparedStatement prepStat = connection.prepareStatement(sql);
         prepStat.setString(1, desc);
         prepStat.setString(2, title);
         prepStat.setString(3, nickname);
-        ResultSet resultSet = prepStat.executeQuery();
-
-        resultSet.close();
+        int test = prepStat.executeUpdate();
         prepStat.close();
         connection.close();
     }
@@ -142,11 +139,7 @@ public class VideoDAOImp {
         PreparedStatement prepStat = connection.prepareStatement(sql);
 
         prepStat.setInt(1, video_code);
-        ResultSet resultSet = prepStat.executeQuery();
-        if(resultSet.next()){
-            System.out.println("video eliminato");
-        }
-        resultSet.close();
+        Integer test = prepStat.executeUpdate();
         prepStat.close();
         connection.close();
     }
