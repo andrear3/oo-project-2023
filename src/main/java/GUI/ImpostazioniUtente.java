@@ -58,7 +58,7 @@ public class ImpostazioniUtente {
                 String nickname= activeUtente.getNicknameUtente();
                 Date dataN= Date.valueOf(modDN.getText());
                 try{
-                    activeUtente=controller.modDNCTRL(nickname,dataN);
+                    activeUtente=controller.modDNCTRL(activeUtente.getNicknameUtente(),dataN);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }

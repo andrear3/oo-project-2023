@@ -65,10 +65,18 @@ public class UtenteDAOImp implements UtenteDAO {
         PreparedStatement prepStat = connection.prepareStatement(sql);
         prepStat.setString(1, password);
         prepStat.setString(2, nickname);
+        Integer test = prepStat.executeUpdate();
+        String sql2 = "SELECT * FROM photogallery.utente WHERE nickname = ?";
+        prepStat = connection.prepareStatement(sql2);
+        prepStat.setString(1, nickname);
 
         ResultSet resultSet = prepStat.executeQuery();
         if (resultSet.next()) {
-            tempUtente.setPassword(resultSet.getString("password"));
+            tempUtente.setNicknameUtente(resultSet.getString("nickname"));
+            tempUtente.setBirthdateUtente(resultSet.getDate("birthdate"));
+            tempUtente.setGenderUtente(resultSet.getString("gender"));
+            tempUtente.setNameUtente(resultSet.getString("name"));
+            tempUtente.setSurnameUtente(resultSet.getString("surname"));
         }
         resultSet.close();
 
@@ -82,19 +90,27 @@ public class UtenteDAOImp implements UtenteDAO {
     public Utente modDataNascita(String nickname, java.util.Date dataN) throws SQLException {
         return null;
     }
+
     //Funzione con uso di stringa sql che va a modificare la data di nascita
-    @Override
+
        public Utente modDataNascita(String nickname, Date dataN) throws SQLException{
            Connection connection = DatabaseConnection.getInstance().getConnection();
            Utente tempUtente = new Utente();
            String sql="UPDATE photogallery.utente SET birthdate = ? WHERE nickname=? ";
            PreparedStatement prepStat = connection.prepareStatement(sql);
            prepStat.setDate(1,dataN);
-           prepStat.setString(2,nickname);
-
+           prepStat.setString(2, nickname);
+           Integer test = prepStat.executeUpdate();
+           String sql2="SELECT * FROM photogallery.utente WHERE nickname=? ";
+           prepStat = connection.prepareStatement(sql2);
+           prepStat.setString(1, nickname);
            ResultSet resultSet = prepStat.executeQuery();
            if (resultSet.next()) {
+               tempUtente.setNicknameUtente(resultSet.getString("nickname"));
                tempUtente.setBirthdateUtente(resultSet.getDate("birthdate"));
+               tempUtente.setGenderUtente(resultSet.getString("gender"));
+               tempUtente.setNameUtente(resultSet.getString("name"));
+               tempUtente.setSurnameUtente(resultSet.getString("surname"));
            }
 
            resultSet.close();
