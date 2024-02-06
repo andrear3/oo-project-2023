@@ -126,9 +126,9 @@ public class FotoDAOImp implements FotoDAO {
         prepStat.setString(6,path);
         prepStat.setDouble(7,x);
         prepStat.setDouble(8,y);
-        ResultSet resultSet = prepStat.executeQuery();
-        if(resultSet.next()){
-            System.out.println("foto caricata");
+        int resultSet = prepStat.executeUpdate();
+        if(resultSet > 0){
+            System.out.println("Foto caricata!");
         }
       return foto;
     }
@@ -144,6 +144,8 @@ public String getPath(Integer photo_code)throws SQLException{
         System.out.println("path trovato");
 
     }
+    prepStat.close();
+    connection.close();
 
     return path;
 }
@@ -155,11 +157,11 @@ public String getPath(Integer photo_code)throws SQLException{
         PreparedStatement prepStat = connection.prepareStatement(sql);
 
         prepStat.setInt(1,photo_code);
-        ResultSet resultSet = prepStat.executeQuery();
-        if(resultSet.next()){
-            System.out.println("foto eliminata");
+        int resultSet = prepStat.executeUpdate();
+        if(resultSet > 0){
+            System.out.println("Foto eliminata");
         }
-        resultSet.close();
+
         prepStat.close();
         connection.close();
     }

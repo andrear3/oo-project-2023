@@ -52,12 +52,11 @@ public class Pub_CollectionDAOImp {
         PreparedStatement prepStat = connection.prepareStatement(sql);
         prepStat.setString(1,collection_name);
 
-        ResultSet resultSet = prepStat.executeQuery();
-        if (resultSet.next()){
+        int resultSet = prepStat.executeUpdate();
+        if (resultSet > 0){
             System.out.println("Collezione creata!");
         }
 
-        resultSet.close();
         prepStat.close();
         connection.close();
     }
@@ -90,14 +89,13 @@ public class Pub_CollectionDAOImp {
         prepStat.setString(1, collection_name);
         prepStat.setInt(2, photo_code);
 
-        ResultSet resultSet = prepStat.executeQuery();
+        int resultSet = prepStat.executeUpdate();
 
 
-        /*if (resultSet.next()) {
-            System.out.println(photo_code);
-            System.out.println(collection_name);
-        }*/
-        resultSet.close();
+        if (resultSet > 0){
+            System.out.println("Foto inserita con successo");
+        }
+
         prepStat.close();
         connection.close();
 
@@ -109,14 +107,12 @@ public class Pub_CollectionDAOImp {
         PreparedStatement prepStat = connection.prepareStatement(sql);
         prepStat.setInt(1, photo_code);
 
-        ResultSet resultSet = prepStat.executeQuery();
+        int resultSet = prepStat.executeUpdate();
 
+        if (resultSet > 0) {
+            System.out.println("Foto eliminata");
+        }
 
-        /*if (resultSet.next()) {
-            System.out.println(photo_code);
-            System.out.println(collection_name);
-        }*/
-        resultSet.close();
         prepStat.close();
         connection.close();
     }

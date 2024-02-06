@@ -35,9 +35,11 @@ public class Photo_TagDAOImp implements Photo_TagDAO{
         PreparedStatement prepStat = connection.prepareStatement(sql);
         prepStat.setString(1, tag_name);
         prepStat.setInt(2, photo_code);
-        ResultSet resultSet = prepStat.executeQuery();
+        int resultSet = prepStat.executeUpdate();
+        if(resultSet > 0) {
+            System.out.println("Soggetto aggiunto");
+        }
 
-        resultSet.close();
         prepStat.close();
         connection.close();
     }
@@ -90,19 +92,17 @@ public class Photo_TagDAOImp implements Photo_TagDAO{
         prepStat.setInt(2, photo_code);
         prepStat2.setInt(1,photo_code);
         prepStat2.setString(2,tag_utente);
-        ResultSet resultSet = prepStat.executeQuery();
-        if (resultSet.next()){
-            System.out.println("soggetto inserito correttamente");
+        int resultSet = prepStat.executeUpdate();
+        if (resultSet > 0){
+            System.out.println("Soggetto inserito correttamente");
         }
 
-        ResultSet resultSet2=prepStat2.executeQuery();
-        if(resultSet2.next()){
-            System.out.println("tag utente inserito correttamente ");
+        int resultSet2=prepStat2.executeUpdate();
+        if(resultSet2 >0){
+            System.out.println("Tag utente inserito correttamente ");
         }
 
-        resultSet.close();
         prepStat.close();
-        resultSet2.close();
         prepStat2.close();
         connection.close();
 

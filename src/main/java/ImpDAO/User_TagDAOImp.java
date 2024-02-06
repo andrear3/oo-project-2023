@@ -34,9 +34,11 @@ public class User_TagDAOImp implements User_TagDAO{
         PreparedStatement prepStat = connection.prepareStatement(sql);
         prepStat.setInt(1, photo_code);
         prepStat.setString(2, nickname2);
-        ResultSet resultSet = prepStat.executeQuery();
+        int resultSet = prepStat.executeUpdate();
 
-        resultSet.close();
+        if(resultSet > 0){
+            System.out.println("User Tag aggiunto!");
+        }
         prepStat.close();
         connection.close();
 

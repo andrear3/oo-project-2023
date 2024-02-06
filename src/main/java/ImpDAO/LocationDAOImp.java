@@ -56,10 +56,12 @@ public Location aggLocationPhoto(String location_name,Double x_coordinates,Doubl
     prepStat.setString(1,location_name);
     prepStat.setDouble(2,y_coordinates);
     prepStat.setDouble(3,x_coordinates);
-    ResultSet resultSet = prepStat.executeQuery();
-    if(resultSet.next()){
+    int resultSet = prepStat.executeUpdate();
+    if(resultSet > 0){
         System.out.println("Location caricata correttamente");
     }
+    prepStat.close();
+    connection.close();
     return location;
-}
+    }
 }

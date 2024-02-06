@@ -65,13 +65,13 @@ public class UtenteDAOImp implements UtenteDAO {
         PreparedStatement prepStat = connection.prepareStatement(sql);
         prepStat.setString(1, password);
         prepStat.setString(2, nickname);
+
         ResultSet resultSet = prepStat.executeQuery();
         if (resultSet.next()) {
             tempUtente.setPassword(resultSet.getString("password"));
         }
-
-
         resultSet.close();
+
         prepStat.close();
         connection.close();
 
@@ -91,10 +91,12 @@ public class UtenteDAOImp implements UtenteDAO {
            PreparedStatement prepStat = connection.prepareStatement(sql);
            prepStat.setDate(1,dataN);
            prepStat.setString(2,nickname);
+
            ResultSet resultSet = prepStat.executeQuery();
            if (resultSet.next()) {
                tempUtente.setBirthdateUtente(resultSet.getDate("birthdate"));
            }
+
            resultSet.close();
            prepStat.close();
            connection.close();
@@ -109,12 +111,11 @@ public class UtenteDAOImp implements UtenteDAO {
         String sql="DELETE FROM photogallery.utente WHERE nickname= ? ";
         PreparedStatement prepStat = connection.prepareStatement(sql);
         prepStat.setString(1, nickname);
-        ResultSet resultSet = prepStat.executeQuery();
-        if (resultSet.next()) {
-            System.out.println("utente eliminato ");
+        int resultSet = prepStat.executeUpdate();
+        if (resultSet > 0) {
+            System.out.println("Utente eliminato");
         }
 
-        resultSet.close();
         prepStat.close();
         connection.close();
 
@@ -133,10 +134,12 @@ public class UtenteDAOImp implements UtenteDAO {
         prepStat.setString(4,name);
         prepStat.setString(5,surname);
         prepStat.setString(6,password);
-        ResultSet resultSet = prepStat.executeQuery();
 
+        int resultSet = prepStat.executeUpdate();
 
-        resultSet.close();
+        if(resultSet > 0){
+            System.out.println("Utente registrato");
+        }
         prepStat.close();
         connection.close();
 

@@ -76,9 +76,13 @@ public class VideoDAOImp {
         PreparedStatement prepStat = connection.prepareStatement(sql);
         prepStat.setString(1, title);
         prepStat.setInt(2, video_code);
-        ResultSet resultSet = prepStat.executeQuery();
 
-        resultSet.close();
+        int resultSet = prepStat.executeUpdate();
+
+        if(resultSet > 0){
+            System.out.println("Titolo modificato");
+        }
+
         prepStat.close();
         connection.close();
     }
@@ -89,9 +93,12 @@ public class VideoDAOImp {
         PreparedStatement prepStat = connection.prepareStatement(sql);
         prepStat.setString(1, desc);
         prepStat.setInt(2, video_code);
-        ResultSet resultSet = prepStat.executeQuery();
+        int resultSet = prepStat.executeUpdate();
 
-        resultSet.close();
+        if(resultSet > 0){
+            System.out.println("Descrizione modificata");
+        }
+
         prepStat.close();
         connection.close();
     }
@@ -102,8 +109,11 @@ public class VideoDAOImp {
         PreparedStatement prepStat = connection.prepareStatement(sql);
         prepStat.setInt(1, video_code);
         prepStat.setInt(2, photo_code);
-        Integer test = prepStat.executeUpdate();
 
+        int resultSet = prepStat.executeUpdate();
+        if(resultSet > 0){
+            System.out.println("Foto inserita in video");
+        }
         prepStat.close();
         connection.close();
     }
@@ -114,8 +124,13 @@ public class VideoDAOImp {
         PreparedStatement prepStat = connection.prepareStatement(sql);
         prepStat.setInt(1, video_code);
         prepStat.setInt(2, photo_code);
-        ResultSet resultSet = prepStat.executeQuery();
-        resultSet.close();
+
+        int resultSet = prepStat.executeUpdate();
+        if(resultSet > 0){
+            System.out.println("Foto eliminata da video");
+        }
+
+
         prepStat.close();
         connection.close();
     }
@@ -128,7 +143,10 @@ public class VideoDAOImp {
         prepStat.setString(1, desc);
         prepStat.setString(2, title);
         prepStat.setString(3, nickname);
-        int test = prepStat.executeUpdate();
+        int resultSet = prepStat.executeUpdate();
+        if(resultSet > 0){
+            System.out.println("Nuovo video inserito");
+        }
         prepStat.close();
         connection.close();
     }
@@ -139,7 +157,10 @@ public class VideoDAOImp {
         PreparedStatement prepStat = connection.prepareStatement(sql);
 
         prepStat.setInt(1, video_code);
-        Integer test = prepStat.executeUpdate();
+        int resultSet = prepStat.executeUpdate();
+        if(resultSet > 0){
+            System.out.println("Video eliminato");
+        }
         prepStat.close();
         connection.close();
     }
