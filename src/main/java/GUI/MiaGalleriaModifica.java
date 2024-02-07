@@ -12,8 +12,6 @@ public class MiaGalleriaModifica {
     Controller controller = new Controller();
     Photo currentPhoto;
     Utente activeUtente;
-    private JRadioButton privataRadioButton;
-    private JRadioButton pubblicaRadioButton;
     private JTextField textField2;
     private JTextField utenteText;
     private JButton tornaIndietroButton;
@@ -21,6 +19,8 @@ public class MiaGalleriaModifica {
     private JButton aggiungiUserTag;
     private JButton aggiungiPhotoTag;
     private JComboBox comboBox1;
+    private JButton rendiFotoPubblicaButton;
+    private JButton rendiFotoPrivataButton;
 
     private static JFrame frame;
     public MiaGalleriaModifica(Photo photo, Utente utente)
@@ -44,6 +44,22 @@ public class MiaGalleriaModifica {
         aggiungiUserTag.addActionListener(e -> {
             try {
                 currentPhoto = controller.aggiungiUserTagCTRL(currentPhoto.getPhotoCode(), utenteText.getText());
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        rendiFotoPrivataButton.addActionListener(e -> {
+            try {
+                controller.privatePhotoCTRL(currentPhoto.getPhotoCode());
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        rendiFotoPubblicaButton.addActionListener(e -> {
+            try {
+                controller.publicPhotoCTRL(currentPhoto.getPhotoCode());
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }

@@ -166,6 +166,30 @@ public String getPath(Integer photo_code)throws SQLException{
         connection.close();
     }
 
+    public void publicPhoto(Integer photo_code) throws SQLException{
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        String sql="UPDATE photogallery.photo SET scope = 'Public' WHERE photo_code = ?";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+
+        prepStat.setInt(1,photo_code);
+        int resultSet = prepStat.executeUpdate();
+
+        prepStat.close();
+        connection.close();
+    }
+
+    public void privatePhoto(Integer photo_code) throws SQLException{
+        Connection connection = DatabaseConnection.getInstance().getConnection();
+        String sql="UPDATE photogallery.photo SET scope = 'Private' WHERE photo_code = ?";
+        PreparedStatement prepStat = connection.prepareStatement(sql);
+
+        prepStat.setInt(1,photo_code);
+        int resultSet = prepStat.executeUpdate();
+
+        prepStat.close();
+        connection.close();
+    }
+
 
 }
 

@@ -26,14 +26,6 @@
           <text value="Modifica Visibilità:"/>
         </properties>
       </component>
-      <component id="3161e" class="javax.swing.JRadioButton" binding="privataRadioButton" default-binding="true">
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Privata"/>
-        </properties>
-      </component>
       <component id="8edaa" class="javax.swing.JLabel">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -66,14 +58,6 @@
           <text value="Modifica Foto"/>
         </properties>
       </component>
-      <component id="bde39" class="javax.swing.JRadioButton" binding="pubblicaRadioButton" default-binding="true">
-        <constraints>
-          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Pubblica"/>
-        </properties>
-      </component>
       <component id="7970a" class="javax.swing.JButton" binding="aggiungiPhotoTag">
         <constraints>
           <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -103,6 +87,22 @@
             <item value="Ritratto"/>
             <item value="Selfie"/>
           </model>
+        </properties>
+      </component>
+      <component id="4f5f3" class="javax.swing.JButton" binding="rendiFotoPubblicaButton" default-binding="true">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Rendi Foto Pubblica"/>
+        </properties>
+      </component>
+      <component id="128d9" class="javax.swing.JButton" binding="rendiFotoPrivataButton" default-binding="true">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Rendi Foto Privata"/>
         </properties>
       </component>
     </children>

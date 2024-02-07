@@ -89,6 +89,14 @@ public class Controller {
     public void deletePhotoCTRL(Integer photo_code) throws SQLException{
         fotoDAOImp.deletePhoto(photo_code);
     }
+
+    public void publicPhotoCTRL(Integer photo_code) throws SQLException{
+        fotoDAOImp.publicPhoto(photo_code);
+    }
+
+    public void privatePhotoCTRL(Integer photo_code) throws SQLException{
+        fotoDAOImp.privatePhoto(photo_code);
+    }
     public ArrayList<Integer> fotoStessoSoggettoCTRL(String tag_name) throws SQLException {
         return photoTagDAOImp.fotoStessoSoggetto(tag_name);
     }
